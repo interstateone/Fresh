@@ -8,6 +8,12 @@
 
 #import "FSHSoundCellView.h"
 
+@interface FSHSoundCellView ()
+
+@property (strong, nonatomic) NSImageView *playingImageView;
+
+@end
+
 @implementation FSHSoundCellView
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
@@ -34,8 +40,15 @@
     [self.authorNameField.cell setUsesSingleLineMode:YES];
     [self.authorNameField.cell setLineBreakMode:NSLineBreakByTruncatingTail];
 
+    CGFloat dimension = 15;
+    CGFloat spacing = 8;
+    self.playingImageView = [[NSImageView alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.frame) - dimension - spacing, CGRectGetMidY(self.frame) - dimension / 2.0, dimension, dimension)];
+    self.playingImageView.image = [NSImage imageNamed:NSImageNameStatusAvailable];
+    self.playingImageView.hidden = !self.playing;
+
     [self addSubview:self.trackNameField];
     [self addSubview:self.authorNameField];
+    [self addSubview:self.playingImageView];
 
     return self;
 }
@@ -49,6 +62,11 @@
         self.trackNameField.textColor = [NSColor blackColor];
         self.authorNameField.textColor = [NSColor darkGrayColor];
     }
+}
+
+- (void)setPlaying:(BOOL)playing {
+    _playing = playing;
+    self.playingImageView.hidden = !playing;
 }
 
 @end
