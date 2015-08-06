@@ -19,5 +19,6 @@
 
 - (void)logIn;
 - (RACSignal *)updateSounds;
+- (RACSignal *)fetchNextSounds;
 
 @end

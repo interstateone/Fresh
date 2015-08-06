@@ -55,6 +55,10 @@
     return [self.account updateSounds];
 }
 
+- (RACSignal *)fetchNextSounds {
+    return [self.account fetchNextSounds];
+}
+
 - (void)selectSoundAtIndex:(NSInteger)index {
     self.account.selectedSound = [self soundAtIndex:index];
 }

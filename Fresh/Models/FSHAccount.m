@@ -23,6 +23,7 @@
 @interface FSHAccount ()
 
 @property (strong, nonatomic) SCAccount *soundcloudAccount;
+@property (strong, nonatomic) NSURL *nextSoundsURL;
 
 @end
 
@@ -66,6 +67,7 @@
                 [subscriber sendCompleted];
             } else {
                 NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+
                 self.sounds = [[jsonResponse[@"collection"] rx_filterWithBlock:^BOOL(NSDictionary *soundInfo) {
                     BOOL streamable = [soundInfo[@"origin"][@"streamable"] isEqualToNumber:@1];
                     BOOL isTrack = [soundInfo[@"origin"][@"kind"] isEqualToString:@"track"];
@@ -78,6 +80,40 @@
                     }
                     return sound;
                 }];
+
+                self.nextSoundsURL = [NSURL URLWithString:jsonResponse[@"next_href"]];
+
+                [subscriber sendNext:self.sounds];
+                [subscriber sendCompleted];
+            }
+        }];
+        return nil;
+    }];
+}
+
+- (RACSignal *)fetchNextSounds {
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [SCRequest performMethod:SCRequestMethodGET onResource:self.nextSoundsURL usingParameters:nil withAccount:self.soundcloudAccount sendingProgressHandler:nil responseHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+            if (error) {
+                [subscriber sendError:error];
+                [subscriber sendCompleted];
+            } else {
+                NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+
+                self.sounds = [self.sounds arrayByAddingObjectsFromArray:[[jsonResponse[@"collection"] rx_filterWithBlock:^BOOL(NSDictionary *soundInfo) {
+                    BOOL streamable = [soundInfo[@"origin"][@"streamable"] isEqualToNumber:@1];
+                    BOOL isTrack = [soundInfo[@"origin"][@"kind"] isEqualToString:@"track"];
+                    return streamable && isTrack;
+                }] rx_mapWithBlock:^id(NSDictionary *soundInfo) {
+                    NSError *soundDeserializationError;
+                    FSHSound *sound = [MTLJSONAdapter modelOfClass:[FSHSound class] fromJSONDictionary:soundInfo error:&soundDeserializationError];
+                    if (soundDeserializationError) {
+                        NSLog(@"Error deserializing FSHSound: %@", soundDeserializationError);
+                    }
+                    return sound;
+                }]];
+
+                self.nextSoundsURL = [NSURL URLWithString:jsonResponse[@"next_href"]];
 
                 [subscriber sendNext:self.sounds];
                 [subscriber sendCompleted];
