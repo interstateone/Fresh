@@ -43,6 +43,19 @@
     [self.tableView setDoubleAction:@selector(rowWasDoubleClicked)];
 
     [self updateDashboardWithCompletion:nil];
+
+    @weakify(self)
+    [RACObserve(self, viewModel.numberOfSounds) subscribeNext:^(id x) {
+        @strongify(self);
+        [self.tableView reloadData];
+    }];
+
+    [RACObserve(self, viewModel.account.selectedSound) subscribeNext:^(id x) {
+        @strongify(self);
+        NSIndexSet *selectedRowIndexes = self.tableView.selectedRowIndexes;
+        [self.tableView reloadData];
+        [self.tableView selectRowIndexes:selectedRowIndexes byExtendingSelection:NO];
+    }];
 }
 
 - (BOOL)acceptsFirstResponder {
@@ -52,10 +65,6 @@
 - (void)setViewModel:(FSHSoundListViewModel *)viewModel {
     _viewModel = viewModel;
     [self updateDashboardWithCompletion:nil];
-
-    [RACObserve(self.viewModel, numberOfSounds) subscribeNext:^(id x) {
-        [self.tableView reloadData];
-    }];
 }
 
 #pragma mark - Private
@@ -113,10 +122,12 @@
 #pragma mark - NSTableViewDelegate
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+    FSHSound *sound = [self.viewModel soundAtIndex:row];
     FSHSoundCellView *cell = [tableView makeViewWithIdentifier:NSStringFromClass([FSHSoundCellView class]) owner:self];
     
     [cell.trackNameField setStringValue:[self.viewModel titleForSoundAtIndex:row]];
     [cell.authorNameField setStringValue:[self.viewModel authorForSoundAtIndex:row]];
+    cell.playing = [sound isEqual:self.viewModel.account.selectedSound];
 
     return cell;
 }
