@@ -31,7 +31,17 @@
     [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"FSHSoundEndedNotification" object:nil] takeUntil:[self rac_willDeallocSignal]] subscribeNext:^(NSNotification *note) {
         @strongify(self)
         NSInteger index = [self.account.sounds indexOfObject:note.object];
-        [self selectSoundAtIndex:(index + 1)];
+
+        if (index == self.account.sounds.count - 1) {
+            @weakify(self)
+            [[self fetchNextSounds] subscribeNext:^(id x) {
+                @strongify(self)
+                [self selectSoundAtIndex:(index + 1)];
+            }];
+        }
+        else {
+            [self selectSoundAtIndex:(index + 1)];
+        }
     }];
 
     return self;

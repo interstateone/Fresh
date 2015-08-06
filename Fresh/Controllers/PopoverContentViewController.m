@@ -70,7 +70,9 @@
 
 - (BOOL)scrollView:(BSRefreshableScrollView *)aScrollView startRefreshSide:(BSRefreshableScrollViewSide)refreshableSide {
     if (refreshableSide == BSRefreshableScrollViewSideBottom) {
+        @weakify(self)
         [[self.viewModel fetchNextSounds] subscribeNext:^(id x) {
+            @strongify(self)
             [self.soundsScrollView stopRefreshingSide:BSRefreshableScrollViewSideBottom];
         }];
     }
