@@ -102,16 +102,20 @@
 }
 
 - (void)revealNowPlayingView {
+    if (self.nowPlayingViewController.parentViewController) {
+        return;
+    }
+
     [self.window addTitlebarAccessoryViewController:self.nowPlayingViewController];
     self.window.titleVisibility = NSWindowTitleHidden;
 }
 
 - (void)hideNowPlayingView {
-    if (self.window.titlebarAccessoryViewControllers.count == 0) {
+    if (!self.nowPlayingViewController.parentViewController) {
         return;
     }
     
-    [self.window removeTitlebarAccessoryViewControllerAtIndex:0];
+    [self.nowPlayingViewController removeFromParentViewController];
     self.window.titleVisibility = NSWindowTitleVisible;
 }
 
