@@ -98,12 +98,12 @@
         return duration ?: @0;
     }];
 
-    RAC(self.waveformSlider, waveformImage) = RACObserve(self, viewModel.waveformImage);
+    RAC(self.waveformSlider, waveform) = RACObserve(self, viewModel.waveform);
 
     @weakify(self);
     self.waveformSlider.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSSlider *slider) {
         @strongify(self);
-        [self.viewModel seekToProgress:@(slider.doubleValue)];
+        [self.viewModel seekToProgress:((NSNumber *)slider.objectValue)];
         return [RACSignal empty];
     }];
 

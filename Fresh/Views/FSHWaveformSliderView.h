@@ -7,13 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "Fresh-Swift.h"
 
 @interface FSHWaveformSliderView : NSControl
 
-@property (nonatomic, strong) NSImage *waveformImage;
 @property (nonatomic, strong, readonly) NSImage *maskImage;
+@property (nonatomic, strong) FSHWaveform *waveform;
 
-@property (nonatomic, assign) double doubleValue;
 @property (nonatomic, assign) double maxValue;
 
 @end

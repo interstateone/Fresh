@@ -7,13 +7,7 @@
 //
 
 #import "FSHWaveformSliderView.h"
-
 #import <QuartzCore/CoreImage.h>
-#import <GPUImage/GPUImageLuminanceThresholdFilter.h>
-#import <GPUImage/GPUImageColorInvertFilter.h>
-#import <GPUImage/GPUImageCropFilter.h>
-#import <GPUImage/GPUImagePicture.h>
-
 #import "FSHWaveformSliderCell.h"
 
 @implementation FSHWaveformSliderView
@@ -30,58 +24,52 @@
 
 #pragma mark - Properties
 
-- (void)setWaveformImage:(NSImage *)waveformImage {
-    _waveformImage = waveformImage;
+- (void)setWaveform:(FSHWaveform *)waveform {
+    _waveform = waveform;
+    if (!waveform) return;
 
-    if (!waveformImage) return;
+    NSBitmapImageRep *offscreenRep = [[NSBitmapImageRep alloc]
+                                      initWithBitmapDataPlanes:NULL
+                                      pixelsWide:self.bounds.size.width
+                                      pixelsHigh:self.bounds.size.height
+                                      bitsPerSample:8
+                                      samplesPerPixel:4
+                                      hasAlpha:YES
+                                      isPlanar:NO
+                                      colorSpaceName:NSDeviceRGBColorSpace
+                                      bitmapFormat:NSAlphaFirstBitmapFormat
+                                      bytesPerRow:0
+                                      bitsPerPixel:0];
+    
+    // set offscreen context
+    NSGraphicsContext *g = [NSGraphicsContext graphicsContextWithBitmapImageRep:offscreenRep];
+    [NSGraphicsContext saveGraphicsState];
+    [NSGraphicsContext setCurrentContext:g];
 
-    // Fill background with black
-    NSImage *image = [self.waveformImage copy];
-    [image lockFocus];
-    [[NSColor blackColor] set];
-    NSRectFill(NSMakeRect(0, 0, self.waveformImage.size.width, self.waveformImage.size.height));
-    [self.waveformImage drawAtPoint:CGPointZero fromRect:CGRectMake(0, 0, self.waveformImage.size.width, self.waveformImage.size.height) operation:NSCompositeSourceOver fraction:1.0];
-    [image unlockFocus];
+    CGContextRef ctx = [g graphicsPort];
+    CGContextSetFillColorWithColor(ctx, [NSColor blackColor].CGColor);
+    CGFloat width = self.bounds.size.width / waveform.values.count;
+    CGFloat maxValue = (CGFloat)waveform.max;
+    [waveform.values enumerateObjectsUsingBlock:^(NSNumber *value, NSUInteger idx, BOOL *stop) {
+        CGRect rect = CGRectIntegral(CGRectMake(idx * width, 0, width, value.floatValue / maxValue * self.bounds.size.height));
+        CGContextFillRect(ctx, rect);
+    }];
 
-    GPUImagePicture *picture = [[GPUImagePicture alloc] initWithImage:image];
+    [NSGraphicsContext restoreGraphicsState];
 
-    // Crop it to half height
-    GPUImageCropFilter *cropFilter = [[GPUImageCropFilter alloc] initWithCropRegion:CGRectMake(0.0f, 0.0f, 1.0f, 0.5f)];
-    [picture addTarget:cropFilter];
+    NSImage *img = [[NSImage alloc] initWithSize:self.bounds.size];
+    [img addRepresentation:offscreenRep];
 
-    // Invert
-    GPUImageColorInvertFilter *invertFilter = [[GPUImageColorInvertFilter alloc] init];
-    [cropFilter addTarget:invertFilter];
-
-    // Convert to B&W
-    GPUImageLuminanceThresholdFilter *thresholdFilter = [[GPUImageLuminanceThresholdFilter alloc] init];
-    thresholdFilter.threshold = 0.1;
-    [invertFilter addTarget:thresholdFilter];
-
-    [thresholdFilter useNextFrameForImageCapture];
-    [picture processImage];
-    image = [thresholdFilter imageFromCurrentFramebuffer];
-
-    // Mask
-    CIImage *maskedImage = [CIImage imageWithData:[image TIFFRepresentation]];
-    CIFilter *alphaFilter = [CIFilter filterWithName:@"CIMaskToAlpha"];
-    [alphaFilter setValue:maskedImage forKey:kCIInputImageKey];
-    CIImage *result = [alphaFilter valueForKey:kCIOutputImageKey];
-
-    NSCIImageRep *rep = [NSCIImageRep imageRepWithCIImage:result];
-    image = [[NSImage alloc] initWithSize:image.size];
-    [image addRepresentation:rep];
-
-    _maskImage = image;
+    _maskImage = img;
 }
 
 - (void)setDoubleValue:(double)doubleValue {
     doubleValue = fmax(doubleValue, 0.0);
     doubleValue = fmin(doubleValue, self.maxValue);
 
-    _doubleValue = doubleValue;
+    [super setDoubleValue:doubleValue];
     FSHWaveformSliderCell *cell = (FSHWaveformSliderCell *)self.cell;
-    cell.doubleValue = doubleValue;
+    cell.objectValue = @(doubleValue);
 
     [self setNeedsDisplay:YES];
 }
@@ -107,7 +95,7 @@
     }
     else if (CGRectContainsPoint(self.bounds, mousePoint)) {
         self.doubleValue = [self valueForPoint:mousePoint];
-        [NSApp sendAction: [self action] to: [self target] from: self];
+        [NSApp sendAction:[self action] to:[self target] from:self];
         [self trackMouseWithStartPoint:mousePoint];
     }
 }
@@ -119,7 +107,7 @@
 - (void)trackMouseWithStartPoint:(NSPoint)point {
     // Compute the value offset: this makes the pointer stay on the
     // same piece of the knob when dragging
-    double valueOffset = [self valueForPoint:point] - self.doubleValue;
+    double valueOffset = [self valueForPoint:point] - ((NSNumber *)self.objectValue).doubleValue;
 
     NSEvent *event;
     while ([event type] != NSLeftMouseUp) {

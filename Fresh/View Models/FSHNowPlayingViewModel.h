@@ -7,6 +7,7 @@
 //
 
 #import "FSHSound.h"
+#import "Fresh-Swift.h"
 
 @class RACCommand;
 @class FSHAccount;
@@ -20,7 +21,7 @@
 @property (nonatomic, strong) NSNumber *duration;
 @property (nonatomic, strong) NSNumber *progress;
 @property (nonatomic, strong) NSURL *permalinkURL;
-@property (nonatomic, strong) NSImage *waveformImage;
+@property (nonatomic, strong) FSHWaveform *waveform;
 @property (nonatomic, assign) BOOL favorite;
 @property (nonatomic, assign) BOOL hidden;
 

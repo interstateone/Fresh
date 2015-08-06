@@ -8,7 +8,7 @@
 
 #import "FSHAccount.h"
 
-#import <ReactiveCocoa/ReactiveCocoa/RACSignal.h>
+#import <ReactiveCocoa/RACSignal.h>
 #import <ReactiveCocoa/RACSubscriptingAssignmentTrampoline.h>
 #import <ReactiveCocoa/NSObject+RACPropertySubscribing.h>
 #import <ReactiveCocoa/RACSubscriber.h>
@@ -67,9 +67,15 @@
             } else {
                 NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
                 self.sounds = [[jsonResponse[@"collection"] rx_filterWithBlock:^BOOL(NSDictionary *soundInfo) {
-                    return [soundInfo[@"origin"][@"streamable"] isEqualToNumber:@1] && [soundInfo[@"origin"][@"kind"] isEqualToString:@"track"];
+                    BOOL streamable = [soundInfo[@"origin"][@"streamable"] isEqualToNumber:@1];
+                    BOOL isTrack = [soundInfo[@"origin"][@"kind"] isEqualToString:@"track"];
+                    return streamable && isTrack;
                 }] rx_mapWithBlock:^id(NSDictionary *soundInfo) {
-                    FSHSound *sound = [MTLJSONAdapter modelOfClass:[FSHSound class] fromJSONDictionary:soundInfo error:NULL];
+                    NSError *soundDeserializationError;
+                    FSHSound *sound = [MTLJSONAdapter modelOfClass:[FSHSound class] fromJSONDictionary:soundInfo error:&soundDeserializationError];
+                    if (soundDeserializationError) {
+                        NSLog(@"Error deserializing FSHSound: %@", soundDeserializationError);
+                    }
                     return sound;
                 }];
 

@@ -48,6 +48,9 @@
 		CA44E8EB18CD1CDB007754C5 /* SCSoundCloud+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = CA44E8E318CD1CDB007754C5 /* SCSoundCloud+Private.m */; };
 		CA44E8EC18CD1CDB007754C5 /* SCSoundCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = CA44E8E518CD1CDB007754C5 /* SCSoundCloud.m */; };
 		CA44E8F118CD28AA007754C5 /* FSHSound.m in Sources */ = {isa = PBXBuildFile; fileRef = CA44E8F018CD28AA007754C5 /* FSHSound.m */; };
+		CA5B3D911B72DCED002BB59B /* FSHLoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA5B3D901B72DCED002BB59B /* FSHLoginView.xib */; };
+		CA5B3D941B72DD40002BB59B /* FSHLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5B3D931B72DD40002BB59B /* FSHLoginViewController.swift */; };
+		CA5B3DB01B72FFC9002BB59B /* FSHWaveform.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5B3DAF1B72FFC9002BB59B /* FSHWaveform.swift */; };
 		CA5D7A2918CEB2F1006E2401 /* NSView+RACProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D7A2818CEB2F1006E2401 /* NSView+RACProperties.m */; };
 		CA5D7A2C18CEB7A8006E2401 /* NSImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D7A2B18CEB7A8006E2401 /* NSImageView+AFNetworking.m */; };
 		CAB6CA8718E512E900B665CC /* FSHNowPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB6CA8518E512E900B665CC /* FSHNowPlayingViewController.m */; };
@@ -56,8 +59,6 @@
 		CAB7A11B18E5365D00669DB3 /* FSHWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB7A11A18E5365D00669DB3 /* FSHWindowController.m */; };
 		CAB7A11D18E536AF00669DB3 /* FSHWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAB7A11C18E536AF00669DB3 /* FSHWindow.xib */; };
 		CAE5F49C18D14AFE00506613 /* NSImage+TintedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE5F49B18D14AFE00506613 /* NSImage+TintedImage.m */; };
-		CAE5F4A318D1815500506613 /* BSRefreshableClipView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE5F49F18D1815500506613 /* BSRefreshableClipView.m */; };
-		CAE5F4A418D1815500506613 /* BSRefreshableScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE5F4A118D1815500506613 /* BSRefreshableScrollView.m */; };
 		CAE6846018CD3C4900F907A4 /* NSButton+RACProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE6845F18CD3C4900F907A4 /* NSButton+RACProperties.m */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		25F701CCF25646AB85B69F83 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8359313BC7AC5310106D71C1 /* FSHAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSHAccount.m; path = Models/FSHAccount.m; sourceTree = "<group>"; };
 		83593B06A362482BCEF39DA2 /* FSHAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSHAccount.h; path = Models/FSHAccount.h; sourceTree = "<group>"; };
+		C625D28D4A69D21652CB65E2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CA13F4B618CD80F20027B513 /* NSData+NXOAuth2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+NXOAuth2.h"; sourceTree = "<group>"; };
 		CA13F4B718CD80F20027B513 /* NSData+NXOAuth2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+NXOAuth2.m"; sourceTree = "<group>"; };
 		CA13F4B818CD80F20027B513 /* NSString+NXOAuth2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NXOAuth2.h"; sourceTree = "<group>"; };
@@ -157,6 +159,10 @@
 		CA44E8ED18CD22FD007754C5 /* Fresh.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Fresh.entitlements; sourceTree = "<group>"; };
 		CA44E8EF18CD28AA007754C5 /* FSHSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSHSound.h; path = Models/FSHSound.h; sourceTree = "<group>"; };
 		CA44E8F018CD28AA007754C5 /* FSHSound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSHSound.m; path = Models/FSHSound.m; sourceTree = "<group>"; };
+		CA5B3D901B72DCED002BB59B /* FSHLoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FSHLoginView.xib; path = Controllers/FSHLoginView.xib; sourceTree = "<group>"; };
+		CA5B3D921B72DD40002BB59B /* Fresh-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Fresh-Bridging-Header.h"; sourceTree = "<group>"; };
+		CA5B3D931B72DD40002BB59B /* FSHLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FSHLoginViewController.swift; path = Controllers/FSHLoginViewController.swift; sourceTree = "<group>"; };
+		CA5B3DAF1B72FFC9002BB59B /* FSHWaveform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FSHWaveform.swift; path = Models/FSHWaveform.swift; sourceTree = "<group>"; };
 		CA5D7A2718CEB2F1006E2401 /* NSView+RACProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSView+RACProperties.h"; path = "Categories/NSView+RACProperties.h"; sourceTree = "<group>"; };
 		CA5D7A2818CEB2F1006E2401 /* NSView+RACProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSView+RACProperties.m"; path = "Categories/NSView+RACProperties.m"; sourceTree = "<group>"; };
 		CA5D7A2A18CEB7A8006E2401 /* NSImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSImageView+AFNetworking.h"; path = "Categories/NSImageView+AFNetworking.h"; sourceTree = "<group>"; };
@@ -171,14 +177,9 @@
 		CAB7A11C18E536AF00669DB3 /* FSHWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FSHWindow.xib; path = Controllers/FSHWindow.xib; sourceTree = "<group>"; };
 		CAE5F49A18D14AFE00506613 /* NSImage+TintedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSImage+TintedImage.h"; path = "Categories/NSImage+TintedImage.h"; sourceTree = "<group>"; };
 		CAE5F49B18D14AFE00506613 /* NSImage+TintedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSImage+TintedImage.m"; path = "Categories/NSImage+TintedImage.m"; sourceTree = "<group>"; };
-		CAE5F49E18D1815500506613 /* BSRefreshableClipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSRefreshableClipView.h; sourceTree = "<group>"; };
-		CAE5F49F18D1815500506613 /* BSRefreshableClipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSRefreshableClipView.m; sourceTree = "<group>"; };
-		CAE5F4A018D1815500506613 /* BSRefreshableScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSRefreshableScrollView.h; sourceTree = "<group>"; };
-		CAE5F4A118D1815500506613 /* BSRefreshableScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSRefreshableScrollView.m; sourceTree = "<group>"; };
-		CAE5F4A218D1815500506613 /* BSRefreshableScrollView_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSRefreshableScrollView_Private.h; sourceTree = "<group>"; };
 		CAE6845E18CD3C4900F907A4 /* NSButton+RACProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSButton+RACProperties.h"; path = "Categories/NSButton+RACProperties.h"; sourceTree = "<group>"; };
 		CAE6845F18CD3C4900F907A4 /* NSButton+RACProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSButton+RACProperties.m"; path = "Categories/NSButton+RACProperties.m"; sourceTree = "<group>"; };
-		E0034867504D4D4098AC1CA9 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		CB761C3110025D903468097C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +204,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4CA7EFFA218484D7588EA4AC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CB761C3110025D903468097C /* Pods.debug.xcconfig */,
+				C625D28D4A69D21652CB65E2 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		CA13F4B518CD80F20027B513 /* NXOAuth2Client */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,6 +271,8 @@
 				CAB7A11918E5365D00669DB3 /* FSHWindowController.h */,
 				CAB7A11A18E5365D00669DB3 /* FSHWindowController.m */,
 				CAB7A11C18E536AF00669DB3 /* FSHWindow.xib */,
+				CA5B3D931B72DD40002BB59B /* FSHLoginViewController.swift */,
+				CA5B3D901B72DCED002BB59B /* FSHLoginView.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -272,7 +284,7 @@
 				CA44E8BF18CD1AA2007754C5 /* FreshTests */,
 				CA44E89A18CD1AA2007754C5 /* Frameworks */,
 				CA44E89918CD1AA2007754C5 /* Products */,
-				E0034867504D4D4098AC1CA9 /* Pods.xcconfig */,
+				4CA7EFFA218484D7588EA4AC /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -320,6 +332,7 @@
 				CA44E8AE18CD1AA2007754C5 /* FSHAppDelegate.m */,
 				CA44E8B018CD1AA2007754C5 /* MainMenu.xib */,
 				CA44E8B318CD1AA2007754C5 /* Images.xcassets */,
+				CA5B3D921B72DD40002BB59B /* Fresh-Bridging-Header.h */,
 				CA44E8A218CD1AA2007754C5 /* Supporting Files */,
 			);
 			path = Fresh;
@@ -358,7 +371,6 @@
 		CA44E8D718CD1CDB007754C5 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				CAE5F49D18D1815500506613 /* BSRefreshableScrollView */,
 				CA13F4B518CD80F20027B513 /* NXOAuth2Client */,
 				CA44E8D818CD1CDB007754C5 /* SoundCloudAPI */,
 			);
@@ -393,6 +405,7 @@
 				CA44E8F018CD28AA007754C5 /* FSHSound.m */,
 				8359313BC7AC5310106D71C1 /* FSHAccount.m */,
 				83593B06A362482BCEF39DA2 /* FSHAccount.h */,
+				CA5B3DAF1B72FFC9002BB59B /* FSHWaveform.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -423,18 +436,6 @@
 				CA35CA6718E7924600A30964 /* FSHSoundListViewModel.m */,
 			);
 			name = "View Models";
-			sourceTree = "<group>";
-		};
-		CAE5F49D18D1815500506613 /* BSRefreshableScrollView */ = {
-			isa = PBXGroup;
-			children = (
-				CAE5F49E18D1815500506613 /* BSRefreshableClipView.h */,
-				CAE5F49F18D1815500506613 /* BSRefreshableClipView.m */,
-				CAE5F4A018D1815500506613 /* BSRefreshableScrollView.h */,
-				CAE5F4A118D1815500506613 /* BSRefreshableScrollView.m */,
-				CAE5F4A218D1815500506613 /* BSRefreshableScrollView_Private.h */,
-			);
-			path = BSRefreshableScrollView;
 			sourceTree = "<group>";
 		};
 		CAE6845D18CD3C3200F907A4 /* Categories */ = {
@@ -544,6 +545,7 @@
 				CAB6CA8818E512E900B665CC /* FSHNowPlayingView.xib in Resources */,
 				CA44E8AC18CD1AA2007754C5 /* Credits.rtf in Resources */,
 				CA44E8B218CD1AA2007754C5 /* MainMenu.xib in Resources */,
+				CA5B3D911B72DCED002BB59B /* FSHLoginView.xib in Resources */,
 				CAB7A11D18E536AF00669DB3 /* FSHWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -586,7 +588,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -599,8 +601,8 @@
 				CA44E8EB18CD1CDB007754C5 /* SCSoundCloud+Private.m in Sources */,
 				CA13F4D618CD80F20027B513 /* NSData+NXOAuth2.m in Sources */,
 				CA44E8E918CD1CDB007754C5 /* SCConstants.m in Sources */,
+				CA5B3D941B72DD40002BB59B /* FSHLoginViewController.swift in Sources */,
 				CAE6846018CD3C4900F907A4 /* NSButton+RACProperties.m in Sources */,
-				CAE5F4A418D1815500506613 /* BSRefreshableScrollView.m in Sources */,
 				CAE5F49C18D14AFE00506613 /* NSImage+TintedImage.m in Sources */,
 				CA13F4E118CD80F20027B513 /* NXOAuth2PostBodyStream.m in Sources */,
 				CA13F4E018CD80F20027B513 /* NXOAuth2PostBodyPart.m in Sources */,
@@ -610,12 +612,12 @@
 				CA13F4D818CD80F20027B513 /* NSURL+NXOAuth2.m in Sources */,
 				CA5D7A2C18CEB7A8006E2401 /* NSImageView+AFNetworking.m in Sources */,
 				CA13F4DA18CD80F20027B513 /* NXOAuth2Account.m in Sources */,
+				CA5B3DB01B72FFC9002BB59B /* FSHWaveform.swift in Sources */,
 				CA44E8E718CD1CDB007754C5 /* SCAccount+Private.m in Sources */,
 				CA44E8EC18CD1CDB007754C5 /* SCSoundCloud.m in Sources */,
 				CA35CA6818E7924600A30964 /* FSHSoundListViewModel.m in Sources */,
 				CA13F4DF18CD80F20027B513 /* NXOAuth2FileStreamWrapper.m in Sources */,
 				CA44E8EA18CD1CDB007754C5 /* SCRequest.m in Sources */,
-				CAE5F4A318D1815500506613 /* BSRefreshableClipView.m in Sources */,
 				CA13F4E518CD89BB0027B513 /* FSHSoundCellView.m in Sources */,
 				CA44E8F118CD28AA007754C5 /* FSHSound.m in Sources */,
 				CAB6CA8C18E513D700B665CC /* FSHNowPlayingViewModel.m in Sources */,
@@ -764,16 +766,21 @@
 		};
 		CA44E8CA18CD1AA2007754C5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E0034867504D4D4098AC1CA9 /* Pods.xcconfig */;
+			baseConfigurationReference = CB761C3110025D903468097C /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Fresh/Fresh.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Fresh/Fresh-Prefix.pch";
 				INFOPLIST_FILE = "Fresh/Fresh-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Fresh/Fresh-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 				WRAPPER_EXTENSION = app;
 			};
@@ -781,16 +788,20 @@
 		};
 		CA44E8CB18CD1AA2007754C5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E0034867504D4D4098AC1CA9 /* Pods.xcconfig */;
+			baseConfigurationReference = C625D28D4A69D21652CB65E2 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Fresh/Fresh.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Fresh/Fresh-Prefix.pch";
 				INFOPLIST_FILE = "Fresh/Fresh-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Fresh/Fresh-Bridging-Header.h";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 				WRAPPER_EXTENSION = app;
 			};

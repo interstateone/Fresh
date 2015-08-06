@@ -48,8 +48,8 @@
 
     RAC(self, author) = RACObserve(self, account.selectedSound.author);
 
-    RAC(self, waveformImage) = [RACObserve(self, account.selectedSound) flattenMap:^RACStream *(FSHSound *sound) {
-        return [sound fetchWaveformImage];
+    RAC(self, waveform) = [RACObserve(self, account.selectedSound) flattenMap:^RACStream *(FSHSound *sound) {
+        return [sound fetchWaveform];
     }];
 
     RAC(self, favorite, @NO) = RACObserve(self, account.selectedSound.favorite);
@@ -62,11 +62,12 @@
             return;
         }
 
-        self.tickTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(tick:) userInfo:nil repeats:YES];
-        [self.tickTimer setTolerance:0.25];
+        self.tickTimer = [NSTimer scheduledTimerWithTimeInterval:0.25 target:self selector:@selector(tick:) userInfo:nil repeats:YES];
+        self.tickTimer.tolerance = 0.25;
 
         [[sound fetchPlayURL] subscribeNext:^(NSURL *playURL) {
             [self.audioPlayer play:[playURL absoluteString]];
+            self.duration = @(self.audioPlayer.duration);
         }];
     }];
 
@@ -104,8 +105,10 @@
 }
 
 - (void)tick:(NSTimer *)timer {
-    self.duration = @(self.audioPlayer.duration);
-    self.progress = @(self.audioPlayer.progress);
+    if (self.playing) {
+        self.progress = @(self.audioPlayer.progress);
+        self.duration = @(self.audioPlayer.duration);
+    }
 }
 
 #pragma mark - STKAudioPlayerDelegate

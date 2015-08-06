@@ -9,7 +9,6 @@
 @interface FSHWaveformSliderCell : NSActionCell
 
 @property (nonatomic, assign) double maxValue;
-@property (nonatomic, assign) double doubleValue;
 
 - (NSBezierPath *)knobPath;
 

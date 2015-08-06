@@ -10,17 +10,18 @@
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <libextobjc/EXTScope.h>
-#import <INAppStoreWindow/INAppStoreWindow.h>
 
+#import "Fresh-Swift.h"
 #import "FSHNowPlayingViewController.h"
 #import "PopoverContentViewController.h"
 #import "FSHNowPlayingViewModel.h"
 #import "FSHSoundListViewModel.h"
 #import "FSHAccount.h"
 
-@interface FSHWindowController ()
+@interface FSHWindowController () <NSWindowDelegate>
 
 @property (nonatomic, strong) PopoverContentViewController *listViewController;
+@property (nonatomic, strong) FSHLoginViewController *loginViewController;
 @property (nonatomic, strong) FSHNowPlayingViewController *nowPlayingViewController;
 @property (nonatomic, strong) id eventMonitor;
 @property (nonatomic, strong) FSHAccount *account;
@@ -40,17 +41,16 @@
 
 - (void)windowDidLoad {
     // Setup views
-    INAppStoreWindow *window = (INAppStoreWindow *)self.window;
-    window.centerTrafficLightButtons = NO;
-    window.showsTitle = YES;
+    NSWindow *window = self.window;
     window.title = @"Fresh";
+    window.delegate = self;
 
-    self.nowPlayingViewController = [[FSHNowPlayingViewController alloc] init];
-    self.nowPlayingViewController.view.frame = window.titleBarView.bounds;
+    self.nowPlayingViewController = [[FSHNowPlayingViewController alloc] initWithViewModel:nil];
     self.nowPlayingViewController.view.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
-    [window.titleBarView addSubview:self.nowPlayingViewController.view];
+    [self revealNowPlayingView];
 
     self.listViewController = [[PopoverContentViewController alloc] initWithNibName:@"PopoverContentView" bundle:nil];
+    self.loginViewController = [[FSHLoginViewController alloc] initWithNibName:@"FSHLoginView" bundle:nil];
 
     // Setup bindings
     @weakify(self)
@@ -59,7 +59,8 @@
         self.account = [FSHAccount currentAccount];
     }];
 
-    [RACObserve(self, account) subscribeNext:^(FSHAccount *account) {
+    RACSignal *accountSignal = RACObserve(self, account);
+    [accountSignal subscribeNext:^(FSHAccount *account) {
         @strongify(self)
         self.nowPlayingViewController.viewModel = [[FSHNowPlayingViewModel alloc] initWithAccount:account];
         self.listViewController.viewModel = [[FSHSoundListViewModel alloc] initWithAccount:account];
@@ -69,7 +70,12 @@
         sound ? [self revealNowPlayingView] : [self hideNowPlayingView];
     }];
 
-    RAC(self, window.contentView) = RACObserve(self, listViewController.view);
+    RAC(self, window.contentView) = [accountSignal map:^NSView *(FSHAccount *account) {
+        if (account.isLoggedIn) {
+            return self.listViewController.view;
+        }
+        return self.loginViewController.view;
+    }];
 
     NSEvent *(^eventHandler)(NSEvent *) = ^(NSEvent *theEvent) {
         @strongify(self);
@@ -96,16 +102,17 @@
 }
 
 - (void)revealNowPlayingView {
-    INAppStoreWindow *window = (INAppStoreWindow *)self.window;
-    window.titleBarHeight = 75.0f;
-    window.showsTitle = NO;
+    [self.window addTitlebarAccessoryViewController:self.nowPlayingViewController];
+    self.window.titleVisibility = NSWindowTitleHidden;
 }
 
 - (void)hideNowPlayingView {
-    INAppStoreWindow *window = (INAppStoreWindow *)self.window;
-    window.titleBarHeight = 22.0;
-    window.showsTitle = YES;
+    if (self.window.titlebarAccessoryViewControllers.count == 0) {
+        return;
+    }
+    
+    [self.window removeTitlebarAccessoryViewControllerAtIndex:0];
+    self.window.titleVisibility = NSWindowTitleVisible;
 }
-
 
 @end
