@@ -8,7 +8,7 @@
 
 @class FSHNowPlayingViewModel;
 
-@interface FSHNowPlayingViewController : NSViewController
+@interface FSHNowPlayingViewController : NSTitlebarAccessoryViewController
 
 @property (nonatomic, strong) FSHNowPlayingViewModel *viewModel;
 

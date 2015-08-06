@@ -14,7 +14,7 @@ typedef void (^FSHSoundStreamURLBlock)(NSURL *streamURL, NSError *error);
 
 @interface FSHSound : MTLModel <MTLJSONSerializing>
 
-@property (copy, nonatomic) NSString *trackID;
+@property (copy, nonatomic) NSNumber *trackID;
 @property (copy, nonatomic) NSString *title;
 @property (copy, nonatomic) NSString *author;
 @property (strong, nonatomic) NSURL *streamURL;
@@ -28,7 +28,7 @@ typedef void (^FSHSoundStreamURLBlock)(NSURL *streamURL, NSError *error);
 @property (assign, nonatomic) BOOL favorite;
 
 - (RACSignal *)fetchPlayURL;
-- (RACSignal *)fetchWaveformImage;
+- (RACSignal *)fetchWaveform;
 - (void)toggleFavorite;
 
 @end

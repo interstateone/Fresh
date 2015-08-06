@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) NSArray *sounds;
 @property (strong, nonatomic) FSHSound *selectedSound;
+@property (assign, nonatomic, readonly) BOOL isLoggedIn;
 
 + (instancetype)currentAccount;
 

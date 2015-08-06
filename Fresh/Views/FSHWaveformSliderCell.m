@@ -18,7 +18,7 @@ const CGFloat kKnobRadius = 5.0f;
     [super drawWithFrame:cellFrame inView:controlView];
 
     FSHWaveformSliderView *sliderView = (FSHWaveformSliderView *)controlView;
-    if (!sliderView.waveformImage) return;
+    if (!sliderView.waveform) return;
 
     [self drawWaveformInRect:sliderView.bounds inView:sliderView enabled:[sliderView.window isKeyWindow]];
     [self drawKnob:sliderView.bounds];
@@ -27,7 +27,7 @@ const CGFloat kKnobRadius = 5.0f;
 #pragma mark - Drawing
 
 - (NSBezierPath *)knobPath {
-    CGFloat x = ceilf(self.doubleValue / self.maxValue * CGRectGetWidth(self.controlView.frame)) - kKnobRadius;
+    CGFloat x = ceilf(((NSNumber *)self.objectValue).doubleValue / self.maxValue * CGRectGetWidth(self.controlView.frame)) - kKnobRadius;
     if (self.maxValue == 0.0) {
         x = -kKnobRadius;
     }
@@ -41,15 +41,10 @@ const CGFloat kKnobRadius = 5.0f;
 }
 
 - (void)drawWaveformInRect:(NSRect)rect inView:(FSHWaveformSliderView *)controlView enabled:(BOOL)enabled {
-    CGFloat innerShadowBlurRadius = 1.0;
-
     NSGraphicsContext *graphicsContext = [NSGraphicsContext currentContext];
     CGContextRef context = [graphicsContext graphicsPort];
 
     [graphicsContext saveGraphicsState];
-
-    CGRect deviceRect = CGContextConvertRectToDeviceSpace(context, rect);
-    CGFloat scale = CGRectGetHeight(deviceRect) / CGRectGetHeight(rect);
 
     if ([graphicsContext isFlipped]) {
         CGContextTranslateCTM(context, 0.0f, rect.size.height);
@@ -85,26 +80,9 @@ const CGFloat kKnobRadius = 5.0f;
         endColor = [endColor colorWithAlphaComponent:0.5];
     }
 
-    CGRect progressRect = CGRectIntegral(CGRectMake(0, 0, rect.size.width * (self.doubleValue / self.maxValue), rect.size.height));
+    CGRect progressRect = CGRectIntegral(CGRectMake(0, 0, rect.size.width * (((NSNumber *)self.objectValue).doubleValue / self.maxValue), rect.size.height));
     NSGradient *progressGradient = [[NSGradient alloc] initWithStartingColor:startColor endingColor:endColor];
     [progressGradient drawInRect:progressRect angle:90.0];
-
-    //Draw inner shadow with inverted mask:
-    CGContextSetShadowWithColor(context, CGSizeMake(0, -1), innerShadowBlurRadius, [[NSColor colorWithCalibratedWhite:0.1 alpha:0.75] CGColor]);
-    CGRect cgRect = CGRectMake(0, 0, maskRect.size.width * scale, maskRect.size.height * scale);
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGContextRef maskContext = CGBitmapContextCreate(NULL, CGImageGetWidth(maskImage), CGImageGetHeight(maskImage), 8, 0, colorSpace, (CGBitmapInfo)kCGImageAlphaPremultipliedLast);
-    CGColorSpaceRelease(colorSpace);
-    CGContextSetBlendMode(maskContext, kCGBlendModeXOR);
-    CGContextDrawImage(maskContext, cgRect, maskImage);
-    CGContextSetRGBFillColor(maskContext, 1.0, 1.0, 1.0, 1.0);
-    CGContextFillRect(maskContext, cgRect);
-    CGImageRef invertedMaskImage = CGBitmapContextCreateImage(maskContext);
-
-    CGContextDrawImage(context, maskRect, invertedMaskImage);
-
-    CGImageRelease(invertedMaskImage);
-    CGContextRelease(maskContext);
 
     [graphicsContext restoreGraphicsState];
 }

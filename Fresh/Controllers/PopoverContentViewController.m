@@ -12,7 +12,6 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <libextobjc/EXTScope.h>
 #import <MTLJSONAdapter.h>
-#import <INAppStoreWindow/INAppStoreWindow.h>
 
 #import "FSHSound.h"
 #import "FSHSoundCellView.h"
@@ -43,10 +42,6 @@
 
     [self.tableView setTarget:self];
     [self.tableView setDoubleAction:@selector(rowWasDoubleClicked)];
-
-    NSResponder *responder = [self.tableView nextResponder];
-    [self.tableView setNextResponder:self];
-    [self setNextResponder:responder];
 
     [self updateDashboardWithCompletion:nil];
 }

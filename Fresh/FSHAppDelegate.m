@@ -8,7 +8,6 @@
 
 #import "FSHAppDelegate.h"
 #import "SCSoundCloud.h"
-#import <INAppStoreWindow/INAppStoreWindow.h>
 #import "FSHWindowController.h"
 
 @interface FSHAppDelegate ()

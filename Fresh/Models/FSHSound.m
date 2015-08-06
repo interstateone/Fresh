@@ -8,6 +8,7 @@
 
 #import "FSHSound.h"
 
+#import "Fresh-Swift.h"
 #import <Mantle/MTLValueTransformer.h>
 #import <Mantle/NSValueTransformer+MTLPredefinedTransformerAdditions.h>
 #import "SCRequest.h"
@@ -49,7 +50,7 @@
     }];
 }
 
-- (RACSignal *)fetchWaveformImage {
+- (RACSignal *)fetchWaveform {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         if (!self.waveformURL) {
             [subscriber sendCompleted];
@@ -58,12 +59,12 @@
 
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:self.waveformURL];
         [request setHTTPShouldHandleCookies:NO];
-        [request addValue:@"image/*" forHTTPHeaderField:@"Accept"];
 
         AFHTTPRequestOperation *requestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
         [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSImage *image = [[NSImage alloc] initWithData:responseObject];
-            [subscriber sendNext:image];
+            NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:(NSData *)responseObject options:0 error:NULL];
+            FSHWaveform *waveform = [MTLJSONAdapter modelOfClass:[FSHWaveform class] fromJSONDictionary:jsonResponse error:nil];
+            [subscriber sendNext:waveform];
             [subscriber sendCompleted];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [subscriber sendError:error];
@@ -139,17 +140,17 @@
 }
 
 + (NSValueTransformer *)durationJSONTransformer {
-    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *string) {
+    return [MTLValueTransformer transformerUsingForwardBlock:^id(NSString *string, BOOL *success, NSError *__autoreleasing *error) {
         return @([string floatValue]);
-    } reverseBlock:^id(NSNumber *number) {
+    } reverseBlock:^id(NSNumber *number, BOOL *success, NSError *__autoreleasing *error) {
         return [number stringValue];
     }];
 }
 
 + (NSValueTransformer *)createdAtJSONTransformer {
-    return [MTLValueTransformer reversibleTransformerWithForwardBlock:^(NSString *str) {
+    return [MTLValueTransformer transformerUsingForwardBlock:^id(NSString *str, BOOL *success, NSError *__autoreleasing *error) {
         return [[self dateFormatter] dateFromString:str];
-    } reverseBlock:^(NSDate *date) {
+    } reverseBlock:^id(NSDate *date, BOOL *success, NSError *__autoreleasing *error) {
         return [[self dateFormatter] stringFromDate:date];
     }];
 }
@@ -164,6 +165,15 @@
 
 + (NSValueTransformer *)permalinkURLJSONTransformer {
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+}
+
++ (NSValueTransformer *)favoriteJSONTransformer {
+    return [MTLValueTransformer transformerUsingForwardBlock:^id(NSNumber *boolean, BOOL *success, NSError *__autoreleasing *error) {
+        if ([boolean isKindOfClass:[NSNumber class]]) {
+            return @(boolean.boolValue);
+        }
+        return @NO;
+    }];
 }
 
 @end
