@@ -26,7 +26,6 @@
 @interface PopoverContentViewController () <NSTableViewDelegate, NSTableViewDataSource, BSRefreshableScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet NSTableView *tableView;
-@property (weak, nonatomic) IBOutlet NSProgressIndicator *loadingIndicator;
 @property (weak, nonatomic) IBOutlet BSRefreshableScrollView *soundsScrollView;
 
 @property (nonatomic, strong) FSHSound *selectedSound;
@@ -38,7 +37,7 @@
 - (void)loadView {
     [super loadView];
 
-    self.soundsScrollView.refreshableSides = BSRefreshableScrollViewSideTop;
+    self.soundsScrollView.refreshableSides = BSRefreshableScrollViewSideTop | BSRefreshableScrollViewSideBottom;
 
     [self.tableView setTarget:self];
     [self.tableView setDoubleAction:@selector(rowWasDoubleClicked)];
@@ -62,19 +61,24 @@
 #pragma mark - Private
 
 - (void)updateDashboardWithCompletion:(dispatch_block_t)completion {
-    [self.loadingIndicator startAnimation:nil];
     [[self.viewModel updateSounds] subscribeNext:^(NSArray *sounds) {
         if (completion) completion();
-        [self.loadingIndicator stopAnimation:nil];
     }];
 }
 
 #pragma mark - BSRefreshableScrollViewDelegate
 
 - (BOOL)scrollView:(BSRefreshableScrollView *)aScrollView startRefreshSide:(BSRefreshableScrollViewSide)refreshableSide {
-    [self updateDashboardWithCompletion:^{
-        [self.soundsScrollView stopRefreshingSide:BSRefreshableScrollViewSideTop | BSRefreshableScrollViewSideBottom];
-    }];
+    if (refreshableSide == BSRefreshableScrollViewSideBottom) {
+        [[self.viewModel fetchNextSounds] subscribeNext:^(id x) {
+            [self.soundsScrollView stopRefreshingSide:BSRefreshableScrollViewSideBottom];
+        }];
+    }
+    else {
+        [self updateDashboardWithCompletion:^{
+            [self.soundsScrollView stopRefreshingSide:BSRefreshableScrollViewSideTop];
+        }];
+    }
     return YES;
 }
 

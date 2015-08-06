@@ -23,6 +23,7 @@
 - (NSString *)authorForSoundAtIndex:(NSInteger)index;
 
 - (RACSignal *)updateSounds;
+- (RACSignal *)fetchNextSounds;
 - (void)selectSoundAtIndex:(NSInteger)index;
 
 @end

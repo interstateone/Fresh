@@ -6,7 +6,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PopoverContentViewController">
             <connections>
-                <outlet property="loadingIndicator" destination="1Or-8D-Zdo" id="9j0-dh-Z2m"/>
                 <outlet property="soundsScrollView" destination="7iO-As-UoU" id="rdz-jk-fun"/>
                 <outlet property="tableView" destination="u87-D5-pdf" id="g9f-rR-HJR"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -72,20 +71,11 @@
                         <outlet property="refreshableDelegate" destination="-2" id="hNB-ir-VGk"/>
                     </connections>
                 </scrollView>
-                <progressIndicator horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="1Or-8D-Zdo">
-                    <rect key="frame" x="167" y="137" width="16" height="16"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="16" id="CKH-L4-dUj"/>
-                        <constraint firstAttribute="width" constant="16" id="bTk-aj-kcv"/>
-                    </constraints>
-                </progressIndicator>
             </subviews>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="7iO-As-UoU" secondAttribute="bottom" id="AfT-HQ-QgI"/>
-                <constraint firstAttribute="centerX" secondItem="1Or-8D-Zdo" secondAttribute="centerX" constant="0.5" id="GWs-Fc-oow"/>
                 <constraint firstAttribute="trailing" secondItem="7iO-As-UoU" secondAttribute="trailing" id="L2w-Kf-KU4"/>
                 <constraint firstItem="7iO-As-UoU" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="S7i-Gx-svg"/>
-                <constraint firstAttribute="centerY" secondItem="1Or-8D-Zdo" secondAttribute="centerY" id="iTL-fG-FVK"/>
                 <constraint firstItem="7iO-As-UoU" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="v9f-rv-YrC"/>
             </constraints>
         </customView>
