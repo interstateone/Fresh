@@ -101,7 +101,7 @@
 
     self.favoriteButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         @strongify(self);
-        [self.viewModel toggleFavorite];
+        [[self.viewModel toggleFavorite] execute:input];
         return [RACSignal empty];
     }];
 
