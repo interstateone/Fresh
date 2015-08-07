@@ -8,8 +8,7 @@
 
 #import "FSHNowPlayingViewController.h"
 
-#import <ReactiveCocoa/ReactiveCocoa.h>
-#import <libextobjc/EXTScope.h>
+@import ReactiveCocoa;
 
 #import "FSHNowPlayingViewModel.h"
 #import "FSHWaveformSliderView.h"

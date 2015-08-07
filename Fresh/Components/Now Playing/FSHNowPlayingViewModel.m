@@ -9,8 +9,7 @@
 #import "FSHNowPlayingViewModel.h"
 
 #import <StreamingKit/STKAudioPlayer.h>
-#import <ReactiveCocoa/ReactiveCocoa.h>
-#import <libextobjc/EXTScope.h>
+@import ReactiveCocoa;
 
 #import "FSHAccount.h"
 #import "Fresh-Swift.h"

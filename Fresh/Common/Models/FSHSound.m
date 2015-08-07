@@ -8,16 +8,12 @@
 
 #import "FSHSound.h"
 
+@import ReactiveCocoa;
 #import "Fresh-Swift.h"
-#import <Mantle/MTLValueTransformer.h>
-#import <Mantle/NSValueTransformer+MTLPredefinedTransformerAdditions.h>
 #import "SCRequest.h"
 #import "SCAccount.h"
 #import "SCSoundCloud.h"
 #import "NXOAuth2.h"
-#import <ReactiveCocoa/RACSignal+Operations.h>
-#import <ReactiveCocoa/RACSubscriber.h>
-#import <ReactiveCocoa/RACDisposable.h>
 #import <AFNetworking/AFHTTPRequestOperation.h>
 
 @implementation FSHSound

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Mantle
 
 class FSHWaveform: MTLModel, MTLJSONSerializing {
     var values = [Int]()

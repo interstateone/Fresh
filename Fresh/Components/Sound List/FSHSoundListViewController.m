@@ -9,9 +9,8 @@
 #import "FSHSoundListViewController.h"
 
 #import <RXCollections/RXCollection.h>
-#import <ReactiveCocoa/ReactiveCocoa.h>
-#import <libextobjc/EXTScope.h>
-#import <MTLJSONAdapter.h>
+@import ReactiveCocoa;
+@import Mantle;
 
 #import "FSHSound.h"
 #import "FSHSoundCellView.h"

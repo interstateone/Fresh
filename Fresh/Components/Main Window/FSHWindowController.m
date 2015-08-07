@@ -8,8 +8,7 @@
 
 #import "FSHWindowController.h"
 
-#import <ReactiveCocoa/ReactiveCocoa.h>
-#import <libextobjc/EXTScope.h>
+@import ReactiveCocoa;
 
 #import "Fresh-Swift.h"
 #import "FSHNowPlayingViewController.h"

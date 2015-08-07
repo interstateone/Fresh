@@ -3,8 +3,6 @@
 //
 
 #import <AppKit/AppKit.h>
-#import <Mantle/Mantle.h>
-#import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import "FSHAccount.h"
 #import "FSHWindowController.h"

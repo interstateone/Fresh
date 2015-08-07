@@ -6,9 +6,8 @@
 //  Copyright (c) 2014 Brandon Evans. All rights reserved.
 //
 
-#import <Mantle/MTLModel.h>
-#import <Mantle/MTLJSONAdapter.h>
-#import <ReactiveCocoa/RACSignal.h>
+@import Mantle;
+@class RACSignal;
 
 typedef void (^FSHSoundStreamURLBlock)(NSURL *streamURL, NSError *error);
 

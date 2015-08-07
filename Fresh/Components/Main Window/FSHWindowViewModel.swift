@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ReactiveCocoa
 
 class FSHWindowViewModel: NSObject {
     var account: FSHAccount {
