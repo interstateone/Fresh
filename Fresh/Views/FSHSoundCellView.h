@@ -10,8 +10,8 @@
 
 @interface FSHSoundCellView : NSTableCellView
 
-@property (strong, nonatomic) NSTextField *trackNameField;
-@property (strong, nonatomic) NSTextField *authorNameField;
+@property (strong, nonatomic) IBOutlet NSTextField *trackNameField;
+@property (strong, nonatomic) IBOutlet NSTextField *authorNameField;
 @property (assign, nonatomic) BOOL playing;
 
 @end
