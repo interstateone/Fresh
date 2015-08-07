@@ -8,8 +8,7 @@
 
 #import "FSHSoundListViewModel.h"
 
-#import <ReactiveCocoa/ReactiveCocoa.h>
-#import <libextobjc/EXTScope.h>
+@import ReactiveCocoa;
 
 #import "FSHAccount.h"
 #import "FSHSound.h"

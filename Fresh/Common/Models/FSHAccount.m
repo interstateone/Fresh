@@ -8,10 +8,7 @@
 
 #import "FSHAccount.h"
 
-#import <ReactiveCocoa/RACSignal.h>
-#import <ReactiveCocoa/RACSubscriptingAssignmentTrampoline.h>
-#import <ReactiveCocoa/NSObject+RACPropertySubscribing.h>
-#import <ReactiveCocoa/RACSubscriber.h>
+@import ReactiveCocoa;
 #import <RXCollections/RXCollection.h>
 #import "STKAudioPlayer.h"
 #import "SCRequest.h"

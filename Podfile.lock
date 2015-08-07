@@ -17,70 +17,46 @@ PODS:
   - AFNetworking/Reachability (2.5.4)
   - AFNetworking/Security (2.5.4)
   - AFNetworking/Serialization (2.5.4)
+  - Box (1.2.2)
   - BSRefreshableScrollView (1.0.1)
-  - libextobjc (0.4.1):
-    - libextobjc/EXTADT (= 0.4.1)
-    - libextobjc/EXTConcreteProtocol (= 0.4.1)
-    - libextobjc/EXTKeyPathCoding (= 0.4.1)
-    - libextobjc/EXTNil (= 0.4.1)
-    - libextobjc/EXTSafeCategory (= 0.4.1)
-    - libextobjc/EXTScope (= 0.4.1)
-    - libextobjc/EXTSelectorChecking (= 0.4.1)
-    - libextobjc/EXTSynthesize (= 0.4.1)
-    - libextobjc/NSInvocation+EXT (= 0.4.1)
-    - libextobjc/NSMethodSignature+EXT (= 0.4.1)
-    - libextobjc/RuntimeExtensions (= 0.4.1)
-    - libextobjc/UmbrellaHeader (= 0.4.1)
-  - libextobjc/EXTADT (0.4.1):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/EXTConcreteProtocol (0.4.1):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/EXTKeyPathCoding (0.4.1):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/EXTNil (0.4.1):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/EXTSafeCategory (0.4.1):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/EXTScope (0.4.1):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/EXTSelectorChecking (0.4.1):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/EXTSynthesize (0.4.1):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/NSInvocation+EXT (0.4.1):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/NSMethodSignature+EXT (0.4.1):
-    - libextobjc/RuntimeExtensions
-  - libextobjc/RuntimeExtensions (0.4.1)
-  - libextobjc/UmbrellaHeader (0.4.1)
   - Mantle (2.0.3):
     - Mantle/extobjc (= 2.0.3)
   - Mantle/extobjc (2.0.3)
-  - ReactiveCocoa (2.5):
-    - ReactiveCocoa/UI (= 2.5)
-  - ReactiveCocoa/Core (2.5):
+  - ReactiveCocoa (3.0-beta.9):
+    - Box (~> 1.2.0)
+    - ReactiveCocoa/UI (= 3.0-beta.9)
+    - Result (~> 0.4.1)
+  - ReactiveCocoa/Core (3.0-beta.9):
+    - Box (~> 1.2.0)
     - ReactiveCocoa/no-arc
-  - ReactiveCocoa/no-arc (2.5)
-  - ReactiveCocoa/UI (2.5):
+    - Result (~> 0.4.1)
+  - ReactiveCocoa/no-arc (3.0-beta.9):
+    - Box (~> 1.2.0)
+    - Result (~> 0.4.1)
+  - ReactiveCocoa/UI (3.0-beta.9):
+    - Box (~> 1.2.0)
     - ReactiveCocoa/Core
+    - Result (~> 0.4.1)
+  - Result (0.4.4):
+    - Box (~> 1.2)
   - RXCollections (1.0)
   - StreamingKit (0.1.25)
 
 DEPENDENCIES:
   - AFNetworking
   - BSRefreshableScrollView
-  - libextobjc
   - Mantle
-  - ReactiveCocoa
+  - ReactiveCocoa (= 3.0-beta.9)
   - RXCollections
   - StreamingKit
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  Box: a92e8aa4c099e6bc0733829665caf9e668ef53b8
   BSRefreshableScrollView: a3c1a16560a2f754f9a7d02de1fb81f0f43fecf1
-  libextobjc: a650fc1bf489a3d3a9bc2e621efa3e1006fc5471
   Mantle: 8d6b14979a082a9ed4994463eb7a4ff576c94632
-  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+  ReactiveCocoa: 14285e72691519ac4fbd06ba411a6707914d6e10
+  Result: b44f6bc8762bbffaf2c5df58f2c7d12c3496ced8
   RXCollections: ef46a1c3b1f25711117ece94c48d9beae9f143a6
   StreamingKit: f00c054cfd0f59d88c8be7a2270e208302ce48c4
 
