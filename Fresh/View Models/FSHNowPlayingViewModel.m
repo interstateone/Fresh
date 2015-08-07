@@ -13,6 +13,7 @@
 #import <libextobjc/EXTScope.h>
 
 #import "FSHAccount.h"
+#import "Fresh-Swift.h"
 
 @interface FSHNowPlayingViewModel () <STKAudioPlayerDelegate>
 

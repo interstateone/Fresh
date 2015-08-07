@@ -7,10 +7,10 @@
 //
 
 #import "FSHSound.h"
-#import "Fresh-Swift.h"
 
 @class RACCommand;
 @class FSHAccount;
+@class FSHWaveform;
 
 @interface FSHNowPlayingViewModel : NSObject
 

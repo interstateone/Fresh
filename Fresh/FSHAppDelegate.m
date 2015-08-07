@@ -8,11 +8,11 @@
 
 #import "FSHAppDelegate.h"
 #import "SCSoundCloud.h"
-#import "FSHWindowController.h"
+#import "Fresh-Swift.h"
 
 @interface FSHAppDelegate ()
 
-@property (nonatomic, strong) FSHWindowController *windowController;
+@property (nonatomic, strong) FSHWindowViewModel *windowViewModel;
 
 @end
 
@@ -24,8 +24,12 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    [self setupSoundCloud]; // Must happen first
-    [self setupWindow];
+    // Must happen first
+    [SCSoundCloud setClientID:@"912a424bf4a12ab4c858bf841953eddc" secret:@"e8d7fd3754f91a80e181718a161dc935" redirectURL:[NSURL URLWithString:@"freshapp://oauth"]];
+
+    FSHWindowController *windowController = [[FSHWindowController alloc] initWithWindowNibName:@"FSHWindow"];
+    windowController.viewModel = [[FSHWindowViewModel alloc] initWithAccount:[FSHAccount currentAccount]];
+    [windowController showWindow:nil];
 }
 
 - (void)handleGetURLEvent:(NSAppleEventDescriptor*)event withReplyEvent:(NSAppleEventDescriptor*)replyEvent {
@@ -37,15 +41,6 @@
     }
 
     [[NSNotificationCenter defaultCenter] postNotificationName:@"FSHSoundCloudUserDidAuthenticate" object:nil];
-}
-
-- (void)setupWindow {
-    self.windowController = [[FSHWindowController alloc] init];
-    [self.windowController showWindow:nil];
-}
-
-- (void)setupSoundCloud {
-    [SCSoundCloud setClientID:@"912a424bf4a12ab4c858bf841953eddc" secret:@"e8d7fd3754f91a80e181718a161dc935" redirectURL:[NSURL URLWithString:@"freshapp://oauth"]];
 }
 
 @end

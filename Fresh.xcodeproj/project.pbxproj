@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		57870FB73EA747B5BD92DFB8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25F701CCF25646AB85B69F83 /* libPods.a */; };
 		8359345FE567F88EFC36BC9F /* FSHAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359313BC7AC5310106D71C1 /* FSHAccount.m */; };
+		CA0423111B743ADB004513C6 /* FSHWindowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0423101B743ADB004513C6 /* FSHWindowViewModel.swift */; };
 		CA13F4D618CD80F20027B513 /* NSData+NXOAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = CA13F4B718CD80F20027B513 /* NSData+NXOAuth2.m */; };
 		CA13F4D718CD80F20027B513 /* NSString+NXOAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = CA13F4B918CD80F20027B513 /* NSString+NXOAuth2.m */; };
 		CA13F4D818CD80F20027B513 /* NSURL+NXOAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = CA13F4BB18CD80F20027B513 /* NSURL+NXOAuth2.m */; };
@@ -77,6 +78,7 @@
 		8359313BC7AC5310106D71C1 /* FSHAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSHAccount.m; path = Models/FSHAccount.m; sourceTree = "<group>"; };
 		83593B06A362482BCEF39DA2 /* FSHAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSHAccount.h; path = Models/FSHAccount.h; sourceTree = "<group>"; };
 		C625D28D4A69D21652CB65E2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		CA0423101B743ADB004513C6 /* FSHWindowViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FSHWindowViewModel.swift; path = "View Models/FSHWindowViewModel.swift"; sourceTree = "<group>"; };
 		CA13F4B618CD80F20027B513 /* NSData+NXOAuth2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+NXOAuth2.h"; sourceTree = "<group>"; };
 		CA13F4B718CD80F20027B513 /* NSData+NXOAuth2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+NXOAuth2.m"; sourceTree = "<group>"; };
 		CA13F4B818CD80F20027B513 /* NSString+NXOAuth2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NXOAuth2.h"; sourceTree = "<group>"; };
@@ -434,6 +436,7 @@
 				CAB6CA8B18E513D700B665CC /* FSHNowPlayingViewModel.m */,
 				CA35CA6618E7924600A30964 /* FSHSoundListViewModel.h */,
 				CA35CA6718E7924600A30964 /* FSHSoundListViewModel.m */,
+				CA0423101B743ADB004513C6 /* FSHWindowViewModel.swift */,
 			);
 			name = "View Models";
 			sourceTree = "<group>";
@@ -622,6 +625,7 @@
 				CA44E8F118CD28AA007754C5 /* FSHSound.m in Sources */,
 				CAB6CA8C18E513D700B665CC /* FSHNowPlayingViewModel.m in Sources */,
 				CA13F4D918CD80F20027B513 /* NXOAuth2AccessToken.m in Sources */,
+				CA0423111B743ADB004513C6 /* FSHWindowViewModel.swift in Sources */,
 				CA35CA7418EA44AC00A30964 /* FSHWaveformSliderView.m in Sources */,
 				CA44E8A818CD1AA2007754C5 /* main.m in Sources */,
 				CA2D0D4918EBA4B800C1053A /* FSHNoHitTextField.m in Sources */,

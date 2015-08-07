@@ -27,6 +27,8 @@
 @property (weak, nonatomic) IBOutlet FSHWaveformSliderView *waveformSlider;
 @property (weak, nonatomic) IBOutlet NSButton *favoriteButton;
 
+@property (nonatomic, strong) id eventMonitor;
+
 @end
 
 @implementation FSHNowPlayingViewController
@@ -118,6 +120,29 @@
     }];
 
     RAC(self, view.hidden, @YES) = RACObserve(self, viewModel.hidden);
+
+    NSEvent *(^eventHandler)(NSEvent *) = ^(NSEvent *theEvent) {
+        @strongify(self);
+        NSWindow *targetWindow = theEvent.window;
+        if (targetWindow != self.view.window) {
+            return theEvent;
+        }
+
+        NSEvent *result = theEvent;
+        // Space bar
+        // See HIToolbox/Events.h for reference
+        if (theEvent.keyCode == 49) {
+            [self.viewModel toggleCurrentSound];
+            result = nil;
+        }
+
+        return result;
+    };
+    self.eventMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:NSKeyDownMask handler:eventHandler];
+}
+
+- (void)dealloc {
+    [NSEvent removeMonitor:self.eventMonitor];
 }
 
 #pragma mark - Actions
