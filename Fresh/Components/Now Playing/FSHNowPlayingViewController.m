@@ -56,6 +56,10 @@
 
     RAC(self, masterPlayButton.rac_command) = RACObserve(self, viewModel.toggleCurrentSound);
 
+    RAC(self.favoriteButton, image) = [RACObserve(self, viewModel.favorite) map:^id(NSNumber *favorite) {
+        return [favorite boolValue] ? [NSImage imageNamed:@"FavoriteActive"] : [NSImage imageNamed:@"Favorite"];
+    }];
+
     RAC(self.trackLabel, stringValue) = [RACObserve(self, viewModel.title) map:^id(NSString *title){
         return title ?: @"";
     }];
@@ -83,10 +87,6 @@
         @strongify(self);
         [self.viewModel seekToProgress:((NSNumber *)slider.objectValue)];
         return [RACSignal empty];
-    }];
-
-    RAC(self.favoriteButton, alphaValue) = [RACObserve(self, viewModel.favorite) map:^id(NSNumber *favorite){
-        return [favorite boolValue] ? @(1.0f) : @(0.5f);
     }];
 
     self.favoriteButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
