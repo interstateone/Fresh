@@ -1,5 +1,5 @@
 //
-//  PopoverContentViewController.h
+//  FSHSoundListViewController.h
 //  Jeff
 //
 //  Created by Brandon on 2/21/2014.
@@ -10,7 +10,7 @@
 @class FSHSound;
 @class FSHSoundListViewModel;
 
-@interface PopoverContentViewController : NSViewController
+@interface FSHSoundListViewController : NSViewController
 
 @property (nonatomic, strong) FSHSoundListViewModel *viewModel;
 

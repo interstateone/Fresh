@@ -1,12 +1,12 @@
 //
-//  PopoverContentViewController.m
+//  FSHSoundListViewController.m
 //  Jeff
 //
 //  Created by Brandon on 2/21/2014.
 //  Copyright (c) 2014 Brandon Evans. All rights reserved.
 //
 
-#import "PopoverContentViewController.h"
+#import "FSHSoundListViewController.h"
 
 #import <RXCollections/RXCollection.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
@@ -15,24 +15,19 @@
 
 #import "FSHSound.h"
 #import "FSHSoundCellView.h"
-#import "NSView+RACProperties.h"
-#import "NSImageView+AFNetworking.h"
-#import "STKAudioPlayer.h"
 #import "FSHAccount.h"
 #import "BSRefreshableScrollView.h"
 #import "FSHSoundListViewModel.h"
 #import "FSHSoundRowView.h"
 
-@interface PopoverContentViewController () <NSTableViewDelegate, NSTableViewDataSource, BSRefreshableScrollViewDelegate>
+@interface FSHSoundListViewController () <NSTableViewDelegate, NSTableViewDataSource, BSRefreshableScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet NSTableView *tableView;
 @property (weak, nonatomic) IBOutlet BSRefreshableScrollView *soundsScrollView;
 
-@property (nonatomic, strong) FSHSound *selectedSound;
-
 @end
 
-@implementation PopoverContentViewController
+@implementation FSHSoundListViewController
 
 - (void)loadView {
     [super loadView];
@@ -41,8 +36,6 @@
 
     [self.tableView setTarget:self];
     [self.tableView setDoubleAction:@selector(rowWasDoubleClicked)];
-
-    [self updateDashboardWithCompletion:nil];
 
     @weakify(self)
     [RACObserve(self, viewModel.numberOfSounds) subscribeNext:^(id x) {
@@ -56,6 +49,8 @@
         [self.tableView reloadData];
         [self.tableView selectRowIndexes:selectedRowIndexes byExtendingSelection:NO];
     }];
+
+    [[self.viewModel updateSounds] subscribeCompleted:^{}];
 }
 
 - (BOOL)acceptsFirstResponder {
@@ -64,29 +59,22 @@
 
 - (void)setViewModel:(FSHSoundListViewModel *)viewModel {
     _viewModel = viewModel;
-    [self updateDashboardWithCompletion:nil];
-}
-
-#pragma mark - Private
-
-- (void)updateDashboardWithCompletion:(dispatch_block_t)completion {
-    [[self.viewModel updateSounds] subscribeNext:^(NSArray *sounds) {
-        if (completion) completion();
-    }];
+    [[self.viewModel updateSounds] subscribeCompleted:^{}];
 }
 
 #pragma mark - BSRefreshableScrollViewDelegate
 
 - (BOOL)scrollView:(BSRefreshableScrollView *)aScrollView startRefreshSide:(BSRefreshableScrollViewSide)refreshableSide {
+    @weakify(self)
     if (refreshableSide == BSRefreshableScrollViewSideBottom) {
-        @weakify(self)
         [[self.viewModel fetchNextSounds] subscribeNext:^(id x) {
             @strongify(self)
             [self.soundsScrollView stopRefreshingSide:BSRefreshableScrollViewSideBottom];
         }];
     }
     else {
-        [self updateDashboardWithCompletion:^{
+        [[self.viewModel updateSounds] subscribeNext:^(NSArray *sounds) {
+            @strongify(self)
             [self.soundsScrollView stopRefreshingSide:BSRefreshableScrollViewSideTop];
         }];
     }

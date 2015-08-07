@@ -13,7 +13,7 @@
 
 #import "Fresh-Swift.h"
 #import "FSHNowPlayingViewController.h"
-#import "PopoverContentViewController.h"
+#import "FSHSoundListViewController.h"
 #import "FSHNowPlayingViewModel.h"
 #import "FSHSoundListViewModel.h"
 #import "FSHAccount.h"
@@ -21,7 +21,7 @@
 @interface FSHWindowController ()
 
 @property (nonatomic, strong) FSHLoginViewController *loginViewController;
-@property (nonatomic, strong) PopoverContentViewController *listViewController;
+@property (nonatomic, strong) FSHSoundListViewController *listViewController;
 @property (nonatomic, strong) FSHNowPlayingViewController *nowPlayingViewController;
 
 @end
@@ -33,7 +33,7 @@
 
     self.loginViewController = [[FSHLoginViewController alloc] initWithNibName:@"FSHLoginView" bundle:nil];
     self.nowPlayingViewController = [[FSHNowPlayingViewController alloc] initWithViewModel:nil];
-    self.listViewController = [[PopoverContentViewController alloc] initWithNibName:@"PopoverContentView" bundle:nil];
+    self.listViewController = [[FSHSoundListViewController alloc] initWithNibName:@"FSHSoundListView" bundle:nil];
 
     // Setup bindings
     @weakify(self)
