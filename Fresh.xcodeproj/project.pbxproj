@@ -25,8 +25,8 @@
 		CA04234F1B745CC2004513C6 /* FSHSoundCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0423391B745CC2004513C6 /* FSHSoundCellView.m */; };
 		CA0423501B745CC2004513C6 /* FSHSoundListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CA04233B1B745CC2004513C6 /* FSHSoundListViewModel.m */; };
 		CA0423511B745CC2004513C6 /* FSHSoundRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA04233D1B745CC2004513C6 /* FSHSoundRowView.m */; };
-		CA0423521B745CC2004513C6 /* PopoverContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA04233E1B745CC2004513C6 /* PopoverContentView.xib */; };
-		CA0423531B745CC2004513C6 /* PopoverContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0423401B745CC2004513C6 /* PopoverContentViewController.m */; };
+		CA0423521B745CC2004513C6 /* FSHSoundListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA04233E1B745CC2004513C6 /* FSHSoundListView.xib */; };
+		CA0423531B745CC2004513C6 /* FSHSoundListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0423401B745CC2004513C6 /* FSHSoundListViewController.m */; };
 		CA13F4D618CD80F20027B513 /* NSData+NXOAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = CA13F4B718CD80F20027B513 /* NSData+NXOAuth2.m */; };
 		CA13F4D718CD80F20027B513 /* NSString+NXOAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = CA13F4B918CD80F20027B513 /* NSString+NXOAuth2.m */; };
 		CA13F4D818CD80F20027B513 /* NSURL+NXOAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = CA13F4BB18CD80F20027B513 /* NSURL+NXOAuth2.m */; };
@@ -104,9 +104,9 @@
 		CA04233B1B745CC2004513C6 /* FSHSoundListViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHSoundListViewModel.m; sourceTree = "<group>"; };
 		CA04233C1B745CC2004513C6 /* FSHSoundRowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHSoundRowView.h; sourceTree = "<group>"; };
 		CA04233D1B745CC2004513C6 /* FSHSoundRowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHSoundRowView.m; sourceTree = "<group>"; };
-		CA04233E1B745CC2004513C6 /* PopoverContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopoverContentView.xib; sourceTree = "<group>"; };
-		CA04233F1B745CC2004513C6 /* PopoverContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopoverContentViewController.h; sourceTree = "<group>"; };
-		CA0423401B745CC2004513C6 /* PopoverContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopoverContentViewController.m; sourceTree = "<group>"; };
+		CA04233E1B745CC2004513C6 /* FSHSoundListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSHSoundListView.xib; sourceTree = "<group>"; };
+		CA04233F1B745CC2004513C6 /* FSHSoundListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHSoundListViewController.h; sourceTree = "<group>"; };
+		CA0423401B745CC2004513C6 /* FSHSoundListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHSoundListViewController.m; sourceTree = "<group>"; };
 		CA13F4B618CD80F20027B513 /* NSData+NXOAuth2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+NXOAuth2.h"; sourceTree = "<group>"; };
 		CA13F4B718CD80F20027B513 /* NSData+NXOAuth2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+NXOAuth2.m"; sourceTree = "<group>"; };
 		CA13F4B818CD80F20027B513 /* NSString+NXOAuth2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NXOAuth2.h"; sourceTree = "<group>"; };
@@ -301,9 +301,9 @@
 				CA04233B1B745CC2004513C6 /* FSHSoundListViewModel.m */,
 				CA04233C1B745CC2004513C6 /* FSHSoundRowView.h */,
 				CA04233D1B745CC2004513C6 /* FSHSoundRowView.m */,
-				CA04233E1B745CC2004513C6 /* PopoverContentView.xib */,
-				CA04233F1B745CC2004513C6 /* PopoverContentViewController.h */,
-				CA0423401B745CC2004513C6 /* PopoverContentViewController.m */,
+				CA04233E1B745CC2004513C6 /* FSHSoundListView.xib */,
+				CA04233F1B745CC2004513C6 /* FSHSoundListViewController.h */,
+				CA0423401B745CC2004513C6 /* FSHSoundListViewController.m */,
 			);
 			path = "Sound List";
 			sourceTree = "<group>";
@@ -574,7 +574,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA0423521B745CC2004513C6 /* PopoverContentView.xib in Resources */,
+				CA0423521B745CC2004513C6 /* FSHSoundListView.xib in Resources */,
 				CA0423441B745CC2004513C6 /* FSHLoginView.xib in Resources */,
 				CA0423491B745CC2004513C6 /* FSHNowPlayingView.xib in Resources */,
 				CA44E8A618CD1AA2007754C5 /* InfoPlist.strings in Resources */,
@@ -671,7 +671,7 @@
 				CA13F4D718CD80F20027B513 /* NSString+NXOAuth2.m in Sources */,
 				CA04234F1B745CC2004513C6 /* FSHSoundCellView.m in Sources */,
 				CA13F4DB18CD80F20027B513 /* NXOAuth2AccountStore.m in Sources */,
-				CA0423531B745CC2004513C6 /* PopoverContentViewController.m in Sources */,
+				CA0423531B745CC2004513C6 /* FSHSoundListViewController.m in Sources */,
 				CA13F4DE18CD80F20027B513 /* NXOAuth2Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
