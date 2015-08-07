@@ -46,6 +46,43 @@
                                             <tableCellView id="yNx-s8-UPc" customClass="FSHSoundCellView">
                                                 <rect key="frame" x="1" y="1" width="347" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rq0-zJ-3om">
+                                                        <rect key="frame" x="1" y="6" width="32" height="14"/>
+                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Artist" id="ocO-uy-PXP">
+                                                            <font key="font" metaFont="smallSystem"/>
+                                                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CJx-oZ-CWv">
+                                                        <rect key="frame" x="1" y="23" width="84" height="17"/>
+                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Sound Name" id="hJA-uw-Moo">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <imageView horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="eg6-hU-SII">
+                                                        <rect key="frame" x="328" y="17" width="16" height="16"/>
+                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="NSStatusAvailable" id="7ZL-xG-2fa"/>
+                                                    </imageView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="rq0-zJ-3om" firstAttribute="leading" secondItem="yNx-s8-UPc" secondAttribute="leading" constant="3" id="3la-gk-FWp"/>
+                                                    <constraint firstItem="eg6-hU-SII" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rq0-zJ-3om" secondAttribute="trailing" constant="8" id="9Nh-9g-cHG"/>
+                                                    <constraint firstAttribute="centerY" secondItem="eg6-hU-SII" secondAttribute="centerY" id="E8j-zz-bYV"/>
+                                                    <constraint firstAttribute="trailing" secondItem="eg6-hU-SII" secondAttribute="trailing" constant="3" id="QwV-lq-vXQ"/>
+                                                    <constraint firstItem="CJx-oZ-CWv" firstAttribute="leading" secondItem="yNx-s8-UPc" secondAttribute="leading" constant="3" id="SQh-qP-kO6"/>
+                                                    <constraint firstItem="rq0-zJ-3om" firstAttribute="top" secondItem="CJx-oZ-CWv" secondAttribute="bottom" constant="3" id="TJt-or-TEC"/>
+                                                    <constraint firstItem="eg6-hU-SII" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="CJx-oZ-CWv" secondAttribute="trailing" constant="8" id="mwo-Wz-mor"/>
+                                                    <constraint firstItem="CJx-oZ-CWv" firstAttribute="top" secondItem="yNx-s8-UPc" secondAttribute="top" constant="10" id="vVR-rv-5hk"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="authorNameField" destination="rq0-zJ-3om" id="2yJ-ik-YQe"/>
+                                                    <outlet property="playingImageView" destination="eg6-hU-SII" id="T0q-kr-izd"/>
+                                                    <outlet property="trackNameField" destination="CJx-oZ-CWv" id="ZgN-Xh-xtp"/>
+                                                </connections>
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
@@ -80,4 +117,7 @@
             </constraints>
         </customView>
     </objects>
+    <resources>
+        <image name="NSStatusAvailable" width="16" height="16"/>
+    </resources>
 </document>
