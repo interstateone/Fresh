@@ -48,6 +48,7 @@
         NSIndexSet *selectedRowIndexes = self.tableView.selectedRowIndexes;
         [self.tableView reloadData];
         [self.tableView selectRowIndexes:selectedRowIndexes byExtendingSelection:NO];
+        [self.tableView scrollRowToVisible:self.viewModel.indexOfSelectedSound];
     }];
 
     [[self.viewModel updateSounds] subscribeCompleted:^{}];

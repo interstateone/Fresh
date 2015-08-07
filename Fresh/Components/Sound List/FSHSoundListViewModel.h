@@ -25,5 +25,6 @@
 - (RACSignal *)updateSounds;
 - (RACSignal *)fetchNextSounds;
 - (void)selectSoundAtIndex:(NSInteger)index;
+- (NSInteger)indexOfSelectedSound;
 
 @end
