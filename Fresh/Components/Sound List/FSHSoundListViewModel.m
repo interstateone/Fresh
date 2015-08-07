@@ -73,4 +73,8 @@
     self.account.selectedSound = [self soundAtIndex:index];
 }
 
+- (NSInteger)indexOfSelectedSound {
+    return [self.account.sounds indexOfObject:self.account.selectedSound];
+}
+
 @end
