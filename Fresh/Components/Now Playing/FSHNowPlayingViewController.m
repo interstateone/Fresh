@@ -16,7 +16,6 @@
 
 @interface FSHNowPlayingViewController () <NSSharingServicePickerDelegate>
 
-@property (weak, nonatomic) IBOutlet NSImageView *currentSoundImageView;
 @property (weak, nonatomic) IBOutlet NSButton *masterPlayButton;
 @property (weak, nonatomic) IBOutlet NSTextField *trackLabel;
 @property (weak, nonatomic) IBOutlet NSTextField *authorLabel;
@@ -46,18 +45,9 @@
     
     // Setup views
     [self.tweetButton sendActionOn:NSLeftMouseDownMask];
-    [self.masterPlayButton setBordered:NO];
-    [self.masterPlayButton setButtonType:NSMomentaryChangeButton];
-    [self.tweetButton setBordered:NO];
-    [self.tweetButton setButtonType:NSMomentaryChangeButton];
 
-    [self.trackLabel.cell setBackgroundStyle:NSBackgroundStyleRaised];
-    [self.authorLabel.cell setBackgroundStyle:NSBackgroundStyleRaised];
     [self.progressLabel.cell setBackgroundStyle:NSBackgroundStyleLowered];
     [self.durationLabel.cell setBackgroundStyle:NSBackgroundStyleLowered];
-
-    [self.favoriteButton.cell setHighlightsBy:NSNoCellMask];
-    [self.favoriteButton.cell setShowsStateBy:NSNoCellMask];
 
     // Setup bindings
     RAC(self.masterPlayButton, image) = [RACObserve(self, viewModel.playing) map:^id(NSNumber *playing){
