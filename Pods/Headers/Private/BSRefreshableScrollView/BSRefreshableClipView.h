@@ -1,0 +1,1 @@
+../../../BSRefreshableScrollView/Classes/osx/BSRefreshableClipView.h

@@ -1,0 +1,63 @@
+PODS:
+  - AFNetworking (2.5.4):
+    - AFNetworking/NSURLConnection (= 2.5.4)
+    - AFNetworking/NSURLSession (= 2.5.4)
+    - AFNetworking/Reachability (= 2.5.4)
+    - AFNetworking/Security (= 2.5.4)
+    - AFNetworking/Serialization (= 2.5.4)
+    - AFNetworking/UIKit (= 2.5.4)
+  - AFNetworking/NSURLConnection (2.5.4):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.5.4):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.5.4)
+  - AFNetworking/Security (2.5.4)
+  - AFNetworking/Serialization (2.5.4)
+  - Box (1.2.2)
+  - BSRefreshableScrollView (1.0.1)
+  - Mantle (2.0.3):
+    - Mantle/extobjc (= 2.0.3)
+  - Mantle/extobjc (2.0.3)
+  - ReactiveCocoa (3.0-beta.9):
+    - Box (~> 1.2.0)
+    - ReactiveCocoa/UI (= 3.0-beta.9)
+    - Result (~> 0.4.1)
+  - ReactiveCocoa/Core (3.0-beta.9):
+    - Box (~> 1.2.0)
+    - ReactiveCocoa/no-arc
+    - Result (~> 0.4.1)
+  - ReactiveCocoa/no-arc (3.0-beta.9):
+    - Box (~> 1.2.0)
+    - Result (~> 0.4.1)
+  - ReactiveCocoa/UI (3.0-beta.9):
+    - Box (~> 1.2.0)
+    - ReactiveCocoa/Core
+    - Result (~> 0.4.1)
+  - Result (0.4.4):
+    - Box (~> 1.2)
+  - RXCollections (1.0)
+  - StreamingKit (0.1.25)
+
+DEPENDENCIES:
+  - AFNetworking
+  - BSRefreshableScrollView
+  - Mantle
+  - ReactiveCocoa (= 3.0-beta.9)
+  - RXCollections
+  - StreamingKit
+
+SPEC CHECKSUMS:
+  AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  Box: a92e8aa4c099e6bc0733829665caf9e668ef53b8
+  BSRefreshableScrollView: a3c1a16560a2f754f9a7d02de1fb81f0f43fecf1
+  Mantle: 8d6b14979a082a9ed4994463eb7a4ff576c94632
+  ReactiveCocoa: 14285e72691519ac4fbd06ba411a6707914d6e10
+  Result: b44f6bc8762bbffaf2c5df58f2c7d12c3496ced8
+  RXCollections: ef46a1c3b1f25711117ece94c48d9beae9f143a6
+  StreamingKit: f00c054cfd0f59d88c8be7a2270e208302ce48c4
+
+COCOAPODS: 0.38.2

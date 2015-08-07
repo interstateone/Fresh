@@ -19,7 +19,4 @@ DerivedData
 #AppCode
 .idea
 
-# CocoaPods
-Pods
-
 .ruby-version

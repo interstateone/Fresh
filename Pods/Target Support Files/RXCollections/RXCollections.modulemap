@@ -1,0 +1,6 @@
+framework module RXCollections {
+  umbrella header "RXCollections-umbrella.h"
+
+  export *
+  module * { export * }
+}
