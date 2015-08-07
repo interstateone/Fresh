@@ -19,7 +19,9 @@
 @property (nonatomic, assign) BOOL playing;
 @property (nonatomic, assign) BOOL loading;
 @property (nonatomic, strong) NSNumber *duration;
+@property (nonatomic, strong) NSString *formattedDuration;
 @property (nonatomic, strong) NSNumber *progress;
+@property (nonatomic, strong) NSString *formattedProgress;
 @property (nonatomic, strong) NSURL *permalinkURL;
 @property (nonatomic, strong) FSHWaveform *waveform;
 @property (nonatomic, assign) BOOL favorite;

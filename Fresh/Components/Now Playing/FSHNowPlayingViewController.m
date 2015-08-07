@@ -60,42 +60,29 @@
     [self.favoriteButton.cell setShowsStateBy:NSNoCellMask];
 
     // Setup bindings
-    RAC(self.masterPlayButton, image) = [RACSignal combineLatest:@[ RACObserve(self, viewModel.playing) ] reduce:^id(NSNumber *playing){
-        if ([playing boolValue]) {
-            return [NSImage imageNamed:@"PauseButton"];
-        }
-        else {
-            return [NSImage imageNamed:@"PlayButton"];
-        }
+    RAC(self.masterPlayButton, image) = [RACObserve(self, viewModel.playing) map:^id(NSNumber *playing){
+        return [playing boolValue] ? [NSImage imageNamed:@"PauseButton"] : [NSImage imageNamed:@"PlayButton"];
     }];
 
     RAC(self, masterPlayButton.rac_command) = RACObserve(self, viewModel.toggleCurrentSound);
 
-    RAC(self.trackLabel, stringValue) = [RACSignal combineLatest:@[ RACObserve(self, viewModel.title) ] reduce:^id(NSString *title){
+    RAC(self.trackLabel, stringValue) = [RACObserve(self, viewModel.title) map:^id(NSString *title){
         return title ?: @"";
     }];
 
-    RAC(self.authorLabel, stringValue) = [RACSignal combineLatest:@[ RACObserve(self, viewModel.author) ] reduce:^id(NSString *author){
+    RAC(self.authorLabel, stringValue) = [RACObserve(self, viewModel.author) map:^id(NSString *author){
         return author ?: @"";
     }];
 
-    RAC(self.progressLabel, stringValue) = [RACSignal combineLatest:@[ RACObserve(self, viewModel.progress), RACObserve(self, viewModel.duration) ] reduce:^id(NSNumber *progress, NSNumber *duration){
-        NSInteger progressMinutes = [progress integerValue] / 60;
-        NSInteger progressSeconds = [progress integerValue] % 60;
-        return [NSString stringWithFormat:@"%.2ld:%.2ld", progressMinutes, progressSeconds];
-    }];
+    RAC(self.progressLabel, stringValue) = RACObserve(self, viewModel.formattedProgress);
 
-    RAC(self.durationLabel, stringValue) = [RACSignal combineLatest:@[ RACObserve(self, viewModel.progress), RACObserve(self, viewModel.duration) ] reduce:^id(NSNumber *progress, NSNumber *duration){
-        NSInteger durationMinutes = [duration integerValue] / 60;
-        NSInteger durationSeconds = [duration integerValue] % 60;
-        return [NSString stringWithFormat:@"%.2ld:%.2ld", durationMinutes, durationSeconds];
-    }];
+    RAC(self.durationLabel, stringValue) = RACObserve(self, viewModel.formattedDuration);
 
-    RAC(self.waveformSlider, doubleValue) = [RACSignal combineLatest:@[ RACObserve(self, viewModel.progress) ] reduce:^id(NSNumber *progress){
+    RAC(self.waveformSlider, doubleValue) = [RACObserve(self, viewModel.progress) map:^id(NSNumber *progress){
         return progress ?: @0;
     }];
 
-    RAC(self.waveformSlider, maxValue) = [RACSignal combineLatest:@[ RACObserve(self, viewModel.duration) ] reduce:^id(NSNumber *duration){
+    RAC(self.waveformSlider, maxValue) = [RACObserve(self, viewModel.duration) map:^id(NSNumber *duration){
         return duration ?: @0;
     }];
 
@@ -108,7 +95,7 @@
         return [RACSignal empty];
     }];
 
-    RAC(self.favoriteButton, alphaValue) = [RACSignal combineLatest:@[ RACObserve(self, viewModel.favorite)] reduce:^id(NSNumber *favorite){
+    RAC(self.favoriteButton, alphaValue) = [RACObserve(self, viewModel.favorite) map:^id(NSNumber *favorite){
         return [favorite boolValue] ? @(1.0f) : @(0.5f);
     }];
 
