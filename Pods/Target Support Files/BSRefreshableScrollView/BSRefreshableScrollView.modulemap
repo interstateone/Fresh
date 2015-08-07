@@ -1,0 +1,6 @@
+framework module BSRefreshableScrollView {
+  umbrella header "BSRefreshableScrollView-umbrella.h"
+
+  export *
+  module * { export * }
+}
