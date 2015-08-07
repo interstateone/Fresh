@@ -6,9 +6,10 @@
 //  Copyright (c) 2014 Brandon Evans. All rights reserved.
 //
 
-@class PopoverContentViewController;
-@class FSHNowPlayingViewController;
+@class FSHWindowViewModel;
 
 @interface FSHWindowController : NSWindowController
+
+@property (nonatomic, strong) FSHWindowViewModel *viewModel;
 
 @end
