@@ -21,11 +21,8 @@ class FSHWaveform: MTLModel, MTLJSONSerializing {
 
     override init() { super.init() }
 
-    var max: Int {
-        return self.values.reduce(0) { (memo, value) -> Int in
-            if value > memo { return value }
-            return memo
-        }
+    var maxValue: Int {
+        return self.values.reduce(0) { max($0, $1) }
     }
 
     // MARK: MTLJSONSerializing

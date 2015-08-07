@@ -49,7 +49,7 @@
     CGContextRef ctx = [g graphicsPort];
     CGContextSetFillColorWithColor(ctx, [NSColor blackColor].CGColor);
     CGFloat width = self.bounds.size.width / waveform.values.count;
-    CGFloat maxValue = (CGFloat)waveform.max;
+    CGFloat maxValue = (CGFloat)waveform.maxValue;
     [waveform.values enumerateObjectsUsingBlock:^(NSNumber *value, NSUInteger idx, BOOL *stop) {
         CGRect rect = CGRectIntegral(CGRectMake(idx * width, 0, width, value.floatValue / maxValue * self.bounds.size.height));
         CGContextFillRect(ctx, rect);
