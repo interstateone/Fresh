@@ -75,6 +75,14 @@
         return @(!sound);
     }];
 
+    RAC(self, formattedDuration) = [RACObserve(self, duration) map:^id(NSNumber *duration) {
+        return [self formatSeconds:duration];
+    }];
+
+    RAC(self, formattedProgress) = [RACObserve(self, progress) map:^id(NSNumber *progress) {
+        return [self formatSeconds:progress];
+    }];
+
     // Setup commands
     _toggleCurrentSound = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         if (!self.account.selectedSound) return [RACSignal empty];
@@ -109,6 +117,12 @@
         self.progress = @(self.audioPlayer.progress);
         self.duration = @(self.audioPlayer.duration);
     }
+}
+
+- (NSString *)formatSeconds:(NSNumber *)totalSeconds {
+    NSInteger minutes = [totalSeconds integerValue] / 60;
+    NSInteger seconds = [totalSeconds integerValue] % 60;
+    return [NSString stringWithFormat:@"%.2ld:%.2ld", minutes, seconds];
 }
 
 #pragma mark - STKAudioPlayerDelegate
