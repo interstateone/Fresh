@@ -15,15 +15,15 @@
 		CA0423451B745CC2004513C6 /* FSHLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0423261B745CC2004513C6 /* FSHLoginViewController.swift */; };
 		CA0423461B745CC2004513C6 /* FSHWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA0423281B745CC2004513C6 /* FSHWindow.xib */; };
 		CA0423471B745CC2004513C6 /* FSHWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA04232A1B745CC2004513C6 /* FSHWindowController.m */; };
-		CA0423481B745CC2004513C6 /* FSHWindowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA04232B1B745CC2004513C6 /* FSHWindowViewModel.swift */; };
+		CA0423481B745CC2004513C6 /* FSHWindowPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA04232B1B745CC2004513C6 /* FSHWindowPresenter.swift */; };
 		CA0423491B745CC2004513C6 /* FSHNowPlayingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA04232D1B745CC2004513C6 /* FSHNowPlayingView.xib */; };
 		CA04234A1B745CC2004513C6 /* FSHNowPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA04232F1B745CC2004513C6 /* FSHNowPlayingViewController.m */; };
-		CA04234B1B745CC2004513C6 /* FSHNowPlayingViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0423311B745CC2004513C6 /* FSHNowPlayingViewModel.m */; };
+		CA04234B1B745CC2004513C6 /* FSHNowPlayingPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0423311B745CC2004513C6 /* FSHNowPlayingPresenter.m */; };
 		CA04234C1B745CC2004513C6 /* FSHWaveform.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0423321B745CC2004513C6 /* FSHWaveform.swift */; };
 		CA04234D1B745CC2004513C6 /* FSHWaveformSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0423341B745CC2004513C6 /* FSHWaveformSliderCell.m */; };
 		CA04234E1B745CC2004513C6 /* FSHWaveformSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0423361B745CC2004513C6 /* FSHWaveformSliderView.m */; };
 		CA04234F1B745CC2004513C6 /* FSHSoundCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0423391B745CC2004513C6 /* FSHSoundCellView.m */; };
-		CA0423501B745CC2004513C6 /* FSHSoundListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CA04233B1B745CC2004513C6 /* FSHSoundListViewModel.m */; };
+		CA0423501B745CC2004513C6 /* FSHSoundListPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = CA04233B1B745CC2004513C6 /* FSHSoundListPresenter.m */; };
 		CA0423511B745CC2004513C6 /* FSHSoundRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA04233D1B745CC2004513C6 /* FSHSoundRowView.m */; };
 		CA0423521B745CC2004513C6 /* FSHSoundListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA04233E1B745CC2004513C6 /* FSHSoundListView.xib */; };
 		CA0423531B745CC2004513C6 /* FSHSoundListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0423401B745CC2004513C6 /* FSHSoundListViewController.m */; };
@@ -57,6 +57,7 @@
 		CA44E8EA18CD1CDB007754C5 /* SCRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CA44E8E118CD1CDB007754C5 /* SCRequest.m */; };
 		CA44E8EB18CD1CDB007754C5 /* SCSoundCloud+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = CA44E8E318CD1CDB007754C5 /* SCSoundCloud+Private.m */; };
 		CA44E8EC18CD1CDB007754C5 /* SCSoundCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = CA44E8E518CD1CDB007754C5 /* SCSoundCloud.m */; };
+		CA4E257D1C33985500CB63FB /* MainWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4E257C1C33985500CB63FB /* MainWireframe.swift */; };
 		CA5D7A2918CEB2F1006E2401 /* NSView+RACProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D7A2818CEB2F1006E2401 /* NSView+RACProperties.m */; };
 		CA5D7A2C18CEB7A8006E2401 /* NSImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D7A2B18CEB7A8006E2401 /* NSImageView+AFNetworking.m */; };
 		CAE5F49C18D14AFE00506613 /* NSImage+TintedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE5F49B18D14AFE00506613 /* NSImage+TintedImage.m */; };
@@ -87,12 +88,12 @@
 		CA0423281B745CC2004513C6 /* FSHWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSHWindow.xib; sourceTree = "<group>"; };
 		CA0423291B745CC2004513C6 /* FSHWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHWindowController.h; sourceTree = "<group>"; };
 		CA04232A1B745CC2004513C6 /* FSHWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHWindowController.m; sourceTree = "<group>"; };
-		CA04232B1B745CC2004513C6 /* FSHWindowViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSHWindowViewModel.swift; sourceTree = "<group>"; };
+		CA04232B1B745CC2004513C6 /* FSHWindowPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSHWindowPresenter.swift; sourceTree = "<group>"; };
 		CA04232D1B745CC2004513C6 /* FSHNowPlayingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSHNowPlayingView.xib; sourceTree = "<group>"; };
 		CA04232E1B745CC2004513C6 /* FSHNowPlayingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHNowPlayingViewController.h; sourceTree = "<group>"; };
 		CA04232F1B745CC2004513C6 /* FSHNowPlayingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHNowPlayingViewController.m; sourceTree = "<group>"; };
-		CA0423301B745CC2004513C6 /* FSHNowPlayingViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHNowPlayingViewModel.h; sourceTree = "<group>"; };
-		CA0423311B745CC2004513C6 /* FSHNowPlayingViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHNowPlayingViewModel.m; sourceTree = "<group>"; };
+		CA0423301B745CC2004513C6 /* FSHNowPlayingPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHNowPlayingPresenter.h; sourceTree = "<group>"; };
+		CA0423311B745CC2004513C6 /* FSHNowPlayingPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHNowPlayingPresenter.m; sourceTree = "<group>"; };
 		CA0423321B745CC2004513C6 /* FSHWaveform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSHWaveform.swift; sourceTree = "<group>"; };
 		CA0423331B745CC2004513C6 /* FSHWaveformSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHWaveformSliderCell.h; sourceTree = "<group>"; };
 		CA0423341B745CC2004513C6 /* FSHWaveformSliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHWaveformSliderCell.m; sourceTree = "<group>"; };
@@ -100,8 +101,8 @@
 		CA0423361B745CC2004513C6 /* FSHWaveformSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHWaveformSliderView.m; sourceTree = "<group>"; };
 		CA0423381B745CC2004513C6 /* FSHSoundCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHSoundCellView.h; sourceTree = "<group>"; };
 		CA0423391B745CC2004513C6 /* FSHSoundCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHSoundCellView.m; sourceTree = "<group>"; };
-		CA04233A1B745CC2004513C6 /* FSHSoundListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHSoundListViewModel.h; sourceTree = "<group>"; };
-		CA04233B1B745CC2004513C6 /* FSHSoundListViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHSoundListViewModel.m; sourceTree = "<group>"; };
+		CA04233A1B745CC2004513C6 /* FSHSoundListPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHSoundListPresenter.h; sourceTree = "<group>"; };
+		CA04233B1B745CC2004513C6 /* FSHSoundListPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHSoundListPresenter.m; sourceTree = "<group>"; };
 		CA04233C1B745CC2004513C6 /* FSHSoundRowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHSoundRowView.h; sourceTree = "<group>"; };
 		CA04233D1B745CC2004513C6 /* FSHSoundRowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHSoundRowView.m; sourceTree = "<group>"; };
 		CA04233E1B745CC2004513C6 /* FSHSoundListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSHSoundListView.xib; sourceTree = "<group>"; };
@@ -172,6 +173,7 @@
 		CA44E8E518CD1CDB007754C5 /* SCSoundCloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSoundCloud.m; sourceTree = "<group>"; };
 		CA44E8E618CD1CDB007754C5 /* SCSoundCloudAPI-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SCSoundCloudAPI-Private.h"; sourceTree = "<group>"; };
 		CA44E8ED18CD22FD007754C5 /* Fresh.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Fresh.entitlements; sourceTree = "<group>"; };
+		CA4E257C1C33985500CB63FB /* MainWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWireframe.swift; sourceTree = "<group>"; };
 		CA5B3D921B72DD40002BB59B /* Fresh-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Fresh-Bridging-Header.h"; sourceTree = "<group>"; };
 		CA5D7A2718CEB2F1006E2401 /* NSView+RACProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSView+RACProperties.h"; path = "Categories/NSView+RACProperties.h"; sourceTree = "<group>"; };
 		CA5D7A2818CEB2F1006E2401 /* NSView+RACProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSView+RACProperties.m"; path = "Categories/NSView+RACProperties.m"; sourceTree = "<group>"; };
@@ -270,7 +272,8 @@
 				CA0423281B745CC2004513C6 /* FSHWindow.xib */,
 				CA0423291B745CC2004513C6 /* FSHWindowController.h */,
 				CA04232A1B745CC2004513C6 /* FSHWindowController.m */,
-				CA04232B1B745CC2004513C6 /* FSHWindowViewModel.swift */,
+				CA04232B1B745CC2004513C6 /* FSHWindowPresenter.swift */,
+				CA4E257C1C33985500CB63FB /* MainWireframe.swift */,
 			);
 			path = "Main Window";
 			sourceTree = "<group>";
@@ -281,8 +284,8 @@
 				CA04232D1B745CC2004513C6 /* FSHNowPlayingView.xib */,
 				CA04232E1B745CC2004513C6 /* FSHNowPlayingViewController.h */,
 				CA04232F1B745CC2004513C6 /* FSHNowPlayingViewController.m */,
-				CA0423301B745CC2004513C6 /* FSHNowPlayingViewModel.h */,
-				CA0423311B745CC2004513C6 /* FSHNowPlayingViewModel.m */,
+				CA0423301B745CC2004513C6 /* FSHNowPlayingPresenter.h */,
+				CA0423311B745CC2004513C6 /* FSHNowPlayingPresenter.m */,
 				CA0423321B745CC2004513C6 /* FSHWaveform.swift */,
 				CA0423331B745CC2004513C6 /* FSHWaveformSliderCell.h */,
 				CA0423341B745CC2004513C6 /* FSHWaveformSliderCell.m */,
@@ -297,8 +300,8 @@
 			children = (
 				CA0423381B745CC2004513C6 /* FSHSoundCellView.h */,
 				CA0423391B745CC2004513C6 /* FSHSoundCellView.m */,
-				CA04233A1B745CC2004513C6 /* FSHSoundListViewModel.h */,
-				CA04233B1B745CC2004513C6 /* FSHSoundListViewModel.m */,
+				CA04233A1B745CC2004513C6 /* FSHSoundListPresenter.h */,
+				CA04233B1B745CC2004513C6 /* FSHSoundListPresenter.m */,
 				CA04233C1B745CC2004513C6 /* FSHSoundRowView.h */,
 				CA04233D1B745CC2004513C6 /* FSHSoundRowView.m */,
 				CA04233E1B745CC2004513C6 /* FSHSoundListView.xib */,
@@ -663,10 +666,10 @@
 				CA44E8E818CD1CDB007754C5 /* SCAccount.m in Sources */,
 				CA13F4D818CD80F20027B513 /* NSURL+NXOAuth2.m in Sources */,
 				CA5D7A2C18CEB7A8006E2401 /* NSImageView+AFNetworking.m in Sources */,
-				CA0423481B745CC2004513C6 /* FSHWindowViewModel.swift in Sources */,
+				CA0423481B745CC2004513C6 /* FSHWindowPresenter.swift in Sources */,
 				CA13F4DA18CD80F20027B513 /* NXOAuth2Account.m in Sources */,
 				CA44E8E718CD1CDB007754C5 /* SCAccount+Private.m in Sources */,
-				CA04234B1B745CC2004513C6 /* FSHNowPlayingViewModel.m in Sources */,
+				CA04234B1B745CC2004513C6 /* FSHNowPlayingPresenter.m in Sources */,
 				CA44E8EC18CD1CDB007754C5 /* SCSoundCloud.m in Sources */,
 				CA0423451B745CC2004513C6 /* FSHLoginViewController.swift in Sources */,
 				CA0423471B745CC2004513C6 /* FSHWindowController.m in Sources */,
@@ -680,9 +683,10 @@
 				CA5D7A2918CEB2F1006E2401 /* NSView+RACProperties.m in Sources */,
 				CA04234D1B745CC2004513C6 /* FSHWaveformSliderCell.m in Sources */,
 				CA0423431B745CC2004513C6 /* FSHNoHitTextField.m in Sources */,
-				CA0423501B745CC2004513C6 /* FSHSoundListViewModel.m in Sources */,
+				CA0423501B745CC2004513C6 /* FSHSoundListPresenter.m in Sources */,
 				CA13F4DC18CD80F20027B513 /* NXOAuth2Client.m in Sources */,
 				CA0423421B745CC2004513C6 /* FSHSound.m in Sources */,
+				CA4E257D1C33985500CB63FB /* MainWireframe.swift in Sources */,
 				CA04234C1B745CC2004513C6 /* FSHWaveform.swift in Sources */,
 				CA13F4D718CD80F20027B513 /* NSString+NXOAuth2.m in Sources */,
 				CA04234F1B745CC2004513C6 /* FSHSoundCellView.m in Sources */,

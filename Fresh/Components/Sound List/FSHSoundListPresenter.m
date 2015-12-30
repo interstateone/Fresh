@@ -1,19 +1,19 @@
 //
-//  FSHSoundListViewModel.m
+//  FSHSoundListPresenter.m
 //  Fresh
 //
 //  Created by Brandon on 2014-03-29.
 //  Copyright (c) 2014 Brandon Evans. All rights reserved.
 //
 
-#import "FSHSoundListViewModel.h"
+#import "FSHSoundListPresenter.h"
 
 @import ReactiveCocoa;
 
 #import "FSHAccount.h"
 #import "FSHSound.h"
 
-@implementation FSHSoundListViewModel
+@implementation FSHSoundListPresenter
 
 - (instancetype)initWithAccount:(FSHAccount *)account {
     self = [super init];

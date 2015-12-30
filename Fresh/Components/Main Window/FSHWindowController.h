@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 Brandon Evans. All rights reserved.
 //
 
-@class FSHWindowViewModel;
+@class FSHWindowPresenter;
 
 @interface FSHWindowController : NSWindowController
 
-@property (nonatomic, strong) FSHWindowViewModel *viewModel;
+@property (nonatomic, strong) FSHWindowPresenter *presenter;
 
 @end

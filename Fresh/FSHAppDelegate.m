@@ -14,7 +14,7 @@
 
 @interface FSHAppDelegate ()
 
-@property (nonatomic, strong) FSHWindowViewModel *windowViewModel;
+@property (nonatomic, strong) MainWireframe *wireframe;
 
 @end
 
@@ -29,9 +29,8 @@
     // Must happen first
     [SCSoundCloud setClientID:@"912a424bf4a12ab4c858bf841953eddc" secret:@"e8d7fd3754f91a80e181718a161dc935" redirectURL:[NSURL URLWithString:@"freshapp://oauth"]];
 
-    FSHWindowController *windowController = [[FSHWindowController alloc] initWithWindowNibName:@"FSHWindow"];
-    windowController.viewModel = [[FSHWindowViewModel alloc] initWithAccount:[FSHAccount currentAccount]];
-    [windowController showWindow:nil];
+    self.wireframe = [[MainWireframe alloc] init];
+    [self.wireframe presentMainWindow];
 }
 
 - (void)handleGetURLEvent:(NSAppleEventDescriptor*)event withReplyEvent:(NSAppleEventDescriptor*)replyEvent {

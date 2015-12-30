@@ -1,5 +1,5 @@
 //
-//  FSHNowPlayingViewModel.h
+//  FSHNowPlayingPresenter.h
 //  Fresh
 //
 //  Created by Brandon on 2014-03-27.
@@ -12,7 +12,7 @@
 @class FSHAccount;
 @class FSHWaveform;
 
-@interface FSHNowPlayingViewModel : NSObject
+@interface FSHNowPlayingPresenter : NSObject
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *author;

@@ -1,12 +1,12 @@
 //
-//  FSHNowPlayingViewModel.m
+//  FSHNowPlayingPresenter.m
 //  Fresh
 //
 //  Created by Brandon on 2014-03-27.
 //  Copyright (c) 2014 Brandon Evans. All rights reserved.
 //
 
-#import "FSHNowPlayingViewModel.h"
+#import "FSHNowPlayingPresenter.h"
 
 #import <StreamingKit/STKAudioPlayer.h>
 @import ReactiveCocoa;
@@ -14,7 +14,7 @@
 #import "FSHAccount.h"
 #import "Fresh-Swift.h"
 
-@interface FSHNowPlayingViewModel () <STKAudioPlayerDelegate>
+@interface FSHNowPlayingPresenter () <STKAudioPlayerDelegate>
 
 @property (nonatomic, strong) FSHAccount *account;
 @property (nonatomic, strong) STKAudioPlayer *audioPlayer;
@@ -22,7 +22,7 @@
 
 @end
 
-@implementation FSHNowPlayingViewModel
+@implementation FSHNowPlayingPresenter
 
 - (instancetype)initWithAccount:(FSHAccount *)account {
     self = [super init];

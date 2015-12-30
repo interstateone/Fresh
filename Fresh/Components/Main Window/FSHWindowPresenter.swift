@@ -1,5 +1,5 @@
 //
-//  FSHWindowViewModel.swift
+//  FSHWindowPresenter.swift
 //  Fresh
 //
 //  Created by Brandon Evans on 2015-08-06.
@@ -9,20 +9,20 @@
 import Foundation
 import ReactiveCocoa
 
-class FSHWindowViewModel: NSObject {
+class FSHWindowPresenter: NSObject {
     var account: FSHAccount {
         didSet {
-            self.nowPlayingViewModel = FSHNowPlayingViewModel(account: account)
-            self.soundListViewModel = FSHSoundListViewModel(account: account)
+            self.nowPlayingPresenter = FSHNowPlayingPresenter(account: account)
+            self.soundListPresenter = FSHSoundListPresenter(account: account)
         }
     }
-    var nowPlayingViewModel: FSHNowPlayingViewModel
-    var soundListViewModel: FSHSoundListViewModel
+    var nowPlayingPresenter: FSHNowPlayingPresenter
+    var soundListPresenter: FSHSoundListPresenter
 
     init(account: FSHAccount) {
         self.account = account
-        self.nowPlayingViewModel = FSHNowPlayingViewModel(account: account)
-        self.soundListViewModel = FSHSoundListViewModel(account: account)
+        self.nowPlayingPresenter = FSHNowPlayingPresenter(account: account)
+        self.soundListPresenter = FSHSoundListPresenter(account: account)
         super.init()
 
         NSNotificationCenter.defaultCenter().rac_addObserverForName("FSHSoundCloudUserDidAuthenticate", object: nil).subscribeNext { [weak self] (_) -> Void in
