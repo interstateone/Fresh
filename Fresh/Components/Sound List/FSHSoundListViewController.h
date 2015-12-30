@@ -8,10 +8,10 @@
 
 @class FSHAccount;
 @class FSHSound;
-@class FSHSoundListViewModel;
+@class FSHSoundListPresenter;
 
 @interface FSHSoundListViewController : NSViewController
 
-@property (nonatomic, strong) FSHSoundListViewModel *viewModel;
+@property (nonatomic, strong) FSHSoundListPresenter *presenter;
 
 @end

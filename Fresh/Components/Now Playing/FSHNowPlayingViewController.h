@@ -6,12 +6,12 @@
 //  Copyright (c) 2014 Brandon Evans. All rights reserved.
 //
 
-@class FSHNowPlayingViewModel;
+@class FSHNowPlayingPresenter;
 
 @interface FSHNowPlayingViewController : NSTitlebarAccessoryViewController
 
-@property (nonatomic, strong) FSHNowPlayingViewModel *viewModel;
+@property (nonatomic, strong) FSHNowPlayingPresenter *presenter;
 
-- (instancetype)initWithViewModel:(FSHNowPlayingViewModel *)viewModel;
+- (instancetype)initWithPresenter:(FSHNowPlayingPresenter *)presenter;
 
 @end

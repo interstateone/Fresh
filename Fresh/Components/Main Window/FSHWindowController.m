@@ -13,8 +13,8 @@
 #import "Fresh-Swift.h"
 #import "FSHNowPlayingViewController.h"
 #import "FSHSoundListViewController.h"
-#import "FSHNowPlayingViewModel.h"
-#import "FSHSoundListViewModel.h"
+#import "FSHNowPlayingPresenter.h"
+#import "FSHSoundListPresenter.h"
 #import "FSHAccount.h"
 
 @interface FSHWindowController ()
@@ -31,25 +31,25 @@
     self.window.title = @"Fresh";
 
     self.loginViewController = [[FSHLoginViewController alloc] initWithNibName:@"FSHLoginView" bundle:nil];
-    self.nowPlayingViewController = [[FSHNowPlayingViewController alloc] initWithViewModel:nil];
+    self.nowPlayingViewController = [[FSHNowPlayingViewController alloc] initWithPresenter:nil];
     self.listViewController = [[FSHSoundListViewController alloc] initWithNibName:@"FSHSoundListView" bundle:nil];
 
     // Setup bindings
     @weakify(self)
-    [RACObserve(self, viewModel.nowPlayingViewModel) subscribeNext:^(FSHNowPlayingViewModel *viewModel) {
+    [RACObserve(self, presenter.nowPlayingPresenter) subscribeNext:^(FSHNowPlayingPresenter *presenter) {
         @strongify(self)
-        self.nowPlayingViewController.viewModel = viewModel;
+        self.nowPlayingViewController.presenter = presenter;
     }];
-    [RACObserve(self, viewModel.soundListViewModel) subscribeNext:^(FSHSoundListViewModel *viewModel) {
+    [RACObserve(self, presenter.soundListPresenter) subscribeNext:^(FSHSoundListPresenter *presenter) {
         @strongify(self)
-        self.listViewController.viewModel = viewModel;
+        self.listViewController.presenter = presenter;
     }];
 
-    [RACObserve(self, viewModel.account.selectedSound) subscribeNext:^(FSHSound *sound) {
+    [RACObserve(self, presenter.account.selectedSound) subscribeNext:^(FSHSound *sound) {
         sound ? [self revealNowPlayingView] : [self hideNowPlayingView];
     }];
 
-    RAC(self, window.contentView) = [RACObserve(self, viewModel.account.isLoggedIn) map:^NSView *(NSNumber *loggedIn) {
+    RAC(self, window.contentView) = [RACObserve(self, presenter.account.isLoggedIn) map:^NSView *(NSNumber *loggedIn) {
         return loggedIn.boolValue ? self.listViewController.view : self.loginViewController.view;
     }];
 }

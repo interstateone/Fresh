@@ -6,5 +6,5 @@
 
 #import "FSHAccount.h"
 #import "FSHWindowController.h"
-#import "FSHNowPlayingViewModel.h"
-#import "FSHSoundListViewModel.h"
+#import "FSHNowPlayingPresenter.h"
+#import "FSHSoundListPresenter.h"

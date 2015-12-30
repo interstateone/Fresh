@@ -1,5 +1,5 @@
 //
-//  FSHSoundListViewModel.h
+//  FSHSoundListPresenter.h
 //  Fresh
 //
 //  Created by Brandon on 2014-03-29.
@@ -10,7 +10,7 @@
 @class FSHSound;
 @class RACSignal;
 
-@interface FSHSoundListViewModel : NSObject
+@interface FSHSoundListPresenter: NSObject
 
 @property (nonatomic, strong) FSHAccount *account;
 
