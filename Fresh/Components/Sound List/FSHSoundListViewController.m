@@ -8,7 +8,6 @@
 
 #import "FSHSoundListViewController.h"
 
-#import <RXCollections/RXCollection.h>
 @import ReactiveCocoa;
 @import Mantle;
 
