@@ -44,7 +44,7 @@
 #include "UIKit/UIApplication.h"
 #endif
 
-typedef enum
+typedef NS_OPTIONS(NSInteger, STKAudioPlayerState)
 {
     STKAudioPlayerStateReady,
     STKAudioPlayerStateRunning = 1,
@@ -54,10 +54,9 @@ typedef enum
     STKAudioPlayerStateStopped = (1 << 4),
     STKAudioPlayerStateError = (1 << 5),
     STKAudioPlayerStateDisposed = (1 << 6)
-}
-STKAudioPlayerState;
+};
 
-typedef enum
+typedef NS_ENUM(NSInteger, STKAudioPlayerStopReason)
 {
 	STKAudioPlayerStopReasonNone = 0,
 	STKAudioPlayerStopReasonEof,
@@ -65,10 +64,9 @@ typedef enum
 	STKAudioPlayerStopReasonPendingNext,
 	STKAudioPlayerStopReasonDisposed,
 	STKAudioPlayerStopReasonError = 0xffff
-}
-STKAudioPlayerStopReason;
+};
 
-typedef enum
+typedef NS_ENUM(NSInteger, STKAudioPlayerErrorCode)
 {
 	STKAudioPlayerErrorNone = 0,
 	STKAudioPlayerErrorDataSource,
@@ -77,9 +75,13 @@ typedef enum
     STKAudioPlayerErrorCodecError,
     STKAudioPlayerErrorDataNotFound,
     STKAudioPlayerErrorOther = 0xffff
-}
-STKAudioPlayerErrorCode;
+};
 
+///
+/// Options to initiailise the Audioplayer with.
+/// By default if you set buffer size or seconds to 0, the non-zero default will be used
+/// If you would like to disable the buffer option completely set to STK_DISABLE_BUFFER
+///
 typedef struct
 {
     /// If YES then seeking a track will cause all pending items to be flushed from the queue
@@ -91,7 +93,7 @@ typedef struct
 	/// The size of the internal I/O read buffer. This data in this buffer is transient and does not need to be larger.
     UInt32 readBufferSize;
     /// The size of the decompressed buffer (Default is 10 seconds which uses about 1.7MB of RAM)
-    UInt32 bufferSizeInSeconds;
+    Float32 bufferSizeInSeconds;
     /// Number of seconds of decompressed audio is required before playback first starts for each item (Default is 0.5 seconds. Must be larger than bufferSizeInSeconds)
     Float32 secondsRequiredToStartPlaying;
 	/// Seconds after a seek is performed before data needs to come in (after which the state will change to playing/buffering)
@@ -100,6 +102,8 @@ typedef struct
     Float32 secondsRequiredToStartPlayingAfterBufferUnderun;
 }
 STKAudioPlayerOptions;
+
+#define STK_DISABLE_BUFFER (0xffffffff)
 
 typedef void(^STKFrameFilter)(UInt32 channelsPerFrame, UInt32 bytesPerFrame, UInt32 frameCount, void* frames);
 
