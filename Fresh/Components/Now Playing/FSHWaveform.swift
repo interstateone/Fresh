@@ -16,8 +16,8 @@ class FSHWaveform: MTLModel, MTLJSONSerializing {
         fatalError("init(coder:) has not been implemented")
     }
 
-    required init!(dictionary dictionaryValue: [NSObject : AnyObject]!, error: NSErrorPointer) {
-        super.init(dictionary: dictionaryValue, error: error)
+    required init(dictionary dictionaryValue: [NSObject : AnyObject]) throws {
+        try super.init(dictionary: dictionaryValue)
     }
 
     override init() { super.init() }

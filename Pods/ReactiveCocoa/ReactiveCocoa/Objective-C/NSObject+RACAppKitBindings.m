@@ -7,8 +7,8 @@
 //
 
 #import "NSObject+RACAppKitBindings.h"
-#import "EXTKeyPathCoding.h"
-#import "EXTScope.h"
+#import <ReactiveCocoa/EXTKeyPathCoding.h>
+#import <ReactiveCocoa/EXTScope.h>
 #import "NSObject+RACDeallocating.h"
 #import "RACChannel.h"
 #import "RACCompoundDisposable.h"
@@ -143,31 +143,5 @@
 	// performant than having KVO swizzle our class and add its own logic.
 	return NO;
 }
-
-@end
-
-@implementation NSObject (RACAppKitBindingsDeprecated)
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-implementations"
-
-- (void)rac_bind:(NSString *)binding toObject:(id)object withKeyPath:(NSString *)keyPath {
-	[self rac_bind:binding toObject:object withKeyPath:keyPath nilValue:nil];
-}
-
-- (void)rac_bind:(NSString *)binding toObject:(id)object withKeyPath:(NSString *)keyPath nilValue:(id)nilValue {
-	[self bind:binding toObject:object withKeyPath:keyPath options:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], NSContinuouslyUpdatesValueBindingOption, nilValue, NSNullPlaceholderBindingOption, nil]];
-}
-
-- (void)rac_bind:(NSString *)binding toObject:(id)object withKeyPath:(NSString *)keyPath transform:(id (^)(id value))transformBlock {
-	RACValueTransformer *transformer = [RACValueTransformer transformerWithBlock:transformBlock];
-	[self bind:binding toObject:object withKeyPath:keyPath options:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], NSContinuouslyUpdatesValueBindingOption, transformer, NSValueTransformerBindingOption, nil]];
-}
-
-- (void)rac_bind:(NSString *)binding toObject:(id)object withNegatedKeyPath:(NSString *)keyPath {
-	[self bind:binding toObject:object withKeyPath:keyPath options:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], NSContinuouslyUpdatesValueBindingOption, NSNegateBooleanTransformerName, NSValueTransformerNameBindingOption, nil]];
-}
-
-#pragma clang diagnostic pop
 
 @end

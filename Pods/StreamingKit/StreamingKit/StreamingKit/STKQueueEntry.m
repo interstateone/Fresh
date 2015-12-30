@@ -23,6 +23,7 @@
         self.dataSource = dataSourceIn;
         self.queueItemId = queueItemIdIn;
         self->lastFrameQueued = -1;
+        self->durationHint = dataSourceIn.durationHint;
     }
     
     return self;
@@ -45,7 +46,7 @@
 	{
 		if (processedPacketsCount > STK_BIT_RATE_ESTIMATION_MIN_PACKETS_PREFERRED || (audioStreamBasicDescription.mBytesPerFrame == 0 && processedPacketsCount > STK_BIT_RATE_ESTIMATION_MIN_PACKETS_MIN))
 		{
-			double averagePacketByteSize = processedPacketsSizeTotal / processedPacketsCount;
+			double averagePacketByteSize = (double)processedPacketsSizeTotal / (double)processedPacketsCount;
 			
 			retval = averagePacketByteSize / packetDuration * 8;
 			
@@ -60,6 +61,8 @@
 
 -(double) duration
 {
+    if (durationHint > 0.0) return durationHint;
+    
     if (self->sampleRate <= 0)
     {
         return 0;
@@ -107,7 +110,7 @@
 -(Float64) progressInFrames
 {
     OSSpinLockLock(&self->spinLock);
-    Float64 retval = self->seekTime + self->framesPlayed;
+    Float64 retval = (self->seekTime + self->audioStreamBasicDescription.mSampleRate) + self->framesPlayed;
     OSSpinLockUnlock(&self->spinLock);
     
     return retval;

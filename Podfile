@@ -1,8 +1,7 @@
 use_frameworks!
 
-pod 'RXCollections'
-pod 'Mantle'
-pod 'ReactiveCocoa', '3.0-beta.9'
-pod 'AFNetworking'
-pod 'StreamingKit'
-pod 'BSRefreshableScrollView'
+pod 'Mantle', '2.0.6'
+pod 'ReactiveCocoa', '4.0.0-RC.1'
+pod 'AFNetworking', '2.6.3'
+pod 'StreamingKit', '0.1.28'
+pod 'BSRefreshableScrollView', '1.0.1'
