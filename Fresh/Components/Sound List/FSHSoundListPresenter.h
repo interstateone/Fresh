@@ -6,21 +6,17 @@
 //  Copyright (c) 2014 Brandon Evans. All rights reserved.
 //
 
+
 @class FSHAccount;
 @class FSHSound;
 @class RACSignal;
+@class SoundCloudService;
 
 @interface FSHSoundListPresenter: NSObject
 
-@property (nonatomic, strong) FSHAccount *account;
+@property (nonatomic, strong) SoundCloudService *service;
 
-@property (nonatomic, assign) NSInteger numberOfSounds;
-
-- (instancetype)initWithAccount:(FSHAccount *)account;
-
-- (FSHSound *)soundAtIndex:(NSInteger)index;
-- (NSString *)titleForSoundAtIndex:(NSInteger)index;
-- (NSString *)authorForSoundAtIndex:(NSInteger)index;
+- (instancetype)initWithService:(SoundCloudService *)service;
 
 - (RACSignal *)updateSounds;
 - (RACSignal *)fetchNextSounds;

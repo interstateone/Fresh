@@ -8,17 +8,12 @@
 
 @class RACSignal;
 @class FSHSound;
+@class SCAccount;
 
 @interface FSHAccount : NSObject
 
+@property (strong, nonatomic) SCAccount *soundcloudAccount;
 @property (strong, nonatomic) NSArray *sounds;
 @property (strong, nonatomic) FSHSound *selectedSound;
-@property (assign, nonatomic, readonly) BOOL isLoggedIn;
-
-+ (instancetype)currentAccount;
-
-- (void)logIn;
-- (RACSignal *)updateSounds;
-- (RACSignal *)fetchNextSounds;
 
 @end

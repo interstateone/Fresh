@@ -17,6 +17,7 @@
 #import "BSRefreshableScrollView.h"
 #import "FSHSoundListPresenter.h"
 #import "FSHSoundRowView.h"
+#import "Fresh-Swift.h"
 
 @interface FSHSoundListViewController () <NSTableViewDelegate, NSTableViewDataSource, BSRefreshableScrollViewDelegate>
 
@@ -36,12 +37,7 @@
     [self.tableView setDoubleAction:@selector(rowWasDoubleClicked)];
 
     @weakify(self)
-    [RACObserve(self, presenter.numberOfSounds) subscribeNext:^(id x) {
-        @strongify(self);
-        [self.tableView reloadData];
-    }];
-
-    [RACObserve(self, presenter.account.selectedSound) subscribeNext:^(id x) {
+    [RACObserve(self, presenter.service.account.selectedSound) subscribeNext:^(id x) {
         @strongify(self);
         NSIndexSet *selectedRowIndexes = self.tableView.selectedRowIndexes;
         [self.tableView reloadData];
@@ -59,6 +55,11 @@
 - (void)setPresenter:(FSHSoundListPresenter *)presenter {
     _presenter = presenter;
     [[self.presenter updateSounds] subscribeCompleted:^{}];
+}
+
+- (void)setRowModels:(NSArray<SoundListRowModel *> *)rowModels {
+    _rowModels = rowModels;
+    [self.tableView reloadData];
 }
 
 #pragma mark - BSRefreshableScrollViewDelegate
@@ -99,22 +100,18 @@
 #pragma mark - NSTableViewDataSource
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return self.presenter.numberOfSounds;
-}
-
-- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-    return [self.presenter soundAtIndex:row];
+    return self.rowModels.count;
 }
 
 #pragma mark - NSTableViewDelegate
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-    FSHSound *sound = [self.presenter soundAtIndex:row];
+    SoundListRowModel *rowModel = self.rowModels[row];
     FSHSoundCellView *cell = [tableView makeViewWithIdentifier:NSStringFromClass([FSHSoundCellView class]) owner:self];
     
-    [cell.trackNameField setStringValue:[self.presenter titleForSoundAtIndex:row]];
-    [cell.authorNameField setStringValue:[self.presenter authorForSoundAtIndex:row]];
-    cell.playing = [sound isEqual:self.presenter.account.selectedSound];
+    [cell.trackNameField setStringValue:rowModel.title];
+    [cell.authorNameField setStringValue:rowModel.author];
+    cell.playing = row == self.presenter.indexOfSelectedSound;
 
     return cell;
 }

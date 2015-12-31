@@ -39,6 +39,7 @@
     BOOL handled = [SCSoundCloud handleRedirectURL:[NSURL URLWithString:url]];
     if (!handled) {
         NSLog(@"The URL (%@) could not be handled by the SoundCloud API. Maybe you want to do something with it.", url);
+        return;
     }
 
     [[NSNotificationCenter defaultCenter] postNotificationName:@"FSHSoundCloudUserDidAuthenticate" object:nil];
