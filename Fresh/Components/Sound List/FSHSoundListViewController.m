@@ -45,7 +45,7 @@
         [self.tableView scrollRowToVisible:self.presenter.indexOfSelectedSound];
     }];
 
-    [[self.presenter updateSounds] subscribeCompleted:^{}];
+    [self.presenter initializeView];
 }
 
 - (BOOL)acceptsFirstResponder {

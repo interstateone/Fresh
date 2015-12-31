@@ -30,6 +30,8 @@
 @property (nonatomic, strong, readonly) RACCommand *toggleCurrentSound;
 @property (nonatomic, strong, readonly) RACCommand *toggleFavorite;
 
+@property (nonatomic, strong) NSViewController *view;
+
 - (instancetype)initWithAccount:(FSHAccount *)account;
 
 - (void)seekToProgress:(NSNumber *)progress;

@@ -12,7 +12,7 @@
 
 @interface FSHAccount : NSObject
 
-@property (strong, nonatomic) SCAccount *soundcloudAccount;
+@property (strong, nonatomic) SCAccount _Nullable *soundcloudAccount;
 @property (strong, nonatomic) NSArray *sounds;
 @property (strong, nonatomic) FSHSound *selectedSound;
 

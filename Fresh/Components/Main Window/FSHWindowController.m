@@ -17,41 +17,17 @@
 #import "FSHSoundListPresenter.h"
 #import "FSHAccount.h"
 
-@interface FSHWindowController ()
-
-@property (nonatomic, strong) FSHLoginViewController *loginViewController;
-@property (nonatomic, strong) FSHSoundListViewController *listViewController;
-@property (nonatomic, strong) FSHNowPlayingViewController *nowPlayingViewController;
-
-@end
-
 @implementation FSHWindowController
 
 - (void)windowDidLoad {
     self.window.title = @"Fresh";
 
-    self.loginViewController = [[FSHLoginViewController alloc] initWithNibName:@"FSHLoginView" bundle:nil];
-    self.nowPlayingViewController = [[FSHNowPlayingViewController alloc] initWithPresenter:nil];
-    self.listViewController = [[FSHSoundListViewController alloc] initWithNibName:@"FSHSoundListView" bundle:nil];
-
     // Setup bindings
-    @weakify(self)
-    [RACObserve(self, presenter.nowPlayingPresenter) subscribeNext:^(FSHNowPlayingPresenter *presenter) {
-        @strongify(self)
-        self.nowPlayingViewController.presenter = presenter;
-    }];
-    [RACObserve(self, presenter.soundListPresenter) subscribeNext:^(FSHSoundListPresenter *presenter) {
-        @strongify(self)
-        self.listViewController.presenter = presenter;
-    }];
-
     [RACObserve(self, presenter.service.account.selectedSound) subscribeNext:^(FSHSound *sound) {
         sound ? [self revealNowPlayingView] : [self hideNowPlayingView];
     }];
 
-    RAC(self, window.contentView) = [RACObserve(self, presenter.service.loggedIn) map:^NSView *(NSNumber *loggedIn) {
-        return loggedIn.boolValue ? self.listViewController.view : self.loginViewController.view;
-    }];
+    [self.presenter initializeView];
 }
 
 - (void)revealNowPlayingView {
@@ -70,6 +46,14 @@
     
     [self.nowPlayingViewController removeFromParentViewController];
     self.window.titleVisibility = NSWindowTitleVisible;
+}
+
+- (void)transitionToSoundList {
+    self.window.contentView = self.listViewController.view;
+}
+
+- (void)transitionToLogin {
+    self.window.contentView = self.loginViewController.view;
 }
 
 @end

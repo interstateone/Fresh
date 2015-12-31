@@ -9,13 +9,15 @@
 import Foundation
 import ReactiveCocoa
 
-class FSHWindowPresenter: NSObject {
+class FSHWindowPresenter: NSObject, Presenter {
+    let view: NSWindowController
     let wireframe: MainWireframe
     let service: SoundCloudService
 
     func accountChanged(account: FSHAccount) {
         self.nowPlayingPresenter = FSHNowPlayingPresenter(account: account)
         self.soundListPresenter = FSHSoundListPresenter(service: service)
+        account.soundcloudAccount != nil ? wireframe.presentSoundList() : wireframe.presentLogin()
     }
     var nowPlayingPresenter: FSHNowPlayingPresenter
     var soundListPresenter: FSHSoundListPresenter {
@@ -27,11 +29,18 @@ class FSHWindowPresenter: NSObject {
         }
     }
 
-    init(wireframe: MainWireframe, service: SoundCloudService) {
+    init(view: NSWindowController, wireframe: MainWireframe, service: SoundCloudService) {
+        self.view = view
         self.wireframe = wireframe
         self.service = service
         self.nowPlayingPresenter = FSHNowPlayingPresenter(account: service.account)
         self.soundListPresenter = FSHSoundListPresenter(service: service)
         super.init()
+    }
+
+    // MARK: Presenter
+
+    func initializeView() {
+        service.account.soundcloudAccount != nil ? wireframe.presentSoundList() : wireframe.presentLogin()
     }
 }

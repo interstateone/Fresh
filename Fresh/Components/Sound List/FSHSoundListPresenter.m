@@ -12,6 +12,7 @@
 
 #import "FSHAccount.h"
 #import "FSHSound.h"
+#import "FSHSoundListViewController.h"
 #import "Fresh-Swift.h"
 
 @interface FSHSoundListPresenter ()
@@ -26,10 +27,6 @@
     self = [super init];
     if (!self) return nil;
     if (!service) return self;
-
-    RAC(self, numberOfSounds) = [RACObserve(self, sounds) map:^id(NSArray *sounds) {
-        return @([sounds count]);
-    }];
 
     _service = service;
     _sounds = [NSMutableArray array];
@@ -78,6 +75,23 @@
 
 - (NSInteger)indexOfSelectedSound {
     return [self.service.account.sounds indexOfObject:self.service.account.selectedSound];
+}
+
+#pragma mark Presenter
+
+- (void)initializeView {
+    @weakify(self)
+    [[self updateSounds] subscribeNext:^(NSArray *sounds) {
+        @strongify(self)
+        NSMutableArray<SoundListRowModel *> *models = [NSMutableArray array];
+        for (FSHSound *sound in sounds) {
+            SoundListRowModel *model = [[SoundListRowModel alloc] init];
+            model.title = sound.title;
+            model.author = sound.author;
+            [models addObject:model];
+        }
+        self.view.rowModels = [models copy];
+    }];
 }
 
 @end
