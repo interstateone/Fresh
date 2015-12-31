@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 Brandon Evans. All rights reserved.
 //
 
-@class FSHWindowPresenter;
+@class MainWindowPresenter;
 @class FSHLoginViewController;
 @class FSHSoundListViewController;
 @class FSHNowPlayingViewController;
 
 @interface FSHWindowController : NSWindowController
 
-@property (nonatomic, strong) FSHWindowPresenter *presenter;
+@property (nonatomic, strong) MainWindowPresenter *presenter;
 
 @property (nonatomic, strong) FSHLoginViewController *loginViewController;
 @property (nonatomic, strong) FSHSoundListViewController *listViewController;

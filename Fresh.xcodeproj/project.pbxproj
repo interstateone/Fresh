@@ -15,7 +15,7 @@
 		CA0423451B745CC2004513C6 /* FSHLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0423261B745CC2004513C6 /* FSHLoginViewController.swift */; };
 		CA0423461B745CC2004513C6 /* FSHWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA0423281B745CC2004513C6 /* FSHWindow.xib */; };
 		CA0423471B745CC2004513C6 /* FSHWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA04232A1B745CC2004513C6 /* FSHWindowController.m */; };
-		CA0423481B745CC2004513C6 /* FSHWindowPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA04232B1B745CC2004513C6 /* FSHWindowPresenter.swift */; };
+		CA0423481B745CC2004513C6 /* MainWindowPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA04232B1B745CC2004513C6 /* MainWindowPresenter.swift */; };
 		CA0423491B745CC2004513C6 /* FSHNowPlayingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA04232D1B745CC2004513C6 /* FSHNowPlayingView.xib */; };
 		CA04234A1B745CC2004513C6 /* FSHNowPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA04232F1B745CC2004513C6 /* FSHNowPlayingViewController.m */; };
 		CA04234B1B745CC2004513C6 /* FSHNowPlayingPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0423311B745CC2004513C6 /* FSHNowPlayingPresenter.m */; };
@@ -92,7 +92,7 @@
 		CA0423281B745CC2004513C6 /* FSHWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSHWindow.xib; sourceTree = "<group>"; };
 		CA0423291B745CC2004513C6 /* FSHWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHWindowController.h; sourceTree = "<group>"; };
 		CA04232A1B745CC2004513C6 /* FSHWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHWindowController.m; sourceTree = "<group>"; };
-		CA04232B1B745CC2004513C6 /* FSHWindowPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSHWindowPresenter.swift; sourceTree = "<group>"; };
+		CA04232B1B745CC2004513C6 /* MainWindowPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowPresenter.swift; sourceTree = "<group>"; };
 		CA04232D1B745CC2004513C6 /* FSHNowPlayingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSHNowPlayingView.xib; sourceTree = "<group>"; };
 		CA04232E1B745CC2004513C6 /* FSHNowPlayingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHNowPlayingViewController.h; sourceTree = "<group>"; };
 		CA04232F1B745CC2004513C6 /* FSHNowPlayingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHNowPlayingViewController.m; sourceTree = "<group>"; };
@@ -283,7 +283,7 @@
 				CA0423281B745CC2004513C6 /* FSHWindow.xib */,
 				CA0423291B745CC2004513C6 /* FSHWindowController.h */,
 				CA04232A1B745CC2004513C6 /* FSHWindowController.m */,
-				CA04232B1B745CC2004513C6 /* FSHWindowPresenter.swift */,
+				CA04232B1B745CC2004513C6 /* MainWindowPresenter.swift */,
 				CA4E257C1C33985500CB63FB /* MainWireframe.swift */,
 			);
 			path = "Main Window";
@@ -680,7 +680,7 @@
 				CA44E8E818CD1CDB007754C5 /* SCAccount.m in Sources */,
 				CA13F4D818CD80F20027B513 /* NSURL+NXOAuth2.m in Sources */,
 				CA5D7A2C18CEB7A8006E2401 /* NSImageView+AFNetworking.m in Sources */,
-				CA0423481B745CC2004513C6 /* FSHWindowPresenter.swift in Sources */,
+				CA0423481B745CC2004513C6 /* MainWindowPresenter.swift in Sources */,
 				CA13F4DA18CD80F20027B513 /* NXOAuth2Account.m in Sources */,
 				CA44E8E718CD1CDB007754C5 /* SCAccount+Private.m in Sources */,
 				CA04234B1B745CC2004513C6 /* FSHNowPlayingPresenter.m in Sources */,
