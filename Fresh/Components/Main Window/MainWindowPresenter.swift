@@ -1,5 +1,5 @@
 //
-//  FSHWindowPresenter.swift
+//  MainWindowPresenter.swift
 //  Fresh
 //
 //  Created by Brandon Evans on 2015-08-06.
@@ -9,7 +9,7 @@
 import Foundation
 import ReactiveCocoa
 
-class FSHWindowPresenter: NSObject, Presenter {
+class MainWindowPresenter: NSObject, Presenter {
     let view: NSWindowController
     let wireframe: MainWireframe
     let service: SoundCloudService

@@ -51,7 +51,7 @@ class MainWireframe: NSObject {
         listViewController.presenter = listPresenter
         windowController.listViewController = listViewController
 
-        let presenter = FSHWindowPresenter(view: windowController, wireframe: self, service: self.service)
+        let presenter = MainWindowPresenter(view: windowController, wireframe: self, service: self.service)
         self.service.accountObserverSet.add(presenter, presenter.dynamicType.accountChanged)
         windowController.presenter = presenter
 
