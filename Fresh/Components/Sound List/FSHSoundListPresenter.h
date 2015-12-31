@@ -13,12 +13,20 @@
 @protocol Presenter;
 @protocol FSHSoundListView;
 
+@protocol SelectedSoundDelegate <NSObject>
+- (void)selectedSoundChanged:(FSHSound *)sound;
+@end
+
 @interface FSHSoundListPresenter: NSObject <Presenter>
 
 @property (nonatomic, strong) SoundCloudService *service;
 @property (nonatomic, strong) id<FSHSoundListView> view;
+// TODO: Change this to an ObserverSet once converted to Swift
+@property (nonatomic, strong) NSMutableArray<id <SelectedSoundDelegate>> *selectedSoundDelegates;
 
 - (instancetype)initWithService:(SoundCloudService *)service;
+
+@property (nonatomic, strong) FSHSound *selectedSound;
 
 - (RACSignal *)updateSounds;
 - (RACSignal *)fetchNextSounds;

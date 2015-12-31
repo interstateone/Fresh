@@ -9,23 +9,20 @@
 import Foundation
 import ReactiveCocoa
 
-class MainWindowPresenter: NSObject, Presenter {
+class MainWindowPresenter: NSObject, Presenter, SelectedSoundDelegate {
     let view: NSWindowController
     let wireframe: MainWireframe
     let service: SoundCloudService
 
     func accountChanged(account: FSHAccount) {
-        self.nowPlayingPresenter = FSHNowPlayingPresenter(account: account)
-        self.soundListPresenter = FSHSoundListPresenter(service: service)
         account.soundcloudAccount != nil ? wireframe.presentSoundList() : wireframe.presentLogin()
     }
-    var nowPlayingPresenter: FSHNowPlayingPresenter
-    var soundListPresenter: FSHSoundListPresenter {
-        willSet {
-        self.willChangeValueForKey("soundListPresenter")
+    func selectedSoundChanged(sound: FSHSound?) {
+        if sound != nil {
+            wireframe.showNowPlaying()
         }
-        didSet {
-        self.didChangeValueForKey("soundListPresenter")
+        else {
+            wireframe.hideNowPlaying()
         }
     }
 
@@ -33,8 +30,6 @@ class MainWindowPresenter: NSObject, Presenter {
         self.view = view
         self.wireframe = wireframe
         self.service = service
-        self.nowPlayingPresenter = FSHNowPlayingPresenter(account: service.account)
-        self.soundListPresenter = FSHSoundListPresenter(service: service)
         super.init()
     }
 

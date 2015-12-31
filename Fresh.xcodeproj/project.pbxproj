@@ -66,6 +66,7 @@
 		CA5D7A2C18CEB7A8006E2401 /* NSImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D7A2B18CEB7A8006E2401 /* NSImageView+AFNetworking.m */; };
 		CAE5F49C18D14AFE00506613 /* NSImage+TintedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE5F49B18D14AFE00506613 /* NSImage+TintedImage.m */; };
 		CAE6846018CD3C4900F907A4 /* NSButton+RACProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE6845F18CD3C4900F907A4 /* NSButton+RACProperties.m */; };
+		CAF1E1B61C34DC1F00EDFC6A /* SoundListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1E1B51C34DC1F00EDFC6A /* SoundListPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -191,6 +192,7 @@
 		CAE5F49B18D14AFE00506613 /* NSImage+TintedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSImage+TintedImage.m"; path = "Categories/NSImage+TintedImage.m"; sourceTree = "<group>"; };
 		CAE6845E18CD3C4900F907A4 /* NSButton+RACProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSButton+RACProperties.h"; path = "Categories/NSButton+RACProperties.h"; sourceTree = "<group>"; };
 		CAE6845F18CD3C4900F907A4 /* NSButton+RACProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSButton+RACProperties.m"; path = "Categories/NSButton+RACProperties.m"; sourceTree = "<group>"; };
+		CAF1E1B51C34DC1F00EDFC6A /* SoundListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundListPresenter.swift; sourceTree = "<group>"; };
 		CB761C3110025D903468097C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -313,6 +315,7 @@
 				CA0423391B745CC2004513C6 /* FSHSoundCellView.m */,
 				CA04233A1B745CC2004513C6 /* FSHSoundListPresenter.h */,
 				CA04233B1B745CC2004513C6 /* FSHSoundListPresenter.m */,
+				CAF1E1B51C34DC1F00EDFC6A /* SoundListPresenter.swift */,
 				CA04233C1B745CC2004513C6 /* FSHSoundRowView.h */,
 				CA04233D1B745CC2004513C6 /* FSHSoundRowView.m */,
 				CA04233E1B745CC2004513C6 /* FSHSoundListView.xib */,
@@ -697,6 +700,7 @@
 				CA13F4E218CD80F20027B513 /* NXOAuth2Request.m in Sources */,
 				CA0423511B745CC2004513C6 /* FSHSoundRowView.m in Sources */,
 				CA5D7A2918CEB2F1006E2401 /* NSView+RACProperties.m in Sources */,
+				CAF1E1B61C34DC1F00EDFC6A /* SoundListPresenter.swift in Sources */,
 				CA04234D1B745CC2004513C6 /* FSHWaveformSliderCell.m in Sources */,
 				CA444E411C33B8DF00E0EA45 /* SoundListRowModel.swift in Sources */,
 				CA0423431B745CC2004513C6 /* FSHNoHitTextField.m in Sources */,

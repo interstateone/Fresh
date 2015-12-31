@@ -30,6 +30,7 @@
 
     _service = service;
     _sounds = [NSMutableArray array];
+    _selectedSoundDelegates = [NSMutableArray array];
 
     @weakify(self)
     [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"FSHSoundEndedNotification" object:nil] takeUntil:[self rac_willDeallocSignal]] subscribeNext:^(NSNotification *note) {
@@ -70,11 +71,12 @@
 }
 
 - (void)selectSoundAtIndex:(NSInteger)index {
-    self.service.account.selectedSound = [self soundAtIndex:index];
+    self.selectedSound = [self soundAtIndex:index];
+    [self.selectedSoundDelegates makeObjectsPerformSelector:@selector(selectedSoundChanged:) withObject:self.selectedSound];
 }
 
 - (NSInteger)indexOfSelectedSound {
-    return [self.service.account.sounds indexOfObject:self.service.account.selectedSound];
+    return [self.service.account.sounds indexOfObject:self.selectedSound];
 }
 
 #pragma mark Presenter
