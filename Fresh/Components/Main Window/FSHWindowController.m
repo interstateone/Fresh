@@ -21,12 +21,6 @@
 
 - (void)windowDidLoad {
     self.window.title = @"Fresh";
-
-    // Setup bindings
-    [RACObserve(self, presenter.service.account.selectedSound) subscribeNext:^(FSHSound *sound) {
-        sound ? [self revealNowPlayingView] : [self hideNowPlayingView];
-    }];
-
     [self.presenter initializeView];
 }
 

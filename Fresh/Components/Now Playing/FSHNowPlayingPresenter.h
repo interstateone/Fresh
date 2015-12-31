@@ -7,12 +7,13 @@
 //
 
 #import "FSHSound.h"
+#import "FSHSoundListPresenter.h"
 
 @class RACCommand;
 @class FSHAccount;
 @class FSHWaveform;
 
-@interface FSHNowPlayingPresenter : NSObject
+@interface FSHNowPlayingPresenter : NSObject <SelectedSoundDelegate>
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *author;
@@ -32,8 +33,10 @@
 
 @property (nonatomic, strong) NSViewController *view;
 
-- (instancetype)initWithAccount:(FSHAccount *)account;
+@property (nonatomic, strong) FSHSound *sound;
 
 - (void)seekToProgress:(NSNumber *)progress;
+
+- (void)selectedSoundChanged:(FSHSound *)sound;
 
 @end

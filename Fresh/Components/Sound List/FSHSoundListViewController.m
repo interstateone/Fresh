@@ -37,7 +37,7 @@
     [self.tableView setDoubleAction:@selector(rowWasDoubleClicked)];
 
     @weakify(self)
-    [RACObserve(self, presenter.service.account.selectedSound) subscribeNext:^(id x) {
+    [RACObserve(self, presenter.selectedSound) subscribeNext:^(id x) {
         @strongify(self);
         NSIndexSet *selectedRowIndexes = self.tableView.selectedRowIndexes;
         [self.tableView reloadData];

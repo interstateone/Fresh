@@ -39,20 +39,22 @@ class MainWireframe: NSObject {
 
         windowController.loginViewController = self.loginViewController
 
-        let nowPlayingViewController = FSHNowPlayingViewController(nibName: "FSHNowPlayingView", bundle: nil)!
-        let nowPlayingPresenter = FSHNowPlayingPresenter(account: self.service.account)
-        nowPlayingPresenter.view = nowPlayingViewController
-        nowPlayingViewController.presenter = nowPlayingPresenter
-        windowController.nowPlayingViewController = nowPlayingViewController
-
         let listViewController = FSHSoundListViewController(nibName: "FSHSoundListView", bundle: nil)!
         let listPresenter = FSHSoundListPresenter(service: self.service)
         listPresenter.view = listViewController
         listViewController.presenter = listPresenter
         windowController.listViewController = listViewController
 
+        let nowPlayingViewController = FSHNowPlayingViewController(nibName: "FSHNowPlayingView", bundle: nil)!
+        let nowPlayingPresenter = FSHNowPlayingPresenter()
+        nowPlayingPresenter.view = nowPlayingViewController
+        nowPlayingViewController.presenter = nowPlayingPresenter
+        listPresenter.selectedSoundDelegates?.addObject(nowPlayingPresenter)
+        windowController.nowPlayingViewController = nowPlayingViewController
+
         let presenter = MainWindowPresenter(view: windowController, wireframe: self, service: self.service)
         self.service.accountObserverSet.add(presenter, presenter.dynamicType.accountChanged)
+        listPresenter.selectedSoundDelegates?.addObject(presenter)
         windowController.presenter = presenter
 
         return windowController

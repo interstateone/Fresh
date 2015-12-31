@@ -16,7 +16,6 @@
 
 @interface FSHNowPlayingPresenter () <STKAudioPlayerDelegate>
 
-@property (nonatomic, strong) FSHAccount *account;
 @property (nonatomic, strong) STKAudioPlayer *audioPlayer;
 @property (nonatomic, strong) NSTimer *tickTimer;
 
@@ -24,15 +23,11 @@
 
 @implementation FSHNowPlayingPresenter
 
-- (instancetype)initWithAccount:(FSHAccount *)account {
-    self = [super init];
-    if (!self) return nil;
-    if (!account) return self;
+- (void)setSound:(FSHSound *)sound {
+    _sound = sound;
 
     _audioPlayer = [[STKAudioPlayer alloc] init];
     _audioPlayer.delegate = self;
-
-    _account = account;
 
     RAC(self, playing) = [RACObserve(self, audioPlayer.state) map:^id(NSNumber *state){
         return @([state integerValue] == STKAudioPlayerStatePlaying);
@@ -42,19 +37,19 @@
         return @([state integerValue] == STKAudioPlayerStateBuffering);
     }];
 
-    RAC(self, permalinkURL) = RACObserve(self, account.selectedSound.permalinkURL);
+    RAC(self, permalinkURL) = RACObserve(self, sound.permalinkURL);
 
-    RAC(self, title) = RACObserve(self, account.selectedSound.title);
+    RAC(self, title) = RACObserve(self, sound.title);
 
-    RAC(self, author) = RACObserve(self, account.selectedSound.author);
+    RAC(self, author) = RACObserve(self, sound.author);
 
-    RAC(self, waveform) = [RACObserve(self, account.selectedSound) flattenMap:^RACStream *(FSHSound *sound) {
+    RAC(self, waveform) = [RACObserve(self, sound) flattenMap:^RACStream *(FSHSound *sound) {
         return [sound fetchWaveform];
     }];
 
-    RAC(self, favorite, @NO) = RACObserve(self, account.selectedSound.favorite);
+    RAC(self, favorite, @NO) = RACObserve(self, sound.favorite);
 
-    [RACObserve(self, account.selectedSound) subscribeNext:^(FSHSound *sound) {
+    [RACObserve(self, sound) subscribeNext:^(FSHSound *sound) {
         if (sound && !sound.streamable) return;
 
         if (!sound) {
@@ -71,7 +66,7 @@
         }];
     }];
 
-    RAC(self, hidden, @YES) = [RACObserve(self, account.selectedSound) map:^id(FSHSound *sound) {
+    RAC(self, hidden, @YES) = [RACObserve(self, sound) map:^id(FSHSound *sound) {
         return @(!sound);
     }];
 
@@ -85,7 +80,7 @@
 
     // Setup commands
     _toggleCurrentSound = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        if (!self.account.selectedSound) return [RACSignal empty];
+        if (!self.sound) return [RACSignal empty];
         if (self.audioPlayer.state == STKAudioPlayerStatePlaying) {
             [self.audioPlayer pause];
         }
@@ -96,11 +91,9 @@
     }];
 
     _toggleFavorite = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        [self.account.selectedSound toggleFavorite];
+        [self.sound toggleFavorite];
         return [RACSignal empty];
     }];
-
-    return self;
 }
 
 - (void)dealloc {
@@ -128,12 +121,12 @@
 #pragma mark - STKAudioPlayerDelegate
 
 - (void)audioPlayer:(STKAudioPlayer *)audioPlayer unexpectedError:(STKAudioPlayerErrorCode)errorCode {
-    NSLog(@"StreamingKit unexpected error: %d", errorCode);
+    NSLog(@"StreamingKit unexpected error: %ld", (long)errorCode);
 }
 
 - (void)audioPlayer:(STKAudioPlayer*)audioPlayer didFinishPlayingQueueItemId:(NSObject*)queueItemId withReason:(STKAudioPlayerStopReason)stopReason andProgress:(double)progress andDuration:(double)duration {
     if (stopReason == STKAudioPlayerStopReasonEof) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"FSHSoundEndedNotification" object:self.account.selectedSound userInfo:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"FSHSoundEndedNotification" object:self.sound userInfo:nil];
     }
 }
 
@@ -147,6 +140,10 @@
 
 - (void)audioPlayer:(STKAudioPlayer*)audioPlayer stateChanged:(STKAudioPlayerState)state previousState:(STKAudioPlayerState)previousState {
 
+}
+
+- (void)selectedSoundChanged:(FSHSound *)sound {
+    self.sound = sound;
 }
 
 @end
