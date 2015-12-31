@@ -9,6 +9,6 @@
 import Foundation
 
 class SoundListRowModel: NSObject {
-    let title: String = ""
-    let author: String = ""
+    var title: String = ""
+    var author: String = ""
 }

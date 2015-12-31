@@ -12,6 +12,4 @@
 
 @property (nonatomic, strong) FSHNowPlayingPresenter *presenter;
 
-- (instancetype)initWithPresenter:(FSHNowPlayingPresenter *)presenter;
-
 @end

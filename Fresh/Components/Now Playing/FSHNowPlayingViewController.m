@@ -31,15 +31,6 @@
 
 @implementation FSHNowPlayingViewController
 
-- (instancetype)initWithPresenter:(FSHNowPlayingPresenter *)presenter {
-    self = [super initWithNibName:@"FSHNowPlayingView" bundle:nil];
-    if (!self) return nil;
-
-    _presenter = presenter;
-
-    return self;
-}
-
 - (void)loadView {
     [super loadView];
     

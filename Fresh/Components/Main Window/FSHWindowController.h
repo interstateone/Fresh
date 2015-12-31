@@ -7,9 +7,21 @@
 //
 
 @class FSHWindowPresenter;
+@class FSHLoginViewController;
+@class FSHSoundListViewController;
+@class FSHNowPlayingViewController;
 
 @interface FSHWindowController : NSWindowController
 
 @property (nonatomic, strong) FSHWindowPresenter *presenter;
+
+@property (nonatomic, strong) FSHLoginViewController *loginViewController;
+@property (nonatomic, strong) FSHSoundListViewController *listViewController;
+@property (nonatomic, strong) FSHNowPlayingViewController *nowPlayingViewController;
+
+- (void)revealNowPlayingView;
+- (void)hideNowPlayingView;
+- (void)transitionToSoundList;
+- (void)transitionToLogin;
 
 @end
