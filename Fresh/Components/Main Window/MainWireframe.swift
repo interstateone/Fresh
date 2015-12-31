@@ -34,12 +34,12 @@ class MainWireframe: NSObject {
 
     // MARK: Constructors
 
-    lazy var windowController: FSHWindowController = {
-        let windowController = FSHWindowController(windowNibName: "FSHWindow")
+    lazy var windowController: MainWindowController = {
+        let windowController = MainWindowController(windowNibName: "MainWindow")
 
         windowController.loginViewController = self.loginViewController
 
-        let listViewController = FSHSoundListViewController(nibName: "FSHSoundListView", bundle: nil)!
+        let listViewController = SoundListViewController(nibName: "SoundListView", bundle: nil)!
         let listPresenter = FSHSoundListPresenter(service: self.service)
         listPresenter.view = listViewController
         listViewController.presenter = listPresenter

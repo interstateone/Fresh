@@ -8,8 +8,6 @@
 
 #import "FSHAppDelegate.h"
 #import "SCSoundCloud.h"
-#import "FSHAccount.h"
-#import "FSHWindowController.h"
 #import "Fresh-Swift.h"
 
 @interface FSHAppDelegate ()

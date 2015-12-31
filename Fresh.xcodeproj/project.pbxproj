@@ -13,8 +13,7 @@
 		CA0423431B745CC2004513C6 /* FSHNoHitTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0423221B745CC2004513C6 /* FSHNoHitTextField.m */; };
 		CA0423441B745CC2004513C6 /* FSHLoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA0423251B745CC2004513C6 /* FSHLoginView.xib */; };
 		CA0423451B745CC2004513C6 /* FSHLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0423261B745CC2004513C6 /* FSHLoginViewController.swift */; };
-		CA0423461B745CC2004513C6 /* FSHWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA0423281B745CC2004513C6 /* FSHWindow.xib */; };
-		CA0423471B745CC2004513C6 /* FSHWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA04232A1B745CC2004513C6 /* FSHWindowController.m */; };
+		CA0423461B745CC2004513C6 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA0423281B745CC2004513C6 /* MainWindow.xib */; };
 		CA0423481B745CC2004513C6 /* MainWindowPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA04232B1B745CC2004513C6 /* MainWindowPresenter.swift */; };
 		CA0423491B745CC2004513C6 /* FSHNowPlayingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA04232D1B745CC2004513C6 /* FSHNowPlayingView.xib */; };
 		CA04234A1B745CC2004513C6 /* FSHNowPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA04232F1B745CC2004513C6 /* FSHNowPlayingViewController.m */; };
@@ -25,8 +24,7 @@
 		CA04234F1B745CC2004513C6 /* FSHSoundCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0423391B745CC2004513C6 /* FSHSoundCellView.m */; };
 		CA0423501B745CC2004513C6 /* FSHSoundListPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = CA04233B1B745CC2004513C6 /* FSHSoundListPresenter.m */; };
 		CA0423511B745CC2004513C6 /* FSHSoundRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA04233D1B745CC2004513C6 /* FSHSoundRowView.m */; };
-		CA0423521B745CC2004513C6 /* FSHSoundListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA04233E1B745CC2004513C6 /* FSHSoundListView.xib */; };
-		CA0423531B745CC2004513C6 /* FSHSoundListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0423401B745CC2004513C6 /* FSHSoundListViewController.m */; };
+		CA0423521B745CC2004513C6 /* SoundListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA04233E1B745CC2004513C6 /* SoundListView.xib */; };
 		CA13F4D618CD80F20027B513 /* NSData+NXOAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = CA13F4B718CD80F20027B513 /* NSData+NXOAuth2.m */; };
 		CA13F4D718CD80F20027B513 /* NSString+NXOAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = CA13F4B918CD80F20027B513 /* NSString+NXOAuth2.m */; };
 		CA13F4D818CD80F20027B513 /* NSURL+NXOAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = CA13F4BB18CD80F20027B513 /* NSURL+NXOAuth2.m */; };
@@ -67,6 +65,8 @@
 		CAE5F49C18D14AFE00506613 /* NSImage+TintedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE5F49B18D14AFE00506613 /* NSImage+TintedImage.m */; };
 		CAE6846018CD3C4900F907A4 /* NSButton+RACProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE6845F18CD3C4900F907A4 /* NSButton+RACProperties.m */; };
 		CAF1E1B61C34DC1F00EDFC6A /* SoundListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1E1B51C34DC1F00EDFC6A /* SoundListPresenter.swift */; };
+		CAF1E1B81C34E01200EDFC6A /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1E1B71C34E01200EDFC6A /* MainWindowController.swift */; };
+		CAF1E1BA1C34E2E900EDFC6A /* SoundListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1E1B91C34E2E900EDFC6A /* SoundListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,9 +90,7 @@
 		CA0423221B745CC2004513C6 /* FSHNoHitTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHNoHitTextField.m; sourceTree = "<group>"; };
 		CA0423251B745CC2004513C6 /* FSHLoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSHLoginView.xib; sourceTree = "<group>"; };
 		CA0423261B745CC2004513C6 /* FSHLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSHLoginViewController.swift; sourceTree = "<group>"; };
-		CA0423281B745CC2004513C6 /* FSHWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSHWindow.xib; sourceTree = "<group>"; };
-		CA0423291B745CC2004513C6 /* FSHWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHWindowController.h; sourceTree = "<group>"; };
-		CA04232A1B745CC2004513C6 /* FSHWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHWindowController.m; sourceTree = "<group>"; };
+		CA0423281B745CC2004513C6 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		CA04232B1B745CC2004513C6 /* MainWindowPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowPresenter.swift; sourceTree = "<group>"; };
 		CA04232D1B745CC2004513C6 /* FSHNowPlayingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSHNowPlayingView.xib; sourceTree = "<group>"; };
 		CA04232E1B745CC2004513C6 /* FSHNowPlayingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHNowPlayingViewController.h; sourceTree = "<group>"; };
@@ -110,9 +108,7 @@
 		CA04233B1B745CC2004513C6 /* FSHSoundListPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHSoundListPresenter.m; sourceTree = "<group>"; };
 		CA04233C1B745CC2004513C6 /* FSHSoundRowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHSoundRowView.h; sourceTree = "<group>"; };
 		CA04233D1B745CC2004513C6 /* FSHSoundRowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHSoundRowView.m; sourceTree = "<group>"; };
-		CA04233E1B745CC2004513C6 /* FSHSoundListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSHSoundListView.xib; sourceTree = "<group>"; };
-		CA04233F1B745CC2004513C6 /* FSHSoundListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHSoundListViewController.h; sourceTree = "<group>"; };
-		CA0423401B745CC2004513C6 /* FSHSoundListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHSoundListViewController.m; sourceTree = "<group>"; };
+		CA04233E1B745CC2004513C6 /* SoundListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SoundListView.xib; sourceTree = "<group>"; };
 		CA13F4B618CD80F20027B513 /* NSData+NXOAuth2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+NXOAuth2.h"; sourceTree = "<group>"; };
 		CA13F4B718CD80F20027B513 /* NSData+NXOAuth2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+NXOAuth2.m"; sourceTree = "<group>"; };
 		CA13F4B818CD80F20027B513 /* NSString+NXOAuth2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NXOAuth2.h"; sourceTree = "<group>"; };
@@ -193,6 +189,8 @@
 		CAE6845E18CD3C4900F907A4 /* NSButton+RACProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSButton+RACProperties.h"; path = "Categories/NSButton+RACProperties.h"; sourceTree = "<group>"; };
 		CAE6845F18CD3C4900F907A4 /* NSButton+RACProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSButton+RACProperties.m"; path = "Categories/NSButton+RACProperties.m"; sourceTree = "<group>"; };
 		CAF1E1B51C34DC1F00EDFC6A /* SoundListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundListPresenter.swift; sourceTree = "<group>"; };
+		CAF1E1B71C34E01200EDFC6A /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		CAF1E1B91C34E2E900EDFC6A /* SoundListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundListViewController.swift; sourceTree = "<group>"; };
 		CB761C3110025D903468097C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -282,9 +280,8 @@
 		CA0423271B745CC2004513C6 /* Main Window */ = {
 			isa = PBXGroup;
 			children = (
-				CA0423281B745CC2004513C6 /* FSHWindow.xib */,
-				CA0423291B745CC2004513C6 /* FSHWindowController.h */,
-				CA04232A1B745CC2004513C6 /* FSHWindowController.m */,
+				CA0423281B745CC2004513C6 /* MainWindow.xib */,
+				CAF1E1B71C34E01200EDFC6A /* MainWindowController.swift */,
 				CA04232B1B745CC2004513C6 /* MainWindowPresenter.swift */,
 				CA4E257C1C33985500CB63FB /* MainWireframe.swift */,
 			);
@@ -318,9 +315,8 @@
 				CAF1E1B51C34DC1F00EDFC6A /* SoundListPresenter.swift */,
 				CA04233C1B745CC2004513C6 /* FSHSoundRowView.h */,
 				CA04233D1B745CC2004513C6 /* FSHSoundRowView.m */,
-				CA04233E1B745CC2004513C6 /* FSHSoundListView.xib */,
-				CA04233F1B745CC2004513C6 /* FSHSoundListViewController.h */,
-				CA0423401B745CC2004513C6 /* FSHSoundListViewController.m */,
+				CA04233E1B745CC2004513C6 /* SoundListView.xib */,
+				CAF1E1B91C34E2E900EDFC6A /* SoundListViewController.swift */,
 				CA444E401C33B8DF00E0EA45 /* SoundListRowModel.swift */,
 			);
 			path = "Sound List";
@@ -594,14 +590,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA0423521B745CC2004513C6 /* FSHSoundListView.xib in Resources */,
+				CA0423521B745CC2004513C6 /* SoundListView.xib in Resources */,
 				CA0423441B745CC2004513C6 /* FSHLoginView.xib in Resources */,
 				CA0423491B745CC2004513C6 /* FSHNowPlayingView.xib in Resources */,
 				CA44E8A618CD1AA2007754C5 /* InfoPlist.strings in Resources */,
 				CA44E8B418CD1AA2007754C5 /* Images.xcassets in Resources */,
 				CA44E8AC18CD1AA2007754C5 /* Credits.rtf in Resources */,
 				CA44E8B218CD1AA2007754C5 /* MainMenu.xib in Resources */,
-				CA0423461B745CC2004513C6 /* FSHWindow.xib in Resources */,
+				CA0423461B745CC2004513C6 /* MainWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -671,6 +667,7 @@
 				CA04234A1B745CC2004513C6 /* FSHNowPlayingViewController.m in Sources */,
 				CA44E8EB18CD1CDB007754C5 /* SCSoundCloud+Private.m in Sources */,
 				CA0423411B745CC2004513C6 /* FSHAccount.m in Sources */,
+				CAF1E1BA1C34E2E900EDFC6A /* SoundListViewController.swift in Sources */,
 				CA13F4D618CD80F20027B513 /* NSData+NXOAuth2.m in Sources */,
 				CA44E8E918CD1CDB007754C5 /* SCConstants.m in Sources */,
 				CAE6846018CD3C4900F907A4 /* NSButton+RACProperties.m in Sources */,
@@ -680,6 +677,7 @@
 				CA444E431C34D12E00E0EA45 /* Presenter.swift in Sources */,
 				CA13F4DD18CD80F20027B513 /* NXOAuth2Connection.m in Sources */,
 				CA44E8AF18CD1AA2007754C5 /* FSHAppDelegate.m in Sources */,
+				CAF1E1B81C34E01200EDFC6A /* MainWindowController.swift in Sources */,
 				CA44E8E818CD1CDB007754C5 /* SCAccount.m in Sources */,
 				CA13F4D818CD80F20027B513 /* NSURL+NXOAuth2.m in Sources */,
 				CA5D7A2C18CEB7A8006E2401 /* NSImageView+AFNetworking.m in Sources */,
@@ -689,7 +687,6 @@
 				CA04234B1B745CC2004513C6 /* FSHNowPlayingPresenter.m in Sources */,
 				CA44E8EC18CD1CDB007754C5 /* SCSoundCloud.m in Sources */,
 				CA0423451B745CC2004513C6 /* FSHLoginViewController.swift in Sources */,
-				CA0423471B745CC2004513C6 /* FSHWindowController.m in Sources */,
 				CA4E257F1C339D6000CB63FB /* SoundCloudService.swift in Sources */,
 				CA13F4DF18CD80F20027B513 /* NXOAuth2FileStreamWrapper.m in Sources */,
 				CA444E3F1C33AF7D00E0EA45 /* ObserverSet.swift in Sources */,
@@ -712,7 +709,6 @@
 				CA13F4D718CD80F20027B513 /* NSString+NXOAuth2.m in Sources */,
 				CA04234F1B745CC2004513C6 /* FSHSoundCellView.m in Sources */,
 				CA13F4DB18CD80F20027B513 /* NXOAuth2AccountStore.m in Sources */,
-				CA0423531B745CC2004513C6 /* FSHSoundListViewController.m in Sources */,
 				CA13F4DE18CD80F20027B513 /* NXOAuth2Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
