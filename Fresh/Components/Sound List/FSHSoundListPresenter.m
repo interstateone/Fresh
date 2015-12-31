@@ -12,26 +12,34 @@
 
 #import "FSHAccount.h"
 #import "FSHSound.h"
+#import "Fresh-Swift.h"
+
+@interface FSHSoundListPresenter ()
+
+@property (strong, nonatomic) NSMutableArray<FSHSound *> *sounds;
+
+@end
 
 @implementation FSHSoundListPresenter
 
-- (instancetype)initWithAccount:(FSHAccount *)account {
+- (instancetype)initWithService:(SoundCloudService *)service {
     self = [super init];
     if (!self) return nil;
-    if (!account) return self;
+    if (!service) return self;
 
-    _account = account;
-
-    RAC(self, numberOfSounds) = [RACObserve(self, account.sounds) map:^id(NSArray *sounds) {
+    RAC(self, numberOfSounds) = [RACObserve(self, sounds) map:^id(NSArray *sounds) {
         return @([sounds count]);
     }];
+
+    _service = service;
+    _sounds = [NSMutableArray array];
 
     @weakify(self)
     [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:@"FSHSoundEndedNotification" object:nil] takeUntil:[self rac_willDeallocSignal]] subscribeNext:^(NSNotification *note) {
         @strongify(self)
-        NSInteger index = [self.account.sounds indexOfObject:note.object];
+        NSInteger index = [self.service.account.sounds indexOfObject:note.object];
 
-        if (index == self.account.sounds.count - 1) {
+        if (index == self.service.account.sounds.count - 1) {
             @weakify(self)
             [[self fetchNextSounds] subscribeNext:^(id x) {
                 @strongify(self)
@@ -48,32 +56,28 @@
 
 - (FSHSound *)soundAtIndex:(NSInteger)index {
     // Returning nil as opposed to constraining to the list which would loop the last track
-    if (index < 0 || index > ([self.account.sounds count] - 1)) return nil;
-    return self.account.sounds[index];
-}
-
-- (NSString *)titleForSoundAtIndex:(NSInteger)index {
-    return [self soundAtIndex:index].title;
-}
-
-- (NSString *)authorForSoundAtIndex:(NSInteger)index {
-    return [self soundAtIndex:index].author;
+    if (index < 0 || index > ([self.sounds count] - 1)) return nil;
+    return self.sounds[index];
 }
 
 - (RACSignal *)updateSounds {
-    return [self.account updateSounds];
+    RACSignal *signal = [self.service updateSounds];
+    [signal subscribeNext:^(id x) {
+        self.sounds = x;
+    }];
+    return signal;
 }
 
 - (RACSignal *)fetchNextSounds {
-    return [self.account fetchNextSounds];
+    return [self.service fetchNextSounds];
 }
 
 - (void)selectSoundAtIndex:(NSInteger)index {
-    self.account.selectedSound = [self soundAtIndex:index];
+    self.service.account.selectedSound = [self soundAtIndex:index];
 }
 
 - (NSInteger)indexOfSelectedSound {
-    return [self.account.sounds indexOfObject:self.account.selectedSound];
+    return [self.service.account.sounds indexOfObject:self.service.account.selectedSound];
 }
 
 @end

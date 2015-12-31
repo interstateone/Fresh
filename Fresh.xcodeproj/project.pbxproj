@@ -40,6 +40,8 @@
 		CA13F4E018CD80F20027B513 /* NXOAuth2PostBodyPart.m in Sources */ = {isa = PBXBuildFile; fileRef = CA13F4D018CD80F20027B513 /* NXOAuth2PostBodyPart.m */; };
 		CA13F4E118CD80F20027B513 /* NXOAuth2PostBodyStream.m in Sources */ = {isa = PBXBuildFile; fileRef = CA13F4D218CD80F20027B513 /* NXOAuth2PostBodyStream.m */; };
 		CA13F4E218CD80F20027B513 /* NXOAuth2Request.m in Sources */ = {isa = PBXBuildFile; fileRef = CA13F4D418CD80F20027B513 /* NXOAuth2Request.m */; };
+		CA444E3F1C33AF7D00E0EA45 /* ObserverSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA444E3E1C33AF7D00E0EA45 /* ObserverSet.swift */; };
+		CA444E411C33B8DF00E0EA45 /* SoundListRowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA444E401C33B8DF00E0EA45 /* SoundListRowModel.swift */; };
 		CA44E89C18CD1AA2007754C5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA44E89B18CD1AA2007754C5 /* Cocoa.framework */; };
 		CA44E8A618CD1AA2007754C5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA44E8A418CD1AA2007754C5 /* InfoPlist.strings */; };
 		CA44E8A818CD1AA2007754C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CA44E8A718CD1AA2007754C5 /* main.m */; };
@@ -58,6 +60,7 @@
 		CA44E8EB18CD1CDB007754C5 /* SCSoundCloud+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = CA44E8E318CD1CDB007754C5 /* SCSoundCloud+Private.m */; };
 		CA44E8EC18CD1CDB007754C5 /* SCSoundCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = CA44E8E518CD1CDB007754C5 /* SCSoundCloud.m */; };
 		CA4E257D1C33985500CB63FB /* MainWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4E257C1C33985500CB63FB /* MainWireframe.swift */; };
+		CA4E257F1C339D6000CB63FB /* SoundCloudService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4E257E1C339D6000CB63FB /* SoundCloudService.swift */; };
 		CA5D7A2918CEB2F1006E2401 /* NSView+RACProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D7A2818CEB2F1006E2401 /* NSView+RACProperties.m */; };
 		CA5D7A2C18CEB7A8006E2401 /* NSImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D7A2B18CEB7A8006E2401 /* NSImageView+AFNetworking.m */; };
 		CAE5F49C18D14AFE00506613 /* NSImage+TintedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE5F49B18D14AFE00506613 /* NSImage+TintedImage.m */; };
@@ -139,6 +142,8 @@
 		CA13F4D318CD80F20027B513 /* NXOAuth2Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXOAuth2Request.h; sourceTree = "<group>"; };
 		CA13F4D418CD80F20027B513 /* NXOAuth2Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXOAuth2Request.m; sourceTree = "<group>"; };
 		CA13F4D518CD80F20027B513 /* NXOAuth2TrustDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXOAuth2TrustDelegate.h; sourceTree = "<group>"; };
+		CA444E3E1C33AF7D00E0EA45 /* ObserverSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserverSet.swift; sourceTree = "<group>"; };
+		CA444E401C33B8DF00E0EA45 /* SoundListRowModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundListRowModel.swift; sourceTree = "<group>"; };
 		CA44E89818CD1AA2007754C5 /* Fresh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fresh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA44E89B18CD1AA2007754C5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		CA44E89E18CD1AA2007754C5 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -174,6 +179,7 @@
 		CA44E8E618CD1CDB007754C5 /* SCSoundCloudAPI-Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SCSoundCloudAPI-Private.h"; sourceTree = "<group>"; };
 		CA44E8ED18CD22FD007754C5 /* Fresh.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Fresh.entitlements; sourceTree = "<group>"; };
 		CA4E257C1C33985500CB63FB /* MainWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWireframe.swift; sourceTree = "<group>"; };
+		CA4E257E1C339D6000CB63FB /* SoundCloudService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundCloudService.swift; sourceTree = "<group>"; };
 		CA5B3D921B72DD40002BB59B /* Fresh-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Fresh-Bridging-Header.h"; sourceTree = "<group>"; };
 		CA5D7A2718CEB2F1006E2401 /* NSView+RACProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSView+RACProperties.h"; path = "Categories/NSView+RACProperties.h"; sourceTree = "<group>"; };
 		CA5D7A2818CEB2F1006E2401 /* NSView+RACProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSView+RACProperties.m"; path = "Categories/NSView+RACProperties.m"; sourceTree = "<group>"; };
@@ -222,6 +228,7 @@
 			children = (
 				CA04231B1B745CC2004513C6 /* Models */,
 				CA0423201B745CC2004513C6 /* Views */,
+				CA444E3E1C33AF7D00E0EA45 /* ObserverSet.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -233,6 +240,7 @@
 				CA04231D1B745CC2004513C6 /* FSHAccount.m */,
 				CA04231E1B745CC2004513C6 /* FSHSound.h */,
 				CA04231F1B745CC2004513C6 /* FSHSound.m */,
+				CA4E257E1C339D6000CB63FB /* SoundCloudService.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -307,6 +315,7 @@
 				CA04233E1B745CC2004513C6 /* FSHSoundListView.xib */,
 				CA04233F1B745CC2004513C6 /* FSHSoundListViewController.h */,
 				CA0423401B745CC2004513C6 /* FSHSoundListViewController.m */,
+				CA444E401C33B8DF00E0EA45 /* SoundListRowModel.swift */,
 			);
 			path = "Sound List";
 			sourceTree = "<group>";
@@ -539,6 +548,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = FSH;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Brandon Evans";
 				TargetAttributes = {
@@ -673,7 +683,9 @@
 				CA44E8EC18CD1CDB007754C5 /* SCSoundCloud.m in Sources */,
 				CA0423451B745CC2004513C6 /* FSHLoginViewController.swift in Sources */,
 				CA0423471B745CC2004513C6 /* FSHWindowController.m in Sources */,
+				CA4E257F1C339D6000CB63FB /* SoundCloudService.swift in Sources */,
 				CA13F4DF18CD80F20027B513 /* NXOAuth2FileStreamWrapper.m in Sources */,
+				CA444E3F1C33AF7D00E0EA45 /* ObserverSet.swift in Sources */,
 				CA44E8EA18CD1CDB007754C5 /* SCRequest.m in Sources */,
 				CA13F4D918CD80F20027B513 /* NXOAuth2AccessToken.m in Sources */,
 				CA04234E1B745CC2004513C6 /* FSHWaveformSliderView.m in Sources */,
@@ -682,6 +694,7 @@
 				CA0423511B745CC2004513C6 /* FSHSoundRowView.m in Sources */,
 				CA5D7A2918CEB2F1006E2401 /* NSView+RACProperties.m in Sources */,
 				CA04234D1B745CC2004513C6 /* FSHWaveformSliderCell.m in Sources */,
+				CA444E411C33B8DF00E0EA45 /* SoundListRowModel.swift in Sources */,
 				CA0423431B745CC2004513C6 /* FSHNoHitTextField.m in Sources */,
 				CA0423501B745CC2004513C6 /* FSHSoundListPresenter.m in Sources */,
 				CA13F4DC18CD80F20027B513 /* NXOAuth2Client.m in Sources */,

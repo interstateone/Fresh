@@ -7,9 +7,13 @@
 //
 
 class MainWireframe: NSObject {
+    let service = SoundCloudService()
+
     lazy var windowController: FSHWindowController = {
         let windowController = FSHWindowController(windowNibName: "FSHWindow")
-        windowController.presenter = FSHWindowPresenter(account: FSHAccount.currentAccount())
+        let presenter = FSHWindowPresenter(wireframe: self, service: self.service)
+        self.service.accountObserverSet.add(presenter, presenter.dynamicType.accountChanged)
+        windowController.presenter = presenter
         return windowController
     }()
 

@@ -45,11 +45,11 @@
         self.listViewController.presenter = presenter;
     }];
 
-    [RACObserve(self, presenter.account.selectedSound) subscribeNext:^(FSHSound *sound) {
+    [RACObserve(self, presenter.service.account.selectedSound) subscribeNext:^(FSHSound *sound) {
         sound ? [self revealNowPlayingView] : [self hideNowPlayingView];
     }];
 
-    RAC(self, window.contentView) = [RACObserve(self, presenter.account.isLoggedIn) map:^NSView *(NSNumber *loggedIn) {
+    RAC(self, window.contentView) = [RACObserve(self, presenter.service.loggedIn) map:^NSView *(NSNumber *loggedIn) {
         return loggedIn.boolValue ? self.listViewController.view : self.loginViewController.view;
     }];
 }

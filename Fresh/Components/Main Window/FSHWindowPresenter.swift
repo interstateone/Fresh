@@ -10,25 +10,28 @@ import Foundation
 import ReactiveCocoa
 
 class FSHWindowPresenter: NSObject {
-    var account: FSHAccount {
-        didSet {
-            self.nowPlayingPresenter = FSHNowPlayingPresenter(account: account)
-            self.soundListPresenter = FSHSoundListPresenter(account: account)
-        }
+    let wireframe: MainWireframe
+    let service: SoundCloudService
+
+    func accountChanged(account: FSHAccount) {
+        self.nowPlayingPresenter = FSHNowPlayingPresenter(account: account)
+        self.soundListPresenter = FSHSoundListPresenter(service: service)
     }
     var nowPlayingPresenter: FSHNowPlayingPresenter
-    var soundListPresenter: FSHSoundListPresenter
-
-    init(account: FSHAccount) {
-        self.account = account
-        self.nowPlayingPresenter = FSHNowPlayingPresenter(account: account)
-        self.soundListPresenter = FSHSoundListPresenter(account: account)
-        super.init()
-
-        NSNotificationCenter.defaultCenter().rac_addObserverForName("FSHSoundCloudUserDidAuthenticate", object: nil).subscribeNext { [weak self] (_) -> Void in
-            if let _self = self {
-                _self.account = FSHAccount.currentAccount()
-            }
+    var soundListPresenter: FSHSoundListPresenter {
+        willSet {
+        self.willChangeValueForKey("soundListPresenter")
         }
+        didSet {
+        self.didChangeValueForKey("soundListPresenter")
+        }
+    }
+
+    init(wireframe: MainWireframe, service: SoundCloudService) {
+        self.wireframe = wireframe
+        self.service = service
+        self.nowPlayingPresenter = FSHNowPlayingPresenter(account: service.account)
+        self.soundListPresenter = FSHSoundListPresenter(service: service)
+        super.init()
     }
 }

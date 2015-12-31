@@ -10,6 +10,7 @@ import Cocoa
 
 class FSHLoginViewController: NSViewController {
     @IBAction func login(sender: AnyObject) {
-        FSHAccount.currentAccount().logIn()
+        // TODO: Use presenter's service to log in
+        SoundCloudService().logIn()
     }
 }
