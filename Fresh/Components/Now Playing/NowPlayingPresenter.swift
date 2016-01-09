@@ -8,18 +8,19 @@
 
 import Foundation
 
-@objc class NowPlayingPresenter: NSObject, Presenter, SelectedSoundDelegate, STKAudioPlayerDelegate {
+class NowPlayingPresenter: NSObject, Presenter, SelectedSoundDelegate {
     var view: NowPlayingView
+    let service: AudioPlayerService
+
     var sound: FSHSound? {
         didSet {
+            service.stop()
+
             guard let sound = sound else {
                 view.state.hidden = true
-                updateTimer?.stop()
                 return
             }
             if !sound.streamable { return }
-
-            audioPlayer.stop()
 
             view.state.duration = 0
             view.state.formattedDuration = ""
@@ -32,12 +33,10 @@ import Foundation
             view.state.permalinkURL = sound.permalinkURL
 
             view.state.hidden = false
-            updateTimer = Timer(interval: 0.25, tolerance: 0.25, repeats: true, handler: updateUIProgress)
 
             sound.fetchPlayURL().subscribeNext { [weak self] playURL in
                 guard let _self = self, playURL = playURL as? NSURL else { return }
-                _self.audioPlayer.play(playURL.absoluteString)
-                _self.view.state.duration = _self.audioPlayer.duration
+                _self.service.play(playURL)
             }
             sound.fetchWaveform().subscribeNext { [weak self] waveform in
                 guard let _self = self, waveform = waveform as? FSHWaveform else { return }
@@ -45,25 +44,31 @@ import Foundation
             }
         }
     }
-    private let audioPlayer = STKAudioPlayer()
-    private var updateTimer: Timer? = nil
 
-    init(view: NowPlayingView) {
+    init(view: NowPlayingView, service: AudioPlayerService) {
         self.view = view
-        super.init()
-        audioPlayer.delegate = self
-    }
+        self.service = service
 
-    deinit {
-        updateTimer?.stop()
+        super.init()
+        
+        service.stateChangedHandler = { [weak self] state in
+            self?.view.state.playing = state == .Playing
+            self?.view.state.loading = state == .Loading
+        }
+        service.progressChangedHandler = { [weak self] progress, duration in
+            self?.view.state.progress = progress
+            self?.view.state.duration = duration
+            self?.view.state.formattedDuration = self?.formatSeconds(Int(service.duration)) ?? ""
+            self?.view.state.formattedProgress = self?.formatSeconds(Int(service.progress)) ?? ""
+        }
     }
 
     func toggleCurrentSound() {
         if sound == nil { return }
 
-        switch audioPlayer.state {
-        case STKAudioPlayerState.Playing: audioPlayer.pause()
-        default: audioPlayer.resume()
+        switch service.state {
+        case .Playing: service.pause()
+        default: service.resume()
         }
     }
 
@@ -72,18 +77,9 @@ import Foundation
     }
 
     func seekToProgress(progress: Double) {
-        audioPlayer.seekToTime(progress)
+        service.seek(progress)
     }
-    
-    func updateUIProgress() {
-        if self.audioPlayer.state != STKAudioPlayerState.Playing { return }
 
-        view.state.progress = audioPlayer.progress;
-        view.state.duration = audioPlayer.duration;
-        view.state.formattedDuration = formatSeconds(Int(audioPlayer.duration))
-        view.state.formattedProgress = formatSeconds(Int(audioPlayer.progress))
-    }
-    
     func formatSeconds(totalSeconds: Int) -> String {
         let minutes = totalSeconds / 60
         let seconds = totalSeconds % 60
@@ -100,29 +96,5 @@ import Foundation
 
     func initializeView() {
 
-    }
-
-    // MARK: STKAudioPlayerDelegate
-
-    func audioPlayer(audioPlayer: STKAudioPlayer!, unexpectedError errorCode: STKAudioPlayerErrorCode) {
-        // TODO: Reset UI in this situation
-        NSLog("StreamingKit unexpected error: %d", errorCode.rawValue);
-    }
-
-    func audioPlayer(audioPlayer: STKAudioPlayer!, didStartPlayingQueueItemId queueItemId: NSObject!) {
-    }
-
-    func audioPlayer(audioPlayer: STKAudioPlayer!, didFinishPlayingQueueItemId queueItemId: NSObject!, withReason stopReason: STKAudioPlayerStopReason, andProgress progress: Double, andDuration duration: Double) {
-        if let sound = sound where stopReason == .Eof {
-            NSNotificationCenter.defaultCenter().postNotificationName("FSHSoundEndedNotification", object:sound, userInfo:nil)
-        }
-    }
-
-    func audioPlayer(audioPlayer: STKAudioPlayer!, didFinishBufferingSourceWithQueueItemId queueItemId: NSObject!) {
-    }
-
-    func audioPlayer(audioPlayer: STKAudioPlayer!, stateChanged state:STKAudioPlayerState, previousState: STKAudioPlayerState) {
-        view.state.playing = state == .Playing
-        view.state.loading = state == .Buffering
     }
 }

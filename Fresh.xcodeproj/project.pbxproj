@@ -39,6 +39,7 @@
 		CA22AF111C408F0800AF0DF6 /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA22AF101C408F0800AF0DF6 /* NowPlayingViewController.swift */; };
 		CA22AF131C4099DA00AF0DF6 /* NowPlayingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA22AF121C4099DA00AF0DF6 /* NowPlayingPresenter.swift */; };
 		CA22AF151C40B10400AF0DF6 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA22AF141C40B10400AF0DF6 /* Timer.swift */; };
+		CA22AF171C40BC3600AF0DF6 /* AudioPlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA22AF161C40BC3600AF0DF6 /* AudioPlayerService.swift */; };
 		CA444E3F1C33AF7D00E0EA45 /* ObserverSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA444E3E1C33AF7D00E0EA45 /* ObserverSet.swift */; };
 		CA444E411C33B8DF00E0EA45 /* SoundListRowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA444E401C33B8DF00E0EA45 /* SoundListRowModel.swift */; };
 		CA444E431C34D12E00E0EA45 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA444E421C34D12E00E0EA45 /* Presenter.swift */; };
@@ -140,6 +141,7 @@
 		CA22AF101C408F0800AF0DF6 /* NowPlayingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingViewController.swift; sourceTree = "<group>"; };
 		CA22AF121C4099DA00AF0DF6 /* NowPlayingPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingPresenter.swift; sourceTree = "<group>"; };
 		CA22AF141C40B10400AF0DF6 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		CA22AF161C40BC3600AF0DF6 /* AudioPlayerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerService.swift; sourceTree = "<group>"; };
 		CA444E3E1C33AF7D00E0EA45 /* ObserverSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserverSet.swift; sourceTree = "<group>"; };
 		CA444E401C33B8DF00E0EA45 /* SoundListRowModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundListRowModel.swift; sourceTree = "<group>"; };
 		CA444E421C34D12E00E0EA45 /* Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				CA04232D1B745CC2004513C6 /* FSHNowPlayingView.xib */,
 				CA22AF101C408F0800AF0DF6 /* NowPlayingViewController.swift */,
 				CA22AF121C4099DA00AF0DF6 /* NowPlayingPresenter.swift */,
+				CA22AF161C40BC3600AF0DF6 /* AudioPlayerService.swift */,
 				CA0423321B745CC2004513C6 /* FSHWaveform.swift */,
 				CA0423331B745CC2004513C6 /* FSHWaveformSliderCell.h */,
 				CA0423341B745CC2004513C6 /* FSHWaveformSliderCell.m */,
@@ -698,6 +701,7 @@
 				CA0423511B745CC2004513C6 /* FSHSoundRowView.m in Sources */,
 				CA5D7A2918CEB2F1006E2401 /* NSView+RACProperties.m in Sources */,
 				CAF1E1B61C34DC1F00EDFC6A /* SoundListPresenter.swift in Sources */,
+				CA22AF171C40BC3600AF0DF6 /* AudioPlayerService.swift in Sources */,
 				CA04234D1B745CC2004513C6 /* FSHWaveformSliderCell.m in Sources */,
 				CA444E411C33B8DF00E0EA45 /* SoundListRowModel.swift in Sources */,
 				CA0423431B745CC2004513C6 /* FSHNoHitTextField.m in Sources */,
