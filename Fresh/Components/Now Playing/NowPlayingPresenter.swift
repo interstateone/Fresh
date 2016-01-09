@@ -88,7 +88,7 @@ class NowPlayingPresenter: NSObject, Presenter, SelectedSoundDelegate {
 
     // MARK: SelectedSoundDelegate
 
-    func selectedSoundChanged(sound: FSHSound!) {
+    func selectedSoundChanged(sound: FSHSound?) {
         self.sound = sound
     }
 

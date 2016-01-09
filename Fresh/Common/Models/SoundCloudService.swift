@@ -43,9 +43,9 @@ class SoundCloudService: NSObject {
         }
     }
 
-    func updateSounds() -> RACSignal { // SignalProducer<[FSHSound], NSError> {
-        guard loggedIn else { return RACSignal.empty() }
-        return SignalProducer<NSArray, NSError> { [weak self] observer, disposal in
+    func updateSounds() -> SignalProducer<[FSHSound], NSError> {
+        guard loggedIn else { return SignalProducer.empty }
+        return SignalProducer<[FSHSound], NSError> { [weak self] observer, disposal in
             guard let _self = self else {
                 observer.sendCompleted()
                 return
@@ -68,12 +68,12 @@ class SoundCloudService: NSObject {
                     observer.sendCompleted()
                 }
             }
-        }.toRACSignal()
+        }
     }
 
-    func fetchNextSounds() -> RACSignal { // -> SignalProducer<[FSHSound], NSError> {
-        guard loggedIn else { return RACSignal.empty() }
-        return SignalProducer<NSArray, NSError> { [weak self] observer, disposal in
+    func fetchNextSounds() -> SignalProducer<[FSHSound], NSError> {
+        guard loggedIn else { return SignalProducer.empty }
+        return SignalProducer<[FSHSound], NSError> { [weak self] observer, disposal in
             guard let _self = self else {
                 observer.sendCompleted()
                 return
@@ -96,7 +96,7 @@ class SoundCloudService: NSObject {
                     observer.sendCompleted()
                 }
             }
-        }.toRACSignal()
+        }
     }
 
     func createSounds(soundDictionaries: JSONArray) -> [FSHSound] {
