@@ -9,7 +9,7 @@
 import Foundation
 import ReactiveCocoa
 
-class MainWindowPresenter: NSObject, Presenter, SelectedSoundDelegate {
+class MainWindowPresenter: NSObject, Presenter {
     let view: NSWindowController
     let wireframe: MainWireframe
     let service: SoundCloudService
@@ -17,6 +17,7 @@ class MainWindowPresenter: NSObject, Presenter, SelectedSoundDelegate {
     func accountChanged(account: FSHAccount) {
         account.soundcloudAccount != nil ? wireframe.presentSoundList() : wireframe.presentLogin()
     }
+    
     func selectedSoundChanged(sound: FSHSound?) {
         if sound != nil {
             wireframe.showNowPlaying()

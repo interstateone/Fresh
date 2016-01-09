@@ -9,10 +9,6 @@
 import Foundation
 import ReactiveCocoa
 
-protocol SelectedSoundDelegate {
-    func selectedSoundChanged(sound: FSHSound?)
-}
-
 class SoundListPresenter: Presenter {
     var view: SoundListView
     let service: SoundCloudService
@@ -37,19 +33,12 @@ class SoundListPresenter: Presenter {
         }
     }
 
-    var selectedSoundDelegates = [SelectedSoundDelegate]()
     private var sounds = [FSHSound]() {
         didSet {
             view.rowModels = sounds.map { SoundListRowModel(title: $0.title, author: $0.author) }
         }
     }
-    var selectedSound: FSHSound? = nil {
-        didSet {
-            for delegate in selectedSoundDelegates {
-                delegate.selectedSoundChanged(selectedSound)
-            }
-        }
-    }
+    let selectedSound = Observable<FSHSound?>(nil)
 
     func updateSounds() -> SignalProducer<[FSHSound], NSError> {
         let signal = service.updateSounds().on(next: { [weak self] sounds in
@@ -63,11 +52,11 @@ class SoundListPresenter: Presenter {
     }
 
     func selectSoundAtIndex(index: Int) {
-        selectedSound = soundAtIndex(index)
+        selectedSound.set(soundAtIndex(index))
     }
 
     var indexOfSelectedSound: Int? {
-        return sounds.indexOf { $0.isEqual(self.selectedSound) }
+        return sounds.indexOf { $0.isEqual(self.selectedSound.get) }
     }
 
     private func soundAtIndex(index: Int) -> FSHSound? {

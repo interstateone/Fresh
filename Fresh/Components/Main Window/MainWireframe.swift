@@ -44,19 +44,19 @@ class MainWireframe: NSObject {
         let listPresenter = SoundListPresenter(view: listViewController, service: self.service, audioPlayerService: self.audioPlayerService)
         listPresenter.view = listViewController
         listViewController.presenter = listPresenter
-        listPresenter.selectedSoundDelegates.append(listViewController)
+        listPresenter.selectedSound.addObserver(listViewController, listViewController.dynamicType.selectedSoundChanged)
         windowController.listViewController = listViewController
 
         let nowPlayingViewController = NowPlayingViewController(nibName: "FSHNowPlayingView", bundle: nil)!
         let nowPlayingPresenter = NowPlayingPresenter(view: nowPlayingViewController, service: self.audioPlayerService)
         nowPlayingPresenter.view = nowPlayingViewController
         nowPlayingViewController.presenter = nowPlayingPresenter
-        listPresenter.selectedSoundDelegates.append(nowPlayingPresenter)
+        listPresenter.selectedSound.addObserver(nowPlayingPresenter, nowPlayingPresenter.dynamicType.selectedSoundChanged)
         windowController.nowPlayingViewController = nowPlayingViewController
 
         let presenter = MainWindowPresenter(view: windowController, wireframe: self, service: self.service)
         self.service.accountObserverSet.add(presenter, presenter.dynamicType.accountChanged)
-        listPresenter.selectedSoundDelegates.append(presenter)
+        listPresenter.selectedSound.addObserver(presenter, presenter.dynamicType.selectedSoundChanged)
         windowController.presenter = presenter
 
         return windowController
