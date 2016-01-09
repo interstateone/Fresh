@@ -7,12 +7,9 @@
 //
 
 #import "FSHNowPlayingViewController.h"
-
-@import ReactiveCocoa;
-
 #import "FSHNowPlayingPresenter.h"
 #import "FSHWaveformSliderView.h"
-#import "NSView+RACProperties.h"
+#import "Fresh-Swift.h"
 
 @interface FSHNowPlayingViewController () <NSSharingServicePickerDelegate>
 
@@ -33,6 +30,8 @@
 
 - (void)loadView {
     [super loadView];
+
+    self.hidden = YES;
     
     // Setup views
     [self.tweetButton sendActionOn:NSLeftMouseDownMask];
@@ -40,56 +39,14 @@
     [self.progressLabel.cell setBackgroundStyle:NSBackgroundStyleLowered];
     [self.durationLabel.cell setBackgroundStyle:NSBackgroundStyleLowered];
 
-    // Setup bindings
-    RAC(self.masterPlayButton, image) = [RACObserve(self, presenter.playing) map:^id(NSNumber *playing){
-        return [playing boolValue] ? [NSImage imageNamed:@"PauseButton"] : [NSImage imageNamed:@"PlayButton"];
-    }];
-
-    RAC(self, masterPlayButton.rac_command) = RACObserve(self, presenter.toggleCurrentSound);
-
-    RAC(self.favoriteButton, image) = [RACObserve(self, presenter.favorite) map:^id(NSNumber *favorite) {
-        return [favorite boolValue] ? [NSImage imageNamed:@"FavoriteActive"] : [NSImage imageNamed:@"Favorite"];
-    }];
-
-    RAC(self.trackLabel, stringValue) = [RACObserve(self, presenter.title) map:^id(NSString *title){
-        return title ?: @"";
-    }];
-
-    RAC(self.authorLabel, stringValue) = [RACObserve(self, presenter.author) map:^id(NSString *author){
-        return author ?: @"";
-    }];
-
-    RAC(self.progressLabel, stringValue) = RACObserve(self, presenter.formattedProgress);
-
-    RAC(self.durationLabel, stringValue) = RACObserve(self, presenter.formattedDuration);
-
-    RAC(self.waveformSlider, doubleValue) = [RACObserve(self, presenter.progress) map:^id(NSNumber *progress){
-        return progress ?: @0;
-    }];
-
-    RAC(self.waveformSlider, maxValue) = [RACObserve(self, presenter.duration) map:^id(NSNumber *duration){
-        return duration ?: @0;
-    }];
-
-    RAC(self.waveformSlider, waveform) = RACObserve(self, presenter.waveform);
-
-    @weakify(self);
-    self.waveformSlider.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSSlider *slider) {
-        @strongify(self);
-        [self.presenter seekToProgress:((NSNumber *)slider.objectValue)];
-        return [RACSignal empty];
-    }];
-
-    self.favoriteButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        @strongify(self);
-        [[self.presenter toggleFavorite] execute:input];
-        return [RACSignal empty];
-    }];
-
-    RAC(self, view.hidden, @YES) = RACObserve(self, presenter.hidden);
+    self.masterPlayButton.target = self.presenter;
+    self.masterPlayButton.action = @selector(toggleCurrentSound);
+    self.favoriteButton.target = self.presenter;
+    self.favoriteButton.action = @selector(toggleFavorite);
+    self.waveformSlider.target = self;
+    self.waveformSlider.action = @selector(waveformSliderChanged:);
 
     NSEvent *(^eventHandler)(NSEvent *) = ^(NSEvent *theEvent) {
-        @strongify(self);
         NSWindow *targetWindow = theEvent.window;
         if (targetWindow != self.view.window) {
             return theEvent;
@@ -112,10 +69,65 @@
     [NSEvent removeMonitor:self.eventMonitor];
 }
 
+- (void)waveformSliderChanged:(FSHWaveformSliderView *)slider {
+    [self.presenter seekToProgress:slider.objectValue];
+}
+
+#pragma mark - NowPlayingView
+
+- (void)setTrackTitle:(NSString *)trackTitle {
+    _trackTitle = trackTitle;
+    self.trackLabel.stringValue = trackTitle;
+}
+
+- (void)setAuthor:(NSString *)author {
+    _author = author;
+    self.authorLabel.stringValue = author;
+}
+
+- (void)setProgress:(double)progress {
+    _progress = progress;
+    self.waveformSlider.doubleValue = progress;
+}
+
+- (void)setDuration:(double)duration {
+    _duration = duration;
+    self.waveformSlider.maxValue = duration;
+}
+
+- (void)setFormattedProgress:(NSString *)progress {
+    _formattedProgress = progress;
+    self.progressLabel.stringValue = progress;
+}
+
+- (void)setFormattedDuration:(NSString *)duration {
+    _formattedDuration = duration;
+    self.durationLabel.stringValue = duration;
+}
+
+- (void)setFavorite:(BOOL)favorite {
+    _favorite = favorite;
+    self.favoriteButton.image = favorite ? [NSImage imageNamed:@"FavoriteActive"] : [NSImage imageNamed:@"Favorite"];
+}
+
+- (void)setHidden:(BOOL)hidden {
+    _hidden = hidden;
+    self.view.hidden = hidden;
+}
+
+- (void)setWaveform:(FSHWaveform *)waveform {
+    _waveform = waveform;
+    self.waveformSlider.waveform = waveform;
+}
+
+- (void)setPlaying:(BOOL)playing {
+    self.masterPlayButton.image = playing ? [NSImage imageNamed:@"PauseButton"] : [NSImage imageNamed:@"PlayButton"];
+}
+
 #pragma mark - Actions
 
 - (IBAction)shareCurrentSound:(NSControl *)sender {
-    NSString *shareText = [NSString stringWithFormat:@"Listening to %@ by %@ with Fresh.\n\n%@", self.presenter.title, self.presenter.author, self.presenter.permalinkURL];
+    NSString *shareText = [NSString stringWithFormat:@"Listening to %@ by %@ with Fresh.\n\n%@", self.trackTitle, self.author, self.permalinkURL];
     NSSharingServicePicker *picker = [[NSSharingServicePicker alloc] initWithItems:@[ shareText ]];
     picker.delegate = self;
     [picker showRelativeToRect:NSZeroRect ofView:sender preferredEdge:NSMaxXEdge];
@@ -147,7 +159,7 @@
     }
 
     NSSharingService *viewOnSoundCloud = [[NSSharingService alloc] initWithTitle:@"View On SoundCloud" image:[NSImage imageNamed:@"SoundCloudLogoSmall"] alternateImage:nil handler:^{
-        [[NSWorkspace sharedWorkspace] openURL:self.presenter.permalinkURL];
+        [[NSWorkspace sharedWorkspace] openURL:self.permalinkURL];
     }];
     [services addObject:viewOnSoundCloud];
 

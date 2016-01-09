@@ -9,7 +9,6 @@
 #import "FSHNowPlayingPresenter.h"
 
 #import <StreamingKit/STKAudioPlayer.h>
-@import ReactiveCocoa;
 
 #import "FSHAccount.h"
 #import "Fresh-Swift.h"
@@ -23,76 +22,45 @@
 
 @implementation FSHNowPlayingPresenter
 
-- (void)setSound:(FSHSound *)sound {
-    _sound = sound;
+- (instancetype)init {
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
 
     _audioPlayer = [[STKAudioPlayer alloc] init];
     _audioPlayer.delegate = self;
 
-    RAC(self, playing) = [RACObserve(self, audioPlayer.state) map:^id(NSNumber *state){
-        return @([state integerValue] == STKAudioPlayerStatePlaying);
+    return self;
+}
+
+- (void)setSound:(FSHSound *)sound {
+    if (!sound) {
+        self.view.hidden = YES;
+        [self.tickTimer invalidate];
+        return;
+    }
+    if (!sound.streamable) return;
+
+    _sound = sound;
+
+    self.tickTimer = [NSTimer scheduledTimerWithTimeInterval:0.25 target:self selector:@selector(tick:) userInfo:nil repeats:YES];
+    self.tickTimer.tolerance = 0.25;
+
+    self.view.trackTitle = sound.title;
+    self.view.author = sound.author;
+    self.view.favorite = sound.favorite;
+    self.view.hidden = NO;
+    self.view.permalinkURL = sound.permalinkURL;
+
+    [self.audioPlayer stop];
+    [[sound fetchPlayURL] subscribeNext:^(NSURL *playURL) {
+        [self.audioPlayer play:[playURL absoluteString]];
+        self.view.duration = self.audioPlayer.duration;
     }];
 
-    RAC(self, loading) = [RACObserve(self, audioPlayer.state) map:^id(NSNumber *state){
-        return @([state integerValue] == STKAudioPlayerStateBuffering);
-    }];
-
-    RAC(self, permalinkURL) = RACObserve(self, sound.permalinkURL);
-
-    RAC(self, title) = RACObserve(self, sound.title);
-
-    RAC(self, author) = RACObserve(self, sound.author);
-
-    RAC(self, waveform) = [RACObserve(self, sound) flattenMap:^RACStream *(FSHSound *sound) {
-        return [sound fetchWaveform];
-    }];
-
-    RAC(self, favorite, @NO) = RACObserve(self, sound.favorite);
-
-    [RACObserve(self, sound) subscribeNext:^(FSHSound *sound) {
-        if (sound && !sound.streamable) return;
-
-        if (!sound) {
-            [self.tickTimer invalidate];
-            return;
-        }
-
-        self.tickTimer = [NSTimer scheduledTimerWithTimeInterval:0.25 target:self selector:@selector(tick:) userInfo:nil repeats:YES];
-        self.tickTimer.tolerance = 0.25;
-
-        [[sound fetchPlayURL] subscribeNext:^(NSURL *playURL) {
-            [self.audioPlayer play:[playURL absoluteString]];
-            self.duration = @(self.audioPlayer.duration);
-        }];
-    }];
-
-    RAC(self, hidden, @YES) = [RACObserve(self, sound) map:^id(FSHSound *sound) {
-        return @(!sound);
-    }];
-
-    RAC(self, formattedDuration) = [RACObserve(self, duration) map:^id(NSNumber *duration) {
-        return [self formatSeconds:duration];
-    }];
-
-    RAC(self, formattedProgress) = [RACObserve(self, progress) map:^id(NSNumber *progress) {
-        return [self formatSeconds:progress];
-    }];
-
-    // Setup commands
-    _toggleCurrentSound = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        if (!self.sound) return [RACSignal empty];
-        if (self.audioPlayer.state == STKAudioPlayerStatePlaying) {
-            [self.audioPlayer pause];
-        }
-        else {
-            [self.audioPlayer resume];
-        }
-        return [RACSignal empty];
-    }];
-
-    _toggleFavorite = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        [self.sound toggleFavorite];
-        return [RACSignal empty];
+    [[sound fetchWaveform] subscribeNext:^(FSHWaveform *waveform) {
+        self.view.waveform = waveform;
     }];
 }
 
@@ -101,14 +69,31 @@
     self.tickTimer = nil;
 }
 
+- (void)toggleCurrentSound {
+    if (!self.sound) return;
+
+    if (self.audioPlayer.state == STKAudioPlayerStatePlaying) {
+        [self.audioPlayer pause];
+    }
+    else {
+        [self.audioPlayer resume];
+    }
+}
+
+- (void)toggleFavorite {
+    [self.sound toggleFavorite];
+}
+
 - (void)seekToProgress:(NSNumber *)progress {
     [self.audioPlayer seekToTime:[progress doubleValue]];
 }
 
 - (void)tick:(NSTimer *)timer {
-    if (self.playing) {
-        self.progress = @(self.audioPlayer.progress);
-        self.duration = @(self.audioPlayer.duration);
+    if (self.audioPlayer.state == STKAudioPlayerStatePlaying) {
+        self.view.progress = self.audioPlayer.progress;
+        self.view.duration = self.audioPlayer.duration;
+        self.view.formattedDuration = [self formatSeconds:@(self.audioPlayer.duration)];
+        self.view.formattedProgress = [self formatSeconds:@(self.audioPlayer.progress)];
     }
 }
 
@@ -139,7 +124,8 @@
 }
 
 - (void)audioPlayer:(STKAudioPlayer*)audioPlayer stateChanged:(STKAudioPlayerState)state previousState:(STKAudioPlayerState)previousState {
-
+    self.view.playing = state == STKAudioPlayerStatePlaying;
+    self.view.loading = state == STKAudioPlayerStateBuffering;
 }
 
 - (void)selectedSoundChanged:(FSHSound *)sound {
