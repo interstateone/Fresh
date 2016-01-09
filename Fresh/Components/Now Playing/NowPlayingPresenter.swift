@@ -19,16 +19,20 @@ import Foundation
             }
             if !sound.streamable { return }
 
-            updateTimer = Timer(interval: 0.25, tolerance: 0.25, repeats: true, handler: updateUIProgress)
+            audioPlayer.stop()
 
+            view.state.duration = 0
+            view.state.formattedDuration = ""
+            view.state.progress = 0
+            view.state.formattedProgress = ""
+            
             view.state.trackTitle = sound.title
             view.state.author = sound.author
             view.state.favorite = sound.favorite
             view.state.permalinkURL = sound.permalinkURL
 
             view.state.hidden = false
-
-            audioPlayer.stop()
+            updateTimer = Timer(interval: 0.25, tolerance: 0.25, repeats: true, handler: updateUIProgress)
 
             sound.fetchPlayURL().subscribeNext { [weak self] playURL in
                 guard let _self = self, playURL = playURL as? NSURL else { return }
