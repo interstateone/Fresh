@@ -46,7 +46,7 @@ class MainWireframe: NSObject {
         windowController.listViewController = listViewController
 
         let nowPlayingViewController = NowPlayingViewController(nibName: "FSHNowPlayingView", bundle: nil)!
-        let nowPlayingPresenter = NowPlayingPresenter(view: nowPlayingViewController)
+        let nowPlayingPresenter = NowPlayingPresenter(view: nowPlayingViewController, service: AudioPlayerService())
         nowPlayingPresenter.view = nowPlayingViewController
         nowPlayingViewController.presenter = nowPlayingPresenter
         listPresenter.selectedSoundDelegates?.addObject(nowPlayingPresenter)
