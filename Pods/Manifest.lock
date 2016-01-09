@@ -17,6 +17,7 @@ PODS:
   - AFNetworking/Reachability (2.6.3)
   - AFNetworking/Security (2.6.3)
   - AFNetworking/Serialization (2.6.3)
+  - Alamofire (3.1.4)
   - BSRefreshableScrollView (1.0.1)
   - Mantle (2.0.6):
     - Mantle/extobjc (= 2.0.6)
@@ -37,6 +38,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (= 2.6.3)
+  - Alamofire (= 3.1.4)
   - BSRefreshableScrollView (= 1.0.1)
   - Mantle (= 2.0.6)
   - ReactiveCocoa (= 4.0.0-RC.1)
@@ -44,6 +46,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  Alamofire: fbc829692f351fa1d8a31dd75fd7f7f56fea31fb
   BSRefreshableScrollView: a3c1a16560a2f754f9a7d02de1fb81f0f43fecf1
   Mantle: 299966b00759634931699f69cb6a30b9239b944d
   ReactiveCocoa: 2b0f654beb7642b82cfd3fdb845205ae9889422c
