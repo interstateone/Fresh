@@ -3,11 +3,18 @@
 //
 
 #import <AppKit/AppKit.h>
+#import "NSMutableArray+STKAudioPlayer.h"
+#import "STKAudioPlayer.h"
+#import "STKAutoRecoveringHTTPDataSource.h"
+#import "STKCoreFoundationDataSource.h"
+#import "STKDataSource.h"
+#import "STKDataSourceWrapper.h"
+#import "STKHTTPDataSource.h"
+#import "STKLocalFileDataSource.h"
+#import "STKQueueEntry.h"
 
 #import "FSHAccount.h"
 #import "FSHSound.h"
-#import "FSHNowPlayingPresenter.h"
-#import "FSHNowPlayingViewController.h"
 #import "FSHSoundListPresenter.h"
 #import "FSHSoundCellView.h"
 #import "FSHSoundRowView.h"
@@ -15,3 +22,4 @@
 #import "SCAccount.h"
 #import "SCSoundCloud.h"
 #import "BSRefreshableScrollView.h"
+#import "FSHWaveformSliderView.h"

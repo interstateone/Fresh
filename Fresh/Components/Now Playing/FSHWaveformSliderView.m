@@ -9,6 +9,7 @@
 #import "FSHWaveformSliderView.h"
 #import <QuartzCore/CoreImage.h>
 #import "FSHWaveformSliderCell.h"
+#import "Fresh-Swift.h"
 
 @implementation FSHWaveformSliderView
 
