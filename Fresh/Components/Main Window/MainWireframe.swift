@@ -8,6 +8,7 @@
 
 class MainWireframe: NSObject {
     let service = SoundCloudService()
+    let audioPlayerService = AudioPlayerService()
 
     func presentMainWindow() {
         windowController.showWindow(nil)
@@ -40,13 +41,14 @@ class MainWireframe: NSObject {
         windowController.loginViewController = self.loginViewController
 
         let listViewController = SoundListViewController(nibName: "SoundListView", bundle: nil)!
-        let listPresenter = SoundListPresenter(view: listViewController, service: self.service)
+        let listPresenter = SoundListPresenter(view: listViewController, service: self.service, audioPlayerService: self.audioPlayerService)
         listPresenter.view = listViewController
         listViewController.presenter = listPresenter
+        listPresenter.selectedSoundDelegates.append(listViewController)
         windowController.listViewController = listViewController
 
         let nowPlayingViewController = NowPlayingViewController(nibName: "FSHNowPlayingView", bundle: nil)!
-        let nowPlayingPresenter = NowPlayingPresenter(view: nowPlayingViewController, service: AudioPlayerService())
+        let nowPlayingPresenter = NowPlayingPresenter(view: nowPlayingViewController, service: self.audioPlayerService)
         nowPlayingPresenter.view = nowPlayingViewController
         nowPlayingViewController.presenter = nowPlayingPresenter
         listPresenter.selectedSoundDelegates.append(nowPlayingPresenter)

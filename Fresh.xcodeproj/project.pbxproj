@@ -39,7 +39,7 @@
 		CA22AF151C40B10400AF0DF6 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA22AF141C40B10400AF0DF6 /* Timer.swift */; };
 		CA22AF171C40BC3600AF0DF6 /* AudioPlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA22AF161C40BC3600AF0DF6 /* AudioPlayerService.swift */; };
 		CA22AF191C40C84500AF0DF6 /* SoundListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA22AF181C40C84500AF0DF6 /* SoundListCellView.swift */; };
-		CA444E3F1C33AF7D00E0EA45 /* ObserverSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA444E3E1C33AF7D00E0EA45 /* ObserverSet.swift */; };
+		CA444E3F1C33AF7D00E0EA45 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA444E3E1C33AF7D00E0EA45 /* Observable.swift */; };
 		CA444E411C33B8DF00E0EA45 /* SoundListRowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA444E401C33B8DF00E0EA45 /* SoundListRowModel.swift */; };
 		CA444E431C34D12E00E0EA45 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA444E421C34D12E00E0EA45 /* Presenter.swift */; };
 		CA44E89C18CD1AA2007754C5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA44E89B18CD1AA2007754C5 /* Cocoa.framework */; };
@@ -136,9 +136,9 @@
 		CA22AF101C408F0800AF0DF6 /* NowPlayingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingViewController.swift; sourceTree = "<group>"; };
 		CA22AF121C4099DA00AF0DF6 /* NowPlayingPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingPresenter.swift; sourceTree = "<group>"; };
 		CA22AF141C40B10400AF0DF6 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
-		CA22AF161C40BC3600AF0DF6 /* AudioPlayerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerService.swift; sourceTree = "<group>"; };
+		CA22AF161C40BC3600AF0DF6 /* AudioPlayerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AudioPlayerService.swift; path = "../../Components/Now Playing/AudioPlayerService.swift"; sourceTree = "<group>"; };
 		CA22AF181C40C84500AF0DF6 /* SoundListCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundListCellView.swift; sourceTree = "<group>"; };
-		CA444E3E1C33AF7D00E0EA45 /* ObserverSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserverSet.swift; sourceTree = "<group>"; };
+		CA444E3E1C33AF7D00E0EA45 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		CA444E401C33B8DF00E0EA45 /* SoundListRowModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundListRowModel.swift; sourceTree = "<group>"; };
 		CA444E421C34D12E00E0EA45 /* Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		CA44E89818CD1AA2007754C5 /* Fresh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fresh.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -228,7 +228,7 @@
 			children = (
 				CA04231B1B745CC2004513C6 /* Models */,
 				CA0423201B745CC2004513C6 /* Views */,
-				CA444E3E1C33AF7D00E0EA45 /* ObserverSet.swift */,
+				CA444E3E1C33AF7D00E0EA45 /* Observable.swift */,
 				CA444E421C34D12E00E0EA45 /* Presenter.swift */,
 				CA22AF141C40B10400AF0DF6 /* Timer.swift */,
 			);
@@ -243,6 +243,7 @@
 				CA04231E1B745CC2004513C6 /* FSHSound.h */,
 				CA04231F1B745CC2004513C6 /* FSHSound.m */,
 				CA4E257E1C339D6000CB63FB /* SoundCloudService.swift */,
+				CA22AF161C40BC3600AF0DF6 /* AudioPlayerService.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -293,7 +294,6 @@
 				CA04232D1B745CC2004513C6 /* FSHNowPlayingView.xib */,
 				CA22AF101C408F0800AF0DF6 /* NowPlayingViewController.swift */,
 				CA22AF121C4099DA00AF0DF6 /* NowPlayingPresenter.swift */,
-				CA22AF161C40BC3600AF0DF6 /* AudioPlayerService.swift */,
 				CA0423321B745CC2004513C6 /* FSHWaveform.swift */,
 				CA0423331B745CC2004513C6 /* FSHWaveformSliderCell.h */,
 				CA0423341B745CC2004513C6 /* FSHWaveformSliderCell.m */,
@@ -685,7 +685,7 @@
 				CA0423451B745CC2004513C6 /* FSHLoginViewController.swift in Sources */,
 				CA4E257F1C339D6000CB63FB /* SoundCloudService.swift in Sources */,
 				CA13F4DF18CD80F20027B513 /* NXOAuth2FileStreamWrapper.m in Sources */,
-				CA444E3F1C33AF7D00E0EA45 /* ObserverSet.swift in Sources */,
+				CA444E3F1C33AF7D00E0EA45 /* Observable.swift in Sources */,
 				CA44E8EA18CD1CDB007754C5 /* SCRequest.m in Sources */,
 				CA13F4D918CD80F20027B513 /* NXOAuth2AccessToken.m in Sources */,
 				CA04234E1B745CC2004513C6 /* FSHWaveformSliderView.m in Sources */,

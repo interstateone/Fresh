@@ -51,7 +51,7 @@ class NowPlayingPresenter: NSObject, Presenter, SelectedSoundDelegate {
 
         super.init()
         
-        service.stateChangedHandler = { [weak self] state in
+        service.state.addObserver { [weak self] state in
             self?.view.state.playing = state == .Playing
             self?.view.state.loading = state == .Loading
         }
@@ -66,7 +66,7 @@ class NowPlayingPresenter: NSObject, Presenter, SelectedSoundDelegate {
     func toggleCurrentSound() {
         if sound == nil { return }
 
-        switch service.state {
+        switch service.state.get {
         case .Playing: service.pause()
         default: service.resume()
         }

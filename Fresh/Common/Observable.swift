@@ -1,12 +1,41 @@
 //
-//  ObserverSet.swift
-//  ObserverSet
+//  Observable.swift
+//  Observable
 //
-//  Created by Mike Ash on 1/22/15.
+//  Created by Mike Ash on 1/22/15. Modified by Brandon Evans on 1/8/2016.
 //  Copyright (c) 2015 Mike Ash. All rights reserved.
 //
 
 import Dispatch
+
+public class Observable<Type> {
+    let set = ObserverSet<Type>()
+    var _var: Type {
+        didSet {
+            set.notify(_var)
+        }
+    }
+
+    init(_ value: Type) {
+        _var = value
+    }
+
+    func addObserver<T: AnyObject>(object: T, _ f: T -> Type -> Void) {
+        set.add(object, f)
+    }
+
+    func addObserver(f: Type -> Void) {
+        set.add(f)
+    }
+
+    func set(newValue: Type) {
+        _var = newValue
+    }
+
+    var get: Type {
+        return _var
+    }
+}
 
 public class ObserverSetEntry<Parameters> {
     private weak var object: AnyObject?
@@ -17,7 +46,6 @@ public class ObserverSetEntry<Parameters> {
         self.f = f
     }
 }
-
 
 public class ObserverSet<Parameters>: CustomStringConvertible {
     // Locking support
