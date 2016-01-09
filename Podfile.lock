@@ -33,14 +33,14 @@ PODS:
     - ReactiveCocoa/Core
     - Result (~> 1.0)
   - Result (1.0.1)
-  - StreamingKit (0.1.28)
+  - StreamingKit (0.1.29)
 
 DEPENDENCIES:
   - AFNetworking (= 2.6.3)
   - BSRefreshableScrollView (= 1.0.1)
   - Mantle (= 2.0.6)
   - ReactiveCocoa (= 4.0.0-RC.1)
-  - StreamingKit (= 0.1.28)
+  - StreamingKit (= 0.1.29)
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
@@ -48,6 +48,6 @@ SPEC CHECKSUMS:
   Mantle: 299966b00759634931699f69cb6a30b9239b944d
   ReactiveCocoa: 2b0f654beb7642b82cfd3fdb845205ae9889422c
   Result: caef80340451e1f07492fa1e89117f83613bce24
-  StreamingKit: 3b9c78009275ef1caf198bae44cfb982fee65d4d
+  StreamingKit: c329785aaef3ac142d4ae388345bfe1ed23cfd45
 
 COCOAPODS: 0.39.0
