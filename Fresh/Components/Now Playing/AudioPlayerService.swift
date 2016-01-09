@@ -22,15 +22,16 @@ public class AudioPlayerService: NSObject, STKAudioPlayerDelegate {
         }
     }
     public var errorHandler: ((ErrorType) -> Void)? = nil
-    public var stateChangedHandler: ((State) -> Void)? = nil
     public var progressChangedHandler: ((Double, Double) -> Void)? = nil
-    public var state = State.Ready {
+    
+    public let state = Observable<State>(.Ready)
+    private var _state = State.Ready {
         didSet {
-            if state == oldValue { return }
+            if _state == oldValue { return }
 
-            stateChangedHandler?(state)
+            state.set(_state)
 
-            switch state {
+            switch _state {
             case .Playing where updateTimer == nil:
                 updateTimer = Timer(interval: 0.25, tolerance: 0.25, repeats: true, handler: update)
             default:
@@ -44,6 +45,7 @@ public class AudioPlayerService: NSObject, STKAudioPlayerDelegate {
         case Loading = "Loading"
         case Playing = "Playing"
         case Paused = "Paused"
+        case Finished = "Finished"
 
         public var description: String {
             return self.rawValue
@@ -81,7 +83,7 @@ public class AudioPlayerService: NSObject, STKAudioPlayerDelegate {
 
     private var updateTimer: Timer? = nil
     func update() {
-        if state != .Playing { return }
+        if _state != .Playing { return }
         progress = audioPlayer.progress
         duration = audioPlayer.duration
     }
@@ -98,7 +100,7 @@ public class AudioPlayerService: NSObject, STKAudioPlayerDelegate {
 
     public func audioPlayer(audioPlayer: STKAudioPlayer, didFinishPlayingQueueItemId queueItemId: NSObject, withReason stopReason: STKAudioPlayerStopReason, andProgress progress: Double, andDuration duration: Double) {
         if stopReason == .Eof {
-            NSNotificationCenter.defaultCenter().postNotificationName("FSHSoundEndedNotification", object:nil, userInfo:nil)
+            _state = .Finished
         }
     }
 
@@ -108,21 +110,21 @@ public class AudioPlayerService: NSObject, STKAudioPlayerDelegate {
     public func audioPlayer(audioPlayer: STKAudioPlayer, stateChanged state:STKAudioPlayerState, previousState: STKAudioPlayerState) {
         switch state {
         case STKAudioPlayerState.Ready:
-            self.state = .Ready
+            _state = .Ready
         case STKAudioPlayerState.Running:
-            self.state = .Playing
+            _state = .Playing
         case STKAudioPlayerState.Playing:
-            self.state = .Playing
+            _state = .Playing
         case STKAudioPlayerState.Buffering:
-            self.state = .Loading
+            _state = .Loading
         case STKAudioPlayerState.Paused:
-            self.state = .Paused
+            _state = .Paused
         case STKAudioPlayerState.Stopped:
-            self.state = .Ready
+            _state = .Finished
         case STKAudioPlayerState.Error:
-            self.state = .Ready
+            _state = .Finished
         case STKAudioPlayerState.Disposed:
-            self.state = .Ready
+            _state = .Finished
         default: break;
         }
     }

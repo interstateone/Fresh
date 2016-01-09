@@ -14,20 +14,29 @@ protocol SelectedSoundDelegate {
 }
 
 class SoundListPresenter: Presenter {
-    let service: SoundCloudService
     var view: SoundListView
+    let service: SoundCloudService
+    let audioPlayerService: AudioPlayerService
 
-    init (view: SoundListView, service: SoundCloudService) {
+    init (view: SoundListView, service: SoundCloudService, audioPlayerService: AudioPlayerService) {
         self.view = view
         self.service = service
+        self.audioPlayerService = audioPlayerService
+        
+        audioPlayerService.state.addObserver { [weak self] state in
+            guard let _self = self, index = _self.indexOfSelectedSound where state == .Finished else { return }
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "soundEnded:", name: "FSHSoundEndedNotification", object: nil)
+            if index == _self.sounds.count - 1 {
+                _self.fetchNextSounds().startWithCompleted {
+                    _self.selectSoundAtIndex(index + 1)
+                }
+            }
+            else {
+                _self.selectSoundAtIndex(index + 1)
+            }
+        }
     }
 
-    deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "FSHSoundEndedNotification", object: nil)
-    }
-    
     var selectedSoundDelegates = [SelectedSoundDelegate]()
     private var sounds = [FSHSound]() {
         didSet {
@@ -64,21 +73,6 @@ class SoundListPresenter: Presenter {
     private func soundAtIndex(index: Int) -> FSHSound? {
         if index < 0 || index > sounds.count - 1 { return nil }
         return sounds[index]
-    }
-
-    // MARK: -
-
-    func soundEnded(notification: NSNotification) {
-        guard let sound = notification.object as? FSHSound else { return }
-        let index = sounds.indexOf { $0.isEqual(sound) } ?? 0
-        if index == sounds.count - 1 {
-            fetchNextSounds().startWithCompleted { [weak self] in
-                self?.selectSoundAtIndex(index + 1)
-            }
-        }
-        else {
-            self.selectSoundAtIndex(index + 1)
-        }
     }
 
     // MARK: Presenter
