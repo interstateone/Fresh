@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "Fresh-Swift.h"
+@class FSHWaveform;
 
 @interface FSHWaveformSliderView : NSControl
 

@@ -13,7 +13,7 @@ class MainWindowController: NSWindowController {
 
     var loginViewController: FSHLoginViewController?
     var listViewController: SoundListViewController?
-    var nowPlayingViewController: FSHNowPlayingViewController?
+    var nowPlayingViewController: NowPlayingViewController?
 
     override func windowDidLoad() {
         window?.title = "Fresh"
