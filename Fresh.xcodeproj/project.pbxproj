@@ -67,6 +67,7 @@
 		CAF1E1B61C34DC1F00EDFC6A /* SoundListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1E1B51C34DC1F00EDFC6A /* SoundListPresenter.swift */; };
 		CAF1E1B81C34E01200EDFC6A /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1E1B71C34E01200EDFC6A /* MainWindowController.swift */; };
 		CAF1E1BA1C34E2E900EDFC6A /* SoundListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1E1B91C34E2E900EDFC6A /* SoundListViewController.swift */; };
+		CAF1E1BC1C34E8D200EDFC6A /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1E1BB1C34E8D100EDFC6A /* NowPlayingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -191,6 +192,7 @@
 		CAF1E1B51C34DC1F00EDFC6A /* SoundListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundListPresenter.swift; sourceTree = "<group>"; };
 		CAF1E1B71C34E01200EDFC6A /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		CAF1E1B91C34E2E900EDFC6A /* SoundListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundListViewController.swift; sourceTree = "<group>"; };
+		CAF1E1BB1C34E8D100EDFC6A /* NowPlayingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
 		CB761C3110025D903468097C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -294,6 +296,7 @@
 				CA04232D1B745CC2004513C6 /* FSHNowPlayingView.xib */,
 				CA04232E1B745CC2004513C6 /* FSHNowPlayingViewController.h */,
 				CA04232F1B745CC2004513C6 /* FSHNowPlayingViewController.m */,
+				CAF1E1BB1C34E8D100EDFC6A /* NowPlayingView.swift */,
 				CA0423301B745CC2004513C6 /* FSHNowPlayingPresenter.h */,
 				CA0423311B745CC2004513C6 /* FSHNowPlayingPresenter.m */,
 				CA0423321B745CC2004513C6 /* FSHWaveform.swift */,
@@ -672,6 +675,7 @@
 				CA44E8E918CD1CDB007754C5 /* SCConstants.m in Sources */,
 				CAE6846018CD3C4900F907A4 /* NSButton+RACProperties.m in Sources */,
 				CAE5F49C18D14AFE00506613 /* NSImage+TintedImage.m in Sources */,
+				CAF1E1BC1C34E8D200EDFC6A /* NowPlayingView.swift in Sources */,
 				CA13F4E118CD80F20027B513 /* NXOAuth2PostBodyStream.m in Sources */,
 				CA13F4E018CD80F20027B513 /* NXOAuth2PostBodyPart.m in Sources */,
 				CA444E431C34D12E00E0EA45 /* Presenter.swift in Sources */,
