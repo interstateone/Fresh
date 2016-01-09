@@ -6,6 +6,6 @@
 //  Copyright © 2015 Brandon Evans. All rights reserved.
 //
 
-@objc protocol Presenter {
+protocol Presenter {
     func initializeView()
 }

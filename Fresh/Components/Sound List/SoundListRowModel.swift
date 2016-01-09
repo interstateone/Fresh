@@ -6,9 +6,7 @@
 //  Copyright © 2015 Brandon Evans. All rights reserved.
 //
 
-import Foundation
-
-class SoundListRowModel: NSObject {
+struct SoundListRowModel {
     var title: String = ""
     var author: String = ""
 }

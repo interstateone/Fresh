@@ -9,12 +9,12 @@
 import Cocoa
 import ReactiveCocoa
 
-@objc protocol SoundListView {
+protocol SoundListView {
     var rowModels: [SoundListRowModel] { get set }
 }
 
 class SoundListViewController: NSViewController, SoundListView, SelectedSoundDelegate, NSTableViewDelegate, NSTableViewDataSource {
-    var presenter: FSHSoundListPresenter?
+    var presenter: SoundListPresenter?
     var rowModels = [SoundListRowModel]() {
         didSet {
             tableView.reloadData()
@@ -40,25 +40,27 @@ class SoundListViewController: NSViewController, SoundListView, SelectedSoundDel
     }
 
     // MARK: SelectedSoundDelegate
-
-    func selectedSoundChanged(sound: FSHSound!) {
+    
+    func selectedSoundChanged(sound: FSHSound?) {
         guard let presenter = presenter else { return }
         let selectedRowIndexes = tableView.selectedRowIndexes
         tableView.reloadData()
         tableView.selectRowIndexes(selectedRowIndexes, byExtendingSelection: false)
-        tableView.scrollRowToVisible(presenter.indexOfSelectedSound())
+        if let selectedSoundIndex = presenter.indexOfSelectedSound {
+            tableView.scrollRowToVisible(selectedSoundIndex)
+        }
     }
 
     // MARK: BSRefreshableScrollViewDelegate
 
     func scrollView(aScrollView: BSRefreshableScrollView!, startRefreshSide refreshableSide: UInt) -> Bool {
         if refreshableSide == UInt(BSRefreshableScrollViewSideBottom) {
-            presenter?.fetchNextSounds().subscribeNext { [weak self] (x) -> Void in
+            presenter?.fetchNextSounds().startWithCompleted { [weak self] in
                 self?.soundsScrollView.stopRefreshingSide(UInt(BSRefreshableScrollViewSideBottom))
             }
         }
         else {
-            presenter?.updateSounds().subscribeNext { [weak self] (x) -> Void in
+            presenter?.updateSounds().startWithCompleted { [weak self] in
                 self?.soundsScrollView.stopRefreshingSide(UInt(BSRefreshableScrollViewSideTop))
             }
         }
@@ -92,7 +94,7 @@ class SoundListViewController: NSViewController, SoundListView, SelectedSoundDel
         
         cell.trackNameField.stringValue = rowModel.title
         cell.authorNameField.stringValue = rowModel.author
-        cell.playing = (row == presenter?.indexOfSelectedSound() ?? NSNotFound)
+        cell.playing = (row == presenter?.indexOfSelectedSound ?? NSNotFound)
         
         return cell
     }
