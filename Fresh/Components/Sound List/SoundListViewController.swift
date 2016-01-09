@@ -13,7 +13,7 @@ protocol SoundListView {
     var rowModels: [SoundListRowModel] { get set }
 }
 
-class SoundListViewController: NSViewController, SoundListView, SelectedSoundDelegate, NSTableViewDelegate, NSTableViewDataSource {
+class SoundListViewController: NSViewController, SoundListView, NSTableViewDelegate, NSTableViewDataSource {
     var presenter: SoundListPresenter?
     var rowModels = [SoundListRowModel]() {
         didSet {
@@ -39,8 +39,6 @@ class SoundListViewController: NSViewController, SoundListView, SelectedSoundDel
         return true
     }
 
-    // MARK: SelectedSoundDelegate
-    
     func selectedSoundChanged(sound: FSHSound?) {
         guard let presenter = presenter else { return }
         let selectedRowIndexes = tableView.selectedRowIndexes

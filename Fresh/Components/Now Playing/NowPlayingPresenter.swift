@@ -8,7 +8,7 @@
 
 import Foundation
 
-class NowPlayingPresenter: NSObject, Presenter, SelectedSoundDelegate {
+class NowPlayingPresenter: NSObject, Presenter {
     var view: NowPlayingView
     let service: AudioPlayerService
 
@@ -85,8 +85,6 @@ class NowPlayingPresenter: NSObject, Presenter, SelectedSoundDelegate {
         let seconds = totalSeconds % 60
         return NSString(format:"%.2ld:%.2ld", minutes, seconds) as String
     }
-
-    // MARK: SelectedSoundDelegate
 
     func selectedSoundChanged(sound: FSHSound?) {
         self.sound = sound
