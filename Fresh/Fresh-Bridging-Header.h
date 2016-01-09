@@ -16,7 +16,6 @@
 #import "FSHAccount.h"
 #import "FSHSound.h"
 #import "FSHSoundListPresenter.h"
-#import "FSHSoundCellView.h"
 #import "FSHSoundRowView.h"
 #import "SCRequest.h"
 #import "SCAccount.h"

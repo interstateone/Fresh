@@ -88,7 +88,7 @@ class SoundListViewController: NSViewController, SoundListView, SelectedSoundDel
 
     func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let rowModel = rowModels[row]
-        guard let cell = tableView.makeViewWithIdentifier("FSHSoundCellView", owner: self) as? FSHSoundCellView else { return nil }
+        guard let cell = tableView.makeViewWithIdentifier("SoundListCellView", owner: self) as? SoundListCellView else { return nil }
         
         cell.trackNameField.stringValue = rowModel.title
         cell.authorNameField.stringValue = rowModel.author

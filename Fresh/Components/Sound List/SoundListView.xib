@@ -30,7 +30,7 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn identifier="FSHSoundCellView" editable="NO" width="347" minWidth="40" maxWidth="1000" id="30W-sh-lhb">
+                                    <tableColumn identifier="SoundListCellView" editable="NO" width="347" minWidth="40" maxWidth="1000" id="30W-sh-lhb">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -43,7 +43,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView id="yNx-s8-UPc" customClass="FSHSoundCellView">
+                                            <tableCellView id="yNx-s8-UPc" customClass="SoundListCellView" customModule="Fresh" customModuleProvider="target">
                                                 <rect key="frame" x="1" y="1" width="347" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
