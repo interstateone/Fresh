@@ -12,6 +12,7 @@
 #import "STKHTTPDataSource.h"
 #import "STKLocalFileDataSource.h"
 #import "STKQueueEntry.h"
+#import "NXOAuth2.h"
 
 #import "FSHAccount.h"
 #import "FSHSound.h"

@@ -26,8 +26,4 @@ typedef void (^FSHSoundStreamURLBlock)(NSURL *streamURL, NSError *error);
 @property (strong, nonatomic) NSURL *permalinkURL;
 @property (assign, nonatomic) BOOL favorite;
 
-- (RACSignal *)fetchPlayURL;
-- (RACSignal *)fetchWaveform;
-- (void)toggleFavorite;
-
 @end

@@ -10,11 +10,12 @@ import Foundation
 
 class NowPlayingPresenter: NSObject, Presenter {
     var view: NowPlayingView
-    let service: AudioPlayerService
+    let service: SoundCloudService
+    let audioPlayerService: AudioPlayerService
 
     var sound: FSHSound? {
         didSet {
-            service.stop()
+            audioPlayerService.stop()
 
             guard let sound = sound else {
                 view.state.hidden = true
@@ -34,50 +35,55 @@ class NowPlayingPresenter: NSObject, Presenter {
 
             view.state.hidden = false
 
-            sound.fetchPlayURL().subscribeNext { [weak self] playURL in
-                guard let _self = self, playURL = playURL as? NSURL else { return }
-                _self.service.play(playURL)
+            service.fetchPlayURL(sound).startWithNext { [weak self] playURL in
+                self?.audioPlayerService.play(playURL)
             }
-            sound.fetchWaveform().subscribeNext { [weak self] waveform in
-                guard let _self = self, waveform = waveform as? FSHWaveform else { return }
-                _self.view.state.waveform = waveform
+            service.fetchWaveform(sound).startWithNext { [weak self] waveform in
+                self?.view.state.waveform = waveform
             }
         }
     }
 
-    init(view: NowPlayingView, service: AudioPlayerService) {
+    init(view: NowPlayingView, service: SoundCloudService, audioPlayerService: AudioPlayerService) {
         self.view = view
         self.service = service
+        self.audioPlayerService = audioPlayerService
 
         super.init()
         
-        service.state.addObserver { [weak self] state in
+        audioPlayerService.state.addObserver { [weak self] state in
             self?.view.state.playing = state == .Playing
             self?.view.state.loading = state == .Loading
         }
-        service.progressChangedHandler = { [weak self] progress, duration in
+        audioPlayerService.progressChangedHandler = { [weak self] progress, duration in
             self?.view.state.progress = progress
             self?.view.state.duration = duration
-            self?.view.state.formattedDuration = self?.formatSeconds(Int(service.duration)) ?? ""
-            self?.view.state.formattedProgress = self?.formatSeconds(Int(service.progress)) ?? ""
+            self?.view.state.formattedDuration = self?.formatSeconds(Int(audioPlayerService.duration)) ?? ""
+            self?.view.state.formattedProgress = self?.formatSeconds(Int(audioPlayerService.progress)) ?? ""
         }
     }
 
     func toggleCurrentSound() {
         if sound == nil { return }
 
-        switch service.state.get {
-        case .Playing: service.pause()
-        default: service.resume()
+        switch audioPlayerService.state.get {
+        case .Playing: audioPlayerService.pause()
+        default: audioPlayerService.resume()
+        }
+    }
+    
+    func toggleFavorite() {
+        if let sound = sound {
+            service.toggleFavorite(sound) { [weak self] in
+                // In case the change failed, set the view state on completion too
+                self?.view.state.favorite = sound.favorite
+            }
+            view.state.favorite = sound.favorite
         }
     }
 
-    func toggleFavorite() {
-        sound?.toggleFavorite()
-    }
-
     func seekToProgress(progress: Double) {
-        service.seek(progress)
+        audioPlayerService.seek(progress)
     }
 
     func formatSeconds(totalSeconds: Int) -> String {
