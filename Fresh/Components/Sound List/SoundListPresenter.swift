@@ -52,16 +52,11 @@ class SoundListPresenter: Presenter {
     }
 
     func selectSoundAtIndex(index: Int) {
-        selectedSound.set(soundAtIndex(index))
+        selectedSound.set(sounds[safe: index])
     }
 
     var indexOfSelectedSound: Int? {
-        return sounds.indexOf { $0.isEqual(self.selectedSound.get) }
-    }
-
-    private func soundAtIndex(index: Int) -> FSHSound? {
-        if index < 0 || index > sounds.count - 1 { return nil }
-        return sounds[index]
+        return sounds.indexOf { $0 == self.selectedSound.get }
     }
 
     // MARK: Presenter
