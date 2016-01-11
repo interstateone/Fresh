@@ -44,9 +44,9 @@ class SoundCloudService: NSObject {
         }
     }
 
-    func updateSounds() -> SignalProducer<[FSHSound], NSError> {
+    func updateSounds() -> SignalProducer<[Sound], NSError> {
         guard loggedIn else { return SignalProducer.empty }
-        return SignalProducer<[FSHSound], NSError> { [weak self] observer, disposal in
+        return SignalProducer<[Sound], NSError> { [weak self] observer, disposal in
             guard let _self = self else {
                 observer.sendCompleted()
                 return
@@ -72,9 +72,9 @@ class SoundCloudService: NSObject {
         }
     }
 
-    func fetchNextSounds() -> SignalProducer<[FSHSound], NSError> {
+    func fetchNextSounds() -> SignalProducer<[Sound], NSError> {
         guard loggedIn else { return SignalProducer.empty }
-        return SignalProducer<[FSHSound], NSError> { [weak self] observer, disposal in
+        return SignalProducer<[Sound], NSError> { [weak self] observer, disposal in
             guard let _self = self else {
                 observer.sendCompleted()
                 return
@@ -100,18 +100,24 @@ class SoundCloudService: NSObject {
         }
     }
 
-    func createSounds(soundDictionaries: JSONArray) -> [FSHSound] {
+    func createSounds(soundDictionaries: JSONArray) -> [Sound] {
         return soundDictionaries.filter { dictionary in
             guard let origin = dictionary["origin"] as? JSONObject else { return false }
             let streamable = (origin["streamable"] as? Bool ?? false) == true
             let isTrack = (origin["kind"] as? String ?? "") == "track"
             return streamable && isTrack
         }.map { dictionary in
-            return (try? MTLJSONAdapter.modelOfClass(FSHSound.self, fromJSONDictionary: dictionary)) as? FSHSound
+            do {
+                return try Sound(json: JSON(dictionary))
+            }
+            catch {
+                NSLog("%@", "\(error)")
+                return nil
+            }
         }.flatMap {$0}
     }
     
-    func fetchPlayURL(sound: FSHSound) -> SignalProducer<NSURL, NSError> {
+    func fetchPlayURL(sound: Sound) -> SignalProducer<NSURL, NSError> {
         return SignalProducer<NSURL, NSError> { [weak self] observer, disposal in
             if let playURL = sound.playURL {
                 observer.sendNext(playURL)
@@ -132,7 +138,7 @@ class SoundCloudService: NSObject {
         }
     }
 
-    private func getStreamURL(sound: FSHSound, completion: (NSURL!, NSError!) -> Void) {
+    private func getStreamURL(sound: Sound, completion: (NSURL!, NSError!) -> Void) {
         guard let streamURL = sound.streamURL else { return }
 
         let request = NXOAuth2Request(resource:streamURL, method:"GET", parameters:[:])
@@ -147,16 +153,18 @@ class SoundCloudService: NSObject {
         }
     }
 
-    func fetchWaveform(sound: FSHSound) -> SignalProducer<FSHWaveform, NSError> {
+    func fetchWaveform(sound: Sound) -> SignalProducer<FSHWaveform, NSError> {
         return SignalProducer<FSHWaveform, NSError> { observer, disposal in
-            if sound.waveformURL == nil {
+            guard let waveformURL = sound.waveformURL else {
+                observer.sendFailed(NSError(domain: "", code: 0, userInfo: nil))
                 observer.sendCompleted()
+                return
             }
 
-            let request = NSMutableURLRequest(URL: sound.waveformURL)
+            let request = NSMutableURLRequest(URL: waveformURL)
             request.HTTPShouldHandleCookies = false
             
-            Alamofire.request(.GET, sound.waveformURL).responseJSON { response in
+            Alamofire.request(.GET, waveformURL).responseJSON { response in
                 if let JSON = response.result.value as? [String: AnyObject], waveform = (try? MTLJSONAdapter.modelOfClass(FSHWaveform.self, fromJSONDictionary:JSON)) as? FSHWaveform {
                     observer.sendNext(waveform)
                     observer.sendCompleted()
@@ -176,7 +184,7 @@ class SoundCloudService: NSObject {
         }
     }
 
-    func toggleFavorite(sound: FSHSound, completion: (() -> Void)? = nil) {
+    func toggleFavorite(sound: Sound, completion: (() -> Void)? = nil) {
         sound.favorite = !sound.favorite
 
         let method = sound.favorite ? "PUT" : "DELETE"

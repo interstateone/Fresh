@@ -18,7 +18,7 @@ class MainWindowPresenter: NSObject, Presenter {
         account.soundcloudAccount != nil ? wireframe.presentSoundList() : wireframe.presentLogin()
     }
     
-    func selectedSoundChanged(sound: FSHSound?) {
+    func selectedSoundChanged(sound: Sound?) {
         if sound != nil {
             wireframe.showNowPlaying()
         }
