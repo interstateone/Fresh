@@ -153,8 +153,8 @@ class SoundCloudService: NSObject {
         }
     }
 
-    func fetchWaveform(sound: Sound) -> SignalProducer<FSHWaveform, NSError> {
-        return SignalProducer<FSHWaveform, NSError> { observer, disposal in
+    func fetchWaveform(sound: Sound) -> SignalProducer<Waveform, NSError> {
+        return SignalProducer<Waveform, NSError> { observer, disposal in
             guard let waveformURL = sound.waveformURL else {
                 observer.sendFailed(NSError(domain: "", code: 0, userInfo: nil))
                 observer.sendCompleted()
@@ -165,7 +165,7 @@ class SoundCloudService: NSObject {
             request.HTTPShouldHandleCookies = false
             
             Alamofire.request(.GET, waveformURL).responseJSON { response in
-                if let JSON = response.result.value as? [String: AnyObject], waveform = (try? MTLJSONAdapter.modelOfClass(FSHWaveform.self, fromJSONDictionary:JSON)) as? FSHWaveform {
+                if let json = response.result.value, waveform = try? Waveform(json: JSON(json)) {
                     observer.sendNext(waveform)
                     observer.sendCompleted()
                     return

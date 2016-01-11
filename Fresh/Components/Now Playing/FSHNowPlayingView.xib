@@ -75,7 +75,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
-                <customView translatesAutoresizingMaskIntoConstraints="NO" id="enG-PO-eOu" userLabel="Waveform Slider View" customClass="FSHWaveformSliderView">
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="enG-PO-eOu" userLabel="Waveform Slider View" customClass="WaveformSliderView" customModule="Fresh" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="350" height="27"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="27" id="HBd-sl-vlh"/>
