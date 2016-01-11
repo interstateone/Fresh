@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8C17692060B8D4F8EEED68F9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61660A482380B3A7DF63BE43 /* Pods.framework */; };
-		CA0423411B745CC2004513C6 /* FSHAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = CA04231D1B745CC2004513C6 /* FSHAccount.m */; };
 		CA0423431B745CC2004513C6 /* FSHNoHitTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0423221B745CC2004513C6 /* FSHNoHitTextField.m */; };
 		CA0423441B745CC2004513C6 /* FSHLoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA0423251B745CC2004513C6 /* FSHLoginView.xib */; };
 		CA0423451B745CC2004513C6 /* FSHLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0423261B745CC2004513C6 /* FSHLoginViewController.swift */; };
@@ -66,6 +65,7 @@
 		CA5D7A2918CEB2F1006E2401 /* NSView+RACProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D7A2818CEB2F1006E2401 /* NSView+RACProperties.m */; };
 		CA5D7A2C18CEB7A8006E2401 /* NSImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D7A2B18CEB7A8006E2401 /* NSImageView+AFNetworking.m */; };
 		CAA5F5221C432E1C00599EC4 /* JSONSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA5F5211C432E1C00599EC4 /* JSONSpec.swift */; };
+		CAA5F5241C43676300599EC4 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA5F5231C43676300599EC4 /* Account.swift */; };
 		CAE5F49C18D14AFE00506613 /* NSImage+TintedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE5F49B18D14AFE00506613 /* NSImage+TintedImage.m */; };
 		CAE6846018CD3C4900F907A4 /* NSButton+RACProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE6845F18CD3C4900F907A4 /* NSButton+RACProperties.m */; };
 		CAF1E1B61C34DC1F00EDFC6A /* SoundListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1E1B51C34DC1F00EDFC6A /* SoundListPresenter.swift */; };
@@ -90,8 +90,6 @@
 		61660A482380B3A7DF63BE43 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5FAFB4BDA7DD30A7FA9765F /* Pods-FreshTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreshTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FreshTests/Pods-FreshTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C625D28D4A69D21652CB65E2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		CA04231C1B745CC2004513C6 /* FSHAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHAccount.h; sourceTree = "<group>"; };
-		CA04231D1B745CC2004513C6 /* FSHAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHAccount.m; sourceTree = "<group>"; };
 		CA0423211B745CC2004513C6 /* FSHNoHitTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHNoHitTextField.h; sourceTree = "<group>"; };
 		CA0423221B745CC2004513C6 /* FSHNoHitTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHNoHitTextField.m; sourceTree = "<group>"; };
 		CA0423251B745CC2004513C6 /* FSHLoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSHLoginView.xib; sourceTree = "<group>"; };
@@ -191,6 +189,7 @@
 		CA5D7A2A18CEB7A8006E2401 /* NSImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSImageView+AFNetworking.h"; path = "Categories/NSImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		CA5D7A2B18CEB7A8006E2401 /* NSImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSImageView+AFNetworking.m"; path = "Categories/NSImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		CAA5F5211C432E1C00599EC4 /* JSONSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONSpec.swift; path = Models/JSONSpec.swift; sourceTree = "<group>"; };
+		CAA5F5231C43676300599EC4 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		CAE5F49A18D14AFE00506613 /* NSImage+TintedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSImage+TintedImage.h"; path = "Categories/NSImage+TintedImage.h"; sourceTree = "<group>"; };
 		CAE5F49B18D14AFE00506613 /* NSImage+TintedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSImage+TintedImage.m"; path = "Categories/NSImage+TintedImage.m"; sourceTree = "<group>"; };
 		CAE6845E18CD3C4900F907A4 /* NSButton+RACProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSButton+RACProperties.h"; path = "Categories/NSButton+RACProperties.h"; sourceTree = "<group>"; };
@@ -253,11 +252,10 @@
 		CA04231B1B745CC2004513C6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				CA04231C1B745CC2004513C6 /* FSHAccount.h */,
-				CA04231D1B745CC2004513C6 /* FSHAccount.m */,
 				CA4E257E1C339D6000CB63FB /* SoundCloudService.swift */,
 				CA22AF161C40BC3600AF0DF6 /* AudioPlayerService.swift */,
 				CA22AF1C1C430ACE00AF0DF6 /* Sound.swift */,
+				CAA5F5231C43676300599EC4 /* Account.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -723,7 +721,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA44E8EB18CD1CDB007754C5 /* SCSoundCloud+Private.m in Sources */,
-				CA0423411B745CC2004513C6 /* FSHAccount.m in Sources */,
 				CA22AF151C40B10400AF0DF6 /* Timer.swift in Sources */,
 				CA22AF131C4099DA00AF0DF6 /* NowPlayingPresenter.swift in Sources */,
 				CAF1E1BA1C34E2E900EDFC6A /* SoundListViewController.swift in Sources */,
@@ -767,6 +764,7 @@
 				CA0423431B745CC2004513C6 /* FSHNoHitTextField.m in Sources */,
 				CA13F4DC18CD80F20027B513 /* NXOAuth2Client.m in Sources */,
 				CA4E257D1C33985500CB63FB /* MainWireframe.swift in Sources */,
+				CAA5F5241C43676300599EC4 /* Account.swift in Sources */,
 				CA04234C1B745CC2004513C6 /* FSHWaveform.swift in Sources */,
 				CA13F4D718CD80F20027B513 /* NSString+NXOAuth2.m in Sources */,
 				CA13F4DB18CD80F20027B513 /* NXOAuth2AccountStore.m in Sources */,

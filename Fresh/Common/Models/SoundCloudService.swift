@@ -14,8 +14,8 @@ typealias JSONObject = [String: AnyObject]
 typealias JSONArray = [JSONObject]
 
 class SoundCloudService: NSObject {
-    var account = FSHAccount()
-    var accountObserverSet = ObserverSet<FSHAccount>()
+    var account = Account()
+    var accountObserverSet = ObserverSet<Account>()
     var loggedIn: Bool {
         return account.soundcloudAccount != nil
     }
