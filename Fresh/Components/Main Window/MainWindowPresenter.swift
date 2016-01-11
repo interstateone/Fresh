@@ -14,7 +14,7 @@ class MainWindowPresenter: NSObject, Presenter {
     let wireframe: MainWireframe
     let service: SoundCloudService
 
-    func accountChanged(account: FSHAccount) {
+    func accountChanged(account: Account) {
         account.soundcloudAccount != nil ? wireframe.presentSoundList() : wireframe.presentLogin()
     }
     
