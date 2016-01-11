@@ -21,6 +21,10 @@ class JSON {
         return try get(keys: keys)
     }
 
+    func get<Value: Decodable>(keys: String...) throws -> [Value] {
+        return try get(keys: keys)
+    }
+
     func getJSON(keys: String...) throws -> JSON {
         return try getJSON(keys: keys)
     }
@@ -43,16 +47,27 @@ class JSON {
             return try Value.decode(self)
         }
 
-        let json = try getJSON(keys: keys)
-
         do {
-            return try Value.decode(json)
+            return try Value.decode(getJSON(keys: keys))
         }
         catch let error as JSONError {
             throw JSONError(path: keys.joinWithSeparator("."), underlyingError: error.underlyingError)
         }
     }
-    
+
+    func get<Value: Decodable>(keys keys: [String]) throws -> [Value] {
+        if keys.count == 0 {
+            return try [Value].decode(self)
+        }
+
+        do {
+            return try [Value].decode(getJSON(keys: keys))
+        }
+        catch let error as JSONError {
+            throw JSONError(path: keys.joinWithSeparator("."), underlyingError: error.underlyingError)
+        }
+    }
+
     func decode<Value>(decode: (JSON) throws -> Value) throws -> Value {
         do {
             return try decode(self)
@@ -115,6 +130,14 @@ extension NSURL: Decodable {
             throw DecodingError.Undecodable(explanation: "Unable to create a NSURL from the string \"\(JSONString)\"")
         }
         return self.init(string: JSONString)!
+    }
+}
+extension Array where Element: Decodable {
+    static func decode(json: JSON) throws -> [Element] {
+        guard let JSONArray = json.object as? [AnyObject] else {
+            throw DecodingError.TypeMismatch(expected: [AnyObject].self, actual: json.object.dynamicType)
+        }
+        return JSONArray.map { try? Element.decode(JSON($0)) }.flatMap { $0 }
     }
 }
 

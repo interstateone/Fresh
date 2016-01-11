@@ -14,9 +14,7 @@
 		CA0423461B745CC2004513C6 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA0423281B745CC2004513C6 /* MainWindow.xib */; };
 		CA0423481B745CC2004513C6 /* MainWindowPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA04232B1B745CC2004513C6 /* MainWindowPresenter.swift */; };
 		CA0423491B745CC2004513C6 /* FSHNowPlayingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA04232D1B745CC2004513C6 /* FSHNowPlayingView.xib */; };
-		CA04234C1B745CC2004513C6 /* FSHWaveform.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0423321B745CC2004513C6 /* FSHWaveform.swift */; };
-		CA04234D1B745CC2004513C6 /* FSHWaveformSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0423341B745CC2004513C6 /* FSHWaveformSliderCell.m */; };
-		CA04234E1B745CC2004513C6 /* FSHWaveformSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0423361B745CC2004513C6 /* FSHWaveformSliderView.m */; };
+		CA04234C1B745CC2004513C6 /* Waveform.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0423321B745CC2004513C6 /* Waveform.swift */; };
 		CA0423511B745CC2004513C6 /* FSHSoundRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA04233D1B745CC2004513C6 /* FSHSoundRowView.m */; };
 		CA0423521B745CC2004513C6 /* SoundListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA04233E1B745CC2004513C6 /* SoundListView.xib */; };
 		CA13F4D618CD80F20027B513 /* NSData+NXOAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = CA13F4B718CD80F20027B513 /* NSData+NXOAuth2.m */; };
@@ -66,6 +64,8 @@
 		CA5D7A2C18CEB7A8006E2401 /* NSImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D7A2B18CEB7A8006E2401 /* NSImageView+AFNetworking.m */; };
 		CAA5F5221C432E1C00599EC4 /* JSONSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA5F5211C432E1C00599EC4 /* JSONSpec.swift */; };
 		CAA5F5241C43676300599EC4 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA5F5231C43676300599EC4 /* Account.swift */; };
+		CAA5F5261C436FF900599EC4 /* WaveformSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA5F5251C436FF900599EC4 /* WaveformSliderView.swift */; };
+		CAA5F5281C43782700599EC4 /* WaveformSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA5F5271C43782700599EC4 /* WaveformSliderCell.swift */; };
 		CAE5F49C18D14AFE00506613 /* NSImage+TintedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE5F49B18D14AFE00506613 /* NSImage+TintedImage.m */; };
 		CAE6846018CD3C4900F907A4 /* NSButton+RACProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE6845F18CD3C4900F907A4 /* NSButton+RACProperties.m */; };
 		CAF1E1B61C34DC1F00EDFC6A /* SoundListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF1E1B51C34DC1F00EDFC6A /* SoundListPresenter.swift */; };
@@ -97,11 +97,7 @@
 		CA0423281B745CC2004513C6 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		CA04232B1B745CC2004513C6 /* MainWindowPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowPresenter.swift; sourceTree = "<group>"; };
 		CA04232D1B745CC2004513C6 /* FSHNowPlayingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSHNowPlayingView.xib; sourceTree = "<group>"; };
-		CA0423321B745CC2004513C6 /* FSHWaveform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSHWaveform.swift; sourceTree = "<group>"; };
-		CA0423331B745CC2004513C6 /* FSHWaveformSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHWaveformSliderCell.h; sourceTree = "<group>"; };
-		CA0423341B745CC2004513C6 /* FSHWaveformSliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHWaveformSliderCell.m; sourceTree = "<group>"; };
-		CA0423351B745CC2004513C6 /* FSHWaveformSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHWaveformSliderView.h; sourceTree = "<group>"; };
-		CA0423361B745CC2004513C6 /* FSHWaveformSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHWaveformSliderView.m; sourceTree = "<group>"; };
+		CA0423321B745CC2004513C6 /* Waveform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Waveform.swift; sourceTree = "<group>"; };
 		CA04233C1B745CC2004513C6 /* FSHSoundRowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHSoundRowView.h; sourceTree = "<group>"; };
 		CA04233D1B745CC2004513C6 /* FSHSoundRowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHSoundRowView.m; sourceTree = "<group>"; };
 		CA04233E1B745CC2004513C6 /* SoundListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SoundListView.xib; sourceTree = "<group>"; };
@@ -190,6 +186,8 @@
 		CA5D7A2B18CEB7A8006E2401 /* NSImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSImageView+AFNetworking.m"; path = "Categories/NSImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		CAA5F5211C432E1C00599EC4 /* JSONSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONSpec.swift; path = Models/JSONSpec.swift; sourceTree = "<group>"; };
 		CAA5F5231C43676300599EC4 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		CAA5F5251C436FF900599EC4 /* WaveformSliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformSliderView.swift; sourceTree = "<group>"; };
+		CAA5F5271C43782700599EC4 /* WaveformSliderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformSliderCell.swift; sourceTree = "<group>"; };
 		CAE5F49A18D14AFE00506613 /* NSImage+TintedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSImage+TintedImage.h"; path = "Categories/NSImage+TintedImage.h"; sourceTree = "<group>"; };
 		CAE5F49B18D14AFE00506613 /* NSImage+TintedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSImage+TintedImage.m"; path = "Categories/NSImage+TintedImage.m"; sourceTree = "<group>"; };
 		CAE6845E18CD3C4900F907A4 /* NSButton+RACProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSButton+RACProperties.h"; path = "Categories/NSButton+RACProperties.h"; sourceTree = "<group>"; };
@@ -306,11 +304,9 @@
 				CA04232D1B745CC2004513C6 /* FSHNowPlayingView.xib */,
 				CA22AF101C408F0800AF0DF6 /* NowPlayingViewController.swift */,
 				CA22AF121C4099DA00AF0DF6 /* NowPlayingPresenter.swift */,
-				CA0423321B745CC2004513C6 /* FSHWaveform.swift */,
-				CA0423331B745CC2004513C6 /* FSHWaveformSliderCell.h */,
-				CA0423341B745CC2004513C6 /* FSHWaveformSliderCell.m */,
-				CA0423351B745CC2004513C6 /* FSHWaveformSliderView.h */,
-				CA0423361B745CC2004513C6 /* FSHWaveformSliderView.m */,
+				CA0423321B745CC2004513C6 /* Waveform.swift */,
+				CAA5F5251C436FF900599EC4 /* WaveformSliderView.swift */,
+				CAA5F5271C43782700599EC4 /* WaveformSliderCell.swift */,
 			);
 			path = "Now Playing";
 			sourceTree = "<group>";
@@ -749,7 +745,6 @@
 				CA44E8EA18CD1CDB007754C5 /* SCRequest.m in Sources */,
 				CA22AF1D1C430ACE00AF0DF6 /* Sound.swift in Sources */,
 				CA13F4D918CD80F20027B513 /* NXOAuth2AccessToken.m in Sources */,
-				CA04234E1B745CC2004513C6 /* FSHWaveformSliderView.m in Sources */,
 				CA22AF1F1C431F0500AF0DF6 /* JSON.swift in Sources */,
 				CA44E8A818CD1AA2007754C5 /* main.m in Sources */,
 				CA13F4E218CD80F20027B513 /* NXOAuth2Request.m in Sources */,
@@ -758,14 +753,15 @@
 				CA5D7A2918CEB2F1006E2401 /* NSView+RACProperties.m in Sources */,
 				CAF1E1B61C34DC1F00EDFC6A /* SoundListPresenter.swift in Sources */,
 				CA22AF171C40BC3600AF0DF6 /* AudioPlayerService.swift in Sources */,
+				CAA5F5261C436FF900599EC4 /* WaveformSliderView.swift in Sources */,
 				CA22AF1B1C40DCF700AF0DF6 /* ArrayExtensions.swift in Sources */,
-				CA04234D1B745CC2004513C6 /* FSHWaveformSliderCell.m in Sources */,
 				CA444E411C33B8DF00E0EA45 /* SoundListRowModel.swift in Sources */,
 				CA0423431B745CC2004513C6 /* FSHNoHitTextField.m in Sources */,
 				CA13F4DC18CD80F20027B513 /* NXOAuth2Client.m in Sources */,
 				CA4E257D1C33985500CB63FB /* MainWireframe.swift in Sources */,
 				CAA5F5241C43676300599EC4 /* Account.swift in Sources */,
-				CA04234C1B745CC2004513C6 /* FSHWaveform.swift in Sources */,
+				CA04234C1B745CC2004513C6 /* Waveform.swift in Sources */,
+				CAA5F5281C43782700599EC4 /* WaveformSliderCell.swift in Sources */,
 				CA13F4D718CD80F20027B513 /* NSString+NXOAuth2.m in Sources */,
 				CA13F4DB18CD80F20027B513 /* NXOAuth2AccountStore.m in Sources */,
 				CA13F4DE18CD80F20027B513 /* NXOAuth2Constants.m in Sources */,

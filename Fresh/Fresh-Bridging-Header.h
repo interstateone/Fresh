@@ -15,10 +15,8 @@
 #import "NXOAuth2.h"
 @import Mantle;
 
-#import "FSHAccount.h"
 #import "FSHSoundRowView.h"
 #import "SCRequest.h"
 #import "SCAccount.h"
 #import "SCSoundCloud.h"
 #import "BSRefreshableScrollView.h"
-#import "FSHWaveformSliderView.h"

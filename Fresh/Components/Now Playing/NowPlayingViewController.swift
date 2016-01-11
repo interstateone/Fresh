@@ -17,7 +17,7 @@ struct NowPlayingViewState {
     var formattedDuration: String = ""
     var favorite: Bool = false
     var hidden: Bool = true
-    var waveform: FSHWaveform? = nil
+    var waveform: Waveform? = nil
     var playing: Bool = false
     var loading: Bool = false
     var permalinkURL: NSURL? = nil
@@ -35,7 +35,7 @@ class NowPlayingViewController: NSTitlebarAccessoryViewController, NowPlayingVie
     @IBOutlet var shareButton: NSButton!
     @IBOutlet var progressLabel: NSButton!
     @IBOutlet var durationLabel: NSButton!
-    @IBOutlet var waveformSlider: FSHWaveformSliderView!
+    @IBOutlet var waveformSlider: WaveformSliderView!
 
     var presenter: NowPlayingPresenter?
     var eventMonitor: AnyObject?
@@ -89,7 +89,7 @@ class NowPlayingViewController: NSTitlebarAccessoryViewController, NowPlayingVie
 
     // MARK: Actions
 
-    func waveformSliderChanged(slider: FSHWaveformSliderView) {
+    func waveformSliderChanged(slider: WaveformSliderView) {
         if let progress = slider.objectValue as? NSNumber {
             presenter?.seekToProgress(progress.doubleValue)
         }
