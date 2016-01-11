@@ -14,23 +14,24 @@ typealias JSONObject = [String: AnyObject]
 typealias JSONArray = [JSONObject]
 
 class SoundCloudService: NSObject {
-    var account = Account()
-    var accountObserverSet = ObserverSet<Account>()
+    var account = Observable<Account?>(nil)
     var loggedIn: Bool {
-        return account.soundcloudAccount != nil
+        return account.get?.soundcloudAccount != nil
     }
-    var nextSoundsURL: NSURL?
+    private var nextSoundsURL: NSURL?
 
     override init() {
         super.init()
         
         NSNotificationCenter.defaultCenter().addObserverForName(SCSoundCloudAccountDidChangeNotification, object: nil, queue: NSOperationQueue.currentQueue()) { (notification) -> Void in
-            if let account = SCSoundCloud.account() {
-                self.account.soundcloudAccount = account
+            if let soundcloudAccount = SCSoundCloud.account() {
+                let account = Account()
+                account.soundcloudAccount = soundcloudAccount
+                self.account.set(account)
             }
-            self.willChangeValueForKey("loggedIn")
-            self.didChangeValueForKey("loggedIn")
-            self.accountObserverSet.notify(self.account)
+            else {
+                self.account.set(nil)
+            }
         }
     }
 
@@ -52,7 +53,7 @@ class SoundCloudService: NSObject {
                 return
             }
 
-            SCRequest.performMethod(SCRequestMethodGET, onResource: NSURL(string: "https://api.soundcloud.com/me/activities.json"), usingParameters: nil, withAccount: _self.account.soundcloudAccount, sendingProgressHandler: nil) { (response, data, error) -> Void in
+            SCRequest.performMethod(SCRequestMethodGET, onResource: NSURL(string: "https://api.soundcloud.com/me/activities.json"), usingParameters: nil, withAccount: _self.account.get?.soundcloudAccount, sendingProgressHandler: nil) { (response, data, error) -> Void in
                 if error != nil {
                     observer.sendFailed(error)
                     observer.sendCompleted()
@@ -80,7 +81,7 @@ class SoundCloudService: NSObject {
                 return
             }
 
-            SCRequest.performMethod(SCRequestMethodGET, onResource: _self.nextSoundsURL, usingParameters: nil, withAccount: _self.account.soundcloudAccount, sendingProgressHandler: nil) { (response, data, error) -> Void in
+            SCRequest.performMethod(SCRequestMethodGET, onResource: _self.nextSoundsURL, usingParameters: nil, withAccount: _self.account.get?.soundcloudAccount, sendingProgressHandler: nil) { (response, data, error) -> Void in
                 if error != nil {
                     observer.sendFailed(error)
                     observer.sendCompleted()

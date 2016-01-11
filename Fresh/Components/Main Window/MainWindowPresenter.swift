@@ -14,8 +14,8 @@ class MainWindowPresenter: NSObject, Presenter {
     let wireframe: MainWireframe
     let service: SoundCloudService
 
-    func accountChanged(account: Account) {
-        account.soundcloudAccount != nil ? wireframe.presentSoundList() : wireframe.presentLogin()
+    func accountChanged(account: Account?) {
+        account != nil ? wireframe.presentSoundList() : wireframe.presentLogin()
     }
     
     func selectedSoundChanged(sound: Sound?) {
@@ -37,6 +37,6 @@ class MainWindowPresenter: NSObject, Presenter {
     // MARK: Presenter
 
     func initializeView() {
-        service.account.soundcloudAccount != nil ? wireframe.presentSoundList() : wireframe.presentLogin()
+        service.loggedIn ? wireframe.presentSoundList() : wireframe.presentLogin()
     }
 }

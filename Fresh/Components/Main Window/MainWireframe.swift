@@ -55,7 +55,7 @@ class MainWireframe: NSObject {
         windowController.nowPlayingViewController = nowPlayingViewController
 
         let presenter = MainWindowPresenter(view: windowController, wireframe: self, service: self.service)
-        self.service.accountObserverSet.add(presenter, presenter.dynamicType.accountChanged)
+        self.service.account.addObserver(presenter, presenter.dynamicType.accountChanged)
         listPresenter.selectedSound.addObserver(presenter, presenter.dynamicType.selectedSoundChanged)
         windowController.presenter = presenter
 
