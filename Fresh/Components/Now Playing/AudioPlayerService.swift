@@ -46,6 +46,7 @@ public class AudioPlayerService: NSObject, STKAudioPlayerDelegate {
         case Playing = "Playing"
         case Paused = "Paused"
         case Finished = "Finished"
+        case Stopped = "Stopped"
 
         public var description: String {
             return self.rawValue
@@ -120,11 +121,11 @@ public class AudioPlayerService: NSObject, STKAudioPlayerDelegate {
         case STKAudioPlayerState.Paused:
             _state = .Paused
         case STKAudioPlayerState.Stopped:
-            _state = .Finished
+            _state = .Stopped
         case STKAudioPlayerState.Error:
-            _state = .Finished
+            _state = .Stopped
         case STKAudioPlayerState.Disposed:
-            _state = .Finished
+            _state = .Stopped
         default: break;
         }
     }
