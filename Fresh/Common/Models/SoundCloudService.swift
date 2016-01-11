@@ -108,7 +108,7 @@ class SoundCloudService: NSObject {
             return streamable && isTrack
         }.map { dictionary in
             do {
-                return try Sound(json: JSON(dictionary))
+                return try Sound.decode(JSON(dictionary))
             }
             catch {
                 NSLog("%@", "\(error)")
@@ -165,14 +165,14 @@ class SoundCloudService: NSObject {
             request.HTTPShouldHandleCookies = false
             
             Alamofire.request(.GET, waveformURL).responseJSON { response in
-                if let json = response.result.value, waveform = try? Waveform(json: JSON(json)) {
-                    observer.sendNext(waveform)
-                    observer.sendCompleted()
-                    return
-                }
-
                 switch response.result {
-                case .Success:
+                case .Success(let json):
+                    if let waveform = try? Waveform.decode(JSON(json)) {
+                        observer.sendNext(waveform)
+                        observer.sendCompleted()
+                        return
+                    }
+
                     // TODO: JSON was bad but something was still returned
                     observer.sendFailed(NSError(domain: "", code: 0, userInfo: nil))
                     observer.sendCompleted()
