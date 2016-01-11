@@ -84,19 +84,15 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods/AFNetworking.framework"
   install_framework "Pods/Alamofire.framework"
   install_framework "Pods/BSRefreshableScrollView.framework"
-  install_framework "Pods/Mantle.framework"
   install_framework "Pods/ReactiveCocoa.framework"
   install_framework "Pods/Result.framework"
   install_framework "Pods/StreamingKit.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods/AFNetworking.framework"
   install_framework "Pods/Alamofire.framework"
   install_framework "Pods/BSRefreshableScrollView.framework"
-  install_framework "Pods/Mantle.framework"
   install_framework "Pods/ReactiveCocoa.framework"
   install_framework "Pods/Result.framework"
   install_framework "Pods/StreamingKit.framework"

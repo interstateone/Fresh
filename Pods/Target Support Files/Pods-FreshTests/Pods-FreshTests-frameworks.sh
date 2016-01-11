@@ -84,10 +84,8 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-FreshTests/AFNetworking.framework"
   install_framework "Pods-FreshTests/Alamofire.framework"
   install_framework "Pods-FreshTests/BSRefreshableScrollView.framework"
-  install_framework "Pods-FreshTests/Mantle.framework"
   install_framework "Pods-FreshTests/ReactiveCocoa.framework"
   install_framework "Pods-FreshTests/Result.framework"
   install_framework "Pods-FreshTests/StreamingKit.framework"
@@ -95,10 +93,8 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-FreshTests/Quick.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-FreshTests/AFNetworking.framework"
   install_framework "Pods-FreshTests/Alamofire.framework"
   install_framework "Pods-FreshTests/BSRefreshableScrollView.framework"
-  install_framework "Pods-FreshTests/Mantle.framework"
   install_framework "Pods-FreshTests/ReactiveCocoa.framework"
   install_framework "Pods-FreshTests/Result.framework"
   install_framework "Pods-FreshTests/StreamingKit.framework"

@@ -61,7 +61,6 @@
 		CA4E257D1C33985500CB63FB /* MainWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4E257C1C33985500CB63FB /* MainWireframe.swift */; };
 		CA4E257F1C339D6000CB63FB /* SoundCloudService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4E257E1C339D6000CB63FB /* SoundCloudService.swift */; };
 		CA5D7A2918CEB2F1006E2401 /* NSView+RACProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D7A2818CEB2F1006E2401 /* NSView+RACProperties.m */; };
-		CA5D7A2C18CEB7A8006E2401 /* NSImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5D7A2B18CEB7A8006E2401 /* NSImageView+AFNetworking.m */; };
 		CAA5F5221C432E1C00599EC4 /* JSONSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA5F5211C432E1C00599EC4 /* JSONSpec.swift */; };
 		CAA5F5241C43676300599EC4 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA5F5231C43676300599EC4 /* Account.swift */; };
 		CAA5F5261C436FF900599EC4 /* WaveformSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA5F5251C436FF900599EC4 /* WaveformSliderView.swift */; };
@@ -182,8 +181,6 @@
 		CA5B3D921B72DD40002BB59B /* Fresh-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Fresh-Bridging-Header.h"; sourceTree = "<group>"; };
 		CA5D7A2718CEB2F1006E2401 /* NSView+RACProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSView+RACProperties.h"; path = "Categories/NSView+RACProperties.h"; sourceTree = "<group>"; };
 		CA5D7A2818CEB2F1006E2401 /* NSView+RACProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSView+RACProperties.m"; path = "Categories/NSView+RACProperties.m"; sourceTree = "<group>"; };
-		CA5D7A2A18CEB7A8006E2401 /* NSImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSImageView+AFNetworking.h"; path = "Categories/NSImageView+AFNetworking.h"; sourceTree = "<group>"; };
-		CA5D7A2B18CEB7A8006E2401 /* NSImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSImageView+AFNetworking.m"; path = "Categories/NSImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		CAA5F5211C432E1C00599EC4 /* JSONSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONSpec.swift; path = Models/JSONSpec.swift; sourceTree = "<group>"; };
 		CAA5F5231C43676300599EC4 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		CAA5F5251C436FF900599EC4 /* WaveformSliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformSliderView.swift; sourceTree = "<group>"; };
@@ -498,8 +495,6 @@
 				CAE6845F18CD3C4900F907A4 /* NSButton+RACProperties.m */,
 				CA5D7A2718CEB2F1006E2401 /* NSView+RACProperties.h */,
 				CA5D7A2818CEB2F1006E2401 /* NSView+RACProperties.m */,
-				CA5D7A2A18CEB7A8006E2401 /* NSImageView+AFNetworking.h */,
-				CA5D7A2B18CEB7A8006E2401 /* NSImageView+AFNetworking.m */,
 				CAE5F49A18D14AFE00506613 /* NSImage+TintedImage.h */,
 				CAE5F49B18D14AFE00506613 /* NSImage+TintedImage.m */,
 			);
@@ -733,7 +728,6 @@
 				CA44E8E818CD1CDB007754C5 /* SCAccount.m in Sources */,
 				CA22AF111C408F0800AF0DF6 /* NowPlayingViewController.swift in Sources */,
 				CA13F4D818CD80F20027B513 /* NSURL+NXOAuth2.m in Sources */,
-				CA5D7A2C18CEB7A8006E2401 /* NSImageView+AFNetworking.m in Sources */,
 				CA0423481B745CC2004513C6 /* MainWindowPresenter.swift in Sources */,
 				CA13F4DA18CD80F20027B513 /* NXOAuth2Account.m in Sources */,
 				CA44E8E718CD1CDB007754C5 /* SCAccount+Private.m in Sources */,
