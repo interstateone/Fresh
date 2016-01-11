@@ -39,7 +39,7 @@ class SoundListViewController: NSViewController, SoundListView, NSTableViewDeleg
         return true
     }
 
-    func selectedSoundChanged(sound: FSHSound?) {
+    func selectedSoundChanged(sound: Sound?) {
         guard let presenter = presenter else { return }
         let selectedRowIndexes = tableView.selectedRowIndexes
         tableView.reloadData()

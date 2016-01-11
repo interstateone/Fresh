@@ -33,21 +33,21 @@ class SoundListPresenter: Presenter {
         }
     }
 
-    private var sounds = [FSHSound]() {
+    private var sounds = [Sound]() {
         didSet {
             view.rowModels = sounds.map { SoundListRowModel(title: $0.title, author: $0.author) }
         }
     }
-    let selectedSound = Observable<FSHSound?>(nil)
+    let selectedSound = Observable<Sound?>(nil)
 
-    func updateSounds() -> SignalProducer<[FSHSound], NSError> {
+    func updateSounds() -> SignalProducer<[Sound], NSError> {
         let signal = service.updateSounds().on(next: { [weak self] sounds in
             self?.sounds = sounds
         })
         return signal
     }
 
-    func fetchNextSounds() -> SignalProducer<[FSHSound], NSError> {
+    func fetchNextSounds() -> SignalProducer<[Sound], NSError> {
         return service.fetchNextSounds()
     }
 

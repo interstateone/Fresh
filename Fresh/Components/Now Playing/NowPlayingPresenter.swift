@@ -13,7 +13,7 @@ class NowPlayingPresenter: NSObject, Presenter {
     let service: SoundCloudService
     let audioPlayerService: AudioPlayerService
 
-    var sound: FSHSound? {
+    var sound: Sound? {
         didSet {
             audioPlayerService.stop()
 
@@ -92,7 +92,7 @@ class NowPlayingPresenter: NSObject, Presenter {
         return NSString(format:"%.2ld:%.2ld", minutes, seconds) as String
     }
 
-    func selectedSoundChanged(sound: FSHSound?) {
+    func selectedSoundChanged(sound: Sound?) {
         self.sound = sound
     }
 
