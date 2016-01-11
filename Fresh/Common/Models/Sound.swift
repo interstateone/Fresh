@@ -9,7 +9,7 @@
 import Foundation
 
 // The only reason that any non-optional properties are vars with default values is because you can't throw in an initializer until all properties are stored. When this changes the properties should be reverted.
-final class Sound: CustomStringConvertible, Equatable {
+final class Sound: CustomStringConvertible, Equatable, Decodable {
     var trackID: Int = 0
     var title: String = ""
     var author: String = ""
@@ -43,6 +43,10 @@ final class Sound: CustomStringConvertible, Equatable {
             }
             return date
         }
+    }
+
+    static func decode(json: JSON) throws -> Self {
+        return try self.init(json: json)
     }
 
     private static let dateFormatter: NSDateFormatter = {
