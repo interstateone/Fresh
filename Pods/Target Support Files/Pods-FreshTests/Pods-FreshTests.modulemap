@@ -1,0 +1,6 @@
+framework module Pods_FreshTests {
+  umbrella header "Pods-FreshTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
