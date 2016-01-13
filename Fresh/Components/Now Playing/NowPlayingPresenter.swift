@@ -8,7 +8,7 @@
 
 import Foundation
 
-class NowPlayingPresenter: NSObject, Presenter {
+class NowPlayingPresenter: Presenter {
     var view: NowPlayingView
     let service: SoundCloudService
     let audioPlayerService: AudioPlayerService
@@ -49,8 +49,6 @@ class NowPlayingPresenter: NSObject, Presenter {
         self.service = service
         self.audioPlayerService = audioPlayerService
 
-        super.init()
-        
         audioPlayerService.state.addObserver { [weak self] state in
             self?.view.state.playing = state == .Playing
             self?.view.state.loading = state == .Loading

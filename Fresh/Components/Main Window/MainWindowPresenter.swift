@@ -7,9 +7,8 @@
 //
 
 import Foundation
-import ReactiveCocoa
 
-class MainWindowPresenter: NSObject, Presenter {
+class MainWindowPresenter: Presenter {
     let view: NSWindowController
     let wireframe: MainWireframe
     let service: SoundCloudService
@@ -31,7 +30,6 @@ class MainWindowPresenter: NSObject, Presenter {
         self.view = view
         self.wireframe = wireframe
         self.service = service
-        super.init()
     }
 
     // MARK: Presenter
