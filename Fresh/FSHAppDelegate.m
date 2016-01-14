@@ -8,6 +8,7 @@
 
 #import "FSHAppDelegate.h"
 #import "SCSoundCloud.h"
+#import <Keys/FreshKeys.h>
 #import "Fresh-Swift.h"
 
 @interface FSHAppDelegate ()
@@ -24,8 +25,8 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    // Must happen first
-    [SCSoundCloud setClientID:@"***REMOVED***" secret:@"***REMOVED***" redirectURL:[NSURL URLWithString:@"freshapp://oauth"]];
+    FreshKeys *keys = [[FreshKeys alloc] init];
+    [SCSoundCloud setClientID:keys.soundCloudClientID secret:keys.soundCloudClientSecret redirectURL:[NSURL URLWithString:@"freshapp://oauth"]];
 
     self.wireframe = [[MainWireframe alloc] init];
     [self.wireframe presentMainWindow];

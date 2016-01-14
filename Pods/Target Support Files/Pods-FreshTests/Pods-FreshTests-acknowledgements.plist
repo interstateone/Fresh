@@ -60,6 +60,14 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 		</dict>
 		<dict>
 			<key>FooterText</key>
+			<string>MIT LICENSE Found in the repo</string>
+			<key>Title</key>
+			<string>Keys</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
 			<string>**Copyright (c) 2012 - 2015, GitHub, Inc.**
 **All rights reserved.**
 

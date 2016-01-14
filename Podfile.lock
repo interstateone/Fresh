@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (3.1.4)
   - BSRefreshableScrollView (1.0.1)
+  - Keys (1.0.0)
   - Nimble (3.0.0)
   - Quick (0.8.0)
   - ReactiveCocoa (4.0.0-RC.1):
@@ -20,14 +21,20 @@ PODS:
 DEPENDENCIES:
   - Alamofire (= 3.1.4)
   - BSRefreshableScrollView (= 1.0.1)
+  - Keys (from `Pods/CocoaPodsKeys`)
   - Nimble (= 3.0.0)
   - Quick (= 0.8.0)
   - ReactiveCocoa (= 4.0.0-RC.1)
   - StreamingKit (= 0.1.29)
 
+EXTERNAL SOURCES:
+  Keys:
+    :path: Pods/CocoaPodsKeys
+
 SPEC CHECKSUMS:
   Alamofire: fbc829692f351fa1d8a31dd75fd7f7f56fea31fb
   BSRefreshableScrollView: a3c1a16560a2f754f9a7d02de1fb81f0f43fecf1
+  Keys: 7d2ff6ff42f6903358267ce56e9392f83c31acfe
   Nimble: 4c353d43735b38b545cbb4cb91504588eb5de926
   Quick: 563d0f6ec5f72e394645adb377708639b7dd38ab
   ReactiveCocoa: 2b0f654beb7642b82cfd3fdb845205ae9889422c

@@ -7,7 +7,9 @@ Play the latest sounds from your SoundCloud dashboard on your Mac.
 
 ## Installation
 
-Until [releases](https://github.com/interstateone/Fresh/releases) are available, you can download and build the source yourself. Fresh has been developed with Xcode 7.2 on OS X 10.11 El Capitan.
+You can download Fresh [here](https://github.com/interstateone/Fresh/releases). These releases are already Developer ID signed.
+
+You can also download and build the source yourself. In order to build the app, you'll need a client ID and secret to communicate with the SoundCloud API. More information about the API and how to get these credentials is available on the [SoundCloud for Developers](https://developers.soundcloud.com) website. Once you have SoundCloud credentials, install cocoapods-keys with `gem install cocoapods-keys` and then `pod install`. You'll be prompted for the credentials you have now, and then you can build the app successfully.
 
 ## Contributing
 
