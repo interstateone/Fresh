@@ -1,0 +1,31 @@
+fastlane_version "1.50.0"
+
+desc "Submit a new Release build to GitHub Releases"
+desc "Example usage: fastlane release version:1.0.1"
+lane :release do |options|
+  version = options[:version]
+  raise "You must specify a version in A.B.X format to deploy." if version.nil? || version.scan(/\d+\.\d+\.\d+/).length == 0
+
+  github_api_token = ENV['GITHUB_API_TOKEN']
+  raise "You must specify a GITHUB_API_TOKEN environment variable to deploy." if github_api_token.nil?
+
+  increment_version_number(
+    version_number: version
+  )
+  commit_version_bump
+  add_git_tag(
+    tag: version
+  )
+  app_path = gym(
+    scheme: "Fresh",
+    configuration: "Release"
+  )
+  sh "zip -r Fresh.app.zip #{app_path}"
+  push_to_git_remote
+  set_github_release(
+    repository_name: "interstateone/Fresh",
+    api_token: github_api_token,
+    tag_name: version,
+    upload_assets: "Fresh.app.zip"
+  )
+end
