@@ -26,6 +26,8 @@ lane :release do |options|
     repository_name: "interstateone/Fresh",
     api_token: github_api_token,
     tag_name: version,
-    upload_assets: ["fastlane/Fresh.app.zip"]
+    upload_assets: ["fastlane/Fresh.app.zip"],
+    name: version,
+    description: ""
   )
 end
