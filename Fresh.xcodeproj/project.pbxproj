@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		8C17692060B8D4F8EEED68F9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61660A482380B3A7DF63BE43 /* Pods.framework */; };
 		CA0423431B745CC2004513C6 /* FSHNoHitTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = CA0423221B745CC2004513C6 /* FSHNoHitTextField.m */; };
-		CA0423441B745CC2004513C6 /* FSHLoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA0423251B745CC2004513C6 /* FSHLoginView.xib */; };
-		CA0423451B745CC2004513C6 /* FSHLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0423261B745CC2004513C6 /* FSHLoginViewController.swift */; };
+		CA0423441B745CC2004513C6 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA0423251B745CC2004513C6 /* LoginView.xib */; };
+		CA0423451B745CC2004513C6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0423261B745CC2004513C6 /* LoginViewController.swift */; };
 		CA0423461B745CC2004513C6 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA0423281B745CC2004513C6 /* MainWindow.xib */; };
 		CA0423481B745CC2004513C6 /* MainWindowPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA04232B1B745CC2004513C6 /* MainWindowPresenter.swift */; };
 		CA0423491B745CC2004513C6 /* FSHNowPlayingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA04232D1B745CC2004513C6 /* FSHNowPlayingView.xib */; };
@@ -30,6 +30,12 @@
 		CA13F4E018CD80F20027B513 /* NXOAuth2PostBodyPart.m in Sources */ = {isa = PBXBuildFile; fileRef = CA13F4D018CD80F20027B513 /* NXOAuth2PostBodyPart.m */; };
 		CA13F4E118CD80F20027B513 /* NXOAuth2PostBodyStream.m in Sources */ = {isa = PBXBuildFile; fileRef = CA13F4D218CD80F20027B513 /* NXOAuth2PostBodyStream.m */; };
 		CA13F4E218CD80F20027B513 /* NXOAuth2Request.m in Sources */ = {isa = PBXBuildFile; fileRef = CA13F4D418CD80F20027B513 /* NXOAuth2Request.m */; };
+		CA1AA8751C46030000459544 /* BrowserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1AA8721C46030000459544 /* BrowserService.swift */; };
+		CA1AA8761C46030000459544 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1AA8731C46030000459544 /* NetworkService.swift */; };
+		CA1AA8771C46030000459544 /* TokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1AA8741C46030000459544 /* TokenService.swift */; };
+		CA1AA8791C46035000459544 /* AuthenticatorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1AA8781C46035000459544 /* AuthenticatorService.swift */; };
+		CA1AA87B1C46045E00459544 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1AA87A1C46045E00459544 /* LoginPresenter.swift */; };
+		CA1AA87D1C46123800459544 /* SoundService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1AA87C1C46123800459544 /* SoundService.swift */; };
 		CA22AF111C408F0800AF0DF6 /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA22AF101C408F0800AF0DF6 /* NowPlayingViewController.swift */; };
 		CA22AF131C4099DA00AF0DF6 /* NowPlayingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA22AF121C4099DA00AF0DF6 /* NowPlayingPresenter.swift */; };
 		CA22AF151C40B10400AF0DF6 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA22AF141C40B10400AF0DF6 /* Timer.swift */; };
@@ -91,8 +97,8 @@
 		C625D28D4A69D21652CB65E2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CA0423211B745CC2004513C6 /* FSHNoHitTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSHNoHitTextField.h; sourceTree = "<group>"; };
 		CA0423221B745CC2004513C6 /* FSHNoHitTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSHNoHitTextField.m; sourceTree = "<group>"; };
-		CA0423251B745CC2004513C6 /* FSHLoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSHLoginView.xib; sourceTree = "<group>"; };
-		CA0423261B745CC2004513C6 /* FSHLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSHLoginViewController.swift; sourceTree = "<group>"; };
+		CA0423251B745CC2004513C6 /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
+		CA0423261B745CC2004513C6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CA0423281B745CC2004513C6 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		CA04232B1B745CC2004513C6 /* MainWindowPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowPresenter.swift; sourceTree = "<group>"; };
 		CA04232D1B745CC2004513C6 /* FSHNowPlayingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSHNowPlayingView.xib; sourceTree = "<group>"; };
@@ -131,6 +137,12 @@
 		CA13F4D318CD80F20027B513 /* NXOAuth2Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXOAuth2Request.h; sourceTree = "<group>"; };
 		CA13F4D418CD80F20027B513 /* NXOAuth2Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXOAuth2Request.m; sourceTree = "<group>"; };
 		CA13F4D518CD80F20027B513 /* NXOAuth2TrustDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXOAuth2TrustDelegate.h; sourceTree = "<group>"; };
+		CA1AA8721C46030000459544 /* BrowserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowserService.swift; sourceTree = "<group>"; };
+		CA1AA8731C46030000459544 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		CA1AA8741C46030000459544 /* TokenService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenService.swift; sourceTree = "<group>"; };
+		CA1AA8781C46035000459544 /* AuthenticatorService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatorService.swift; sourceTree = "<group>"; };
+		CA1AA87A1C46045E00459544 /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		CA1AA87C1C46123800459544 /* SoundService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundService.swift; sourceTree = "<group>"; };
 		CA22AF101C408F0800AF0DF6 /* NowPlayingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingViewController.swift; sourceTree = "<group>"; };
 		CA22AF121C4099DA00AF0DF6 /* NowPlayingPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingPresenter.swift; sourceTree = "<group>"; };
 		CA22AF141C40B10400AF0DF6 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
@@ -232,6 +244,7 @@
 		CA04231A1B745CC2004513C6 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				CA1AA8711C46030000459544 /* Services */,
 				CA04231B1B745CC2004513C6 /* Models */,
 				CA0423201B745CC2004513C6 /* Views */,
 				CA444E3E1C33AF7D00E0EA45 /* Observable.swift */,
@@ -278,8 +291,9 @@
 		CA0423241B745CC2004513C6 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				CA0423251B745CC2004513C6 /* FSHLoginView.xib */,
-				CA0423261B745CC2004513C6 /* FSHLoginViewController.swift */,
+				CA0423251B745CC2004513C6 /* LoginView.xib */,
+				CA0423261B745CC2004513C6 /* LoginViewController.swift */,
+				CA1AA87A1C46045E00459544 /* LoginPresenter.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -366,6 +380,18 @@
 				CA13F4D518CD80F20027B513 /* NXOAuth2TrustDelegate.h */,
 			);
 			path = OAuth2Client;
+			sourceTree = "<group>";
+		};
+		CA1AA8711C46030000459544 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CA1AA8721C46030000459544 /* BrowserService.swift */,
+				CA1AA8731C46030000459544 /* NetworkService.swift */,
+				CA1AA8741C46030000459544 /* TokenService.swift */,
+				CA1AA8781C46035000459544 /* AuthenticatorService.swift */,
+				CA1AA87C1C46123800459544 /* SoundService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		CA44E88F18CD1AA2007754C5 = {
@@ -593,7 +619,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA0423521B745CC2004513C6 /* SoundListView.xib in Resources */,
-				CA0423441B745CC2004513C6 /* FSHLoginView.xib in Resources */,
+				CA0423441B745CC2004513C6 /* LoginView.xib in Resources */,
 				CA0423491B745CC2004513C6 /* FSHNowPlayingView.xib in Resources */,
 				CA44E8A618CD1AA2007754C5 /* InfoPlist.strings in Resources */,
 				CA44E8B418CD1AA2007754C5 /* Images.xcassets in Resources */,
@@ -716,6 +742,7 @@
 				CA22AF131C4099DA00AF0DF6 /* NowPlayingPresenter.swift in Sources */,
 				CAF1E1BA1C34E2E900EDFC6A /* SoundListViewController.swift in Sources */,
 				CA13F4D618CD80F20027B513 /* NSData+NXOAuth2.m in Sources */,
+				CA1AA8791C46035000459544 /* AuthenticatorService.swift in Sources */,
 				CA44E8E918CD1CDB007754C5 /* SCConstants.m in Sources */,
 				CAE6846018CD3C4900F907A4 /* NSButton+RACProperties.m in Sources */,
 				CAE5F49C18D14AFE00506613 /* NSImage+TintedImage.m in Sources */,
@@ -723,16 +750,18 @@
 				CA13F4E018CD80F20027B513 /* NXOAuth2PostBodyPart.m in Sources */,
 				CA444E431C34D12E00E0EA45 /* Presenter.swift in Sources */,
 				CA13F4DD18CD80F20027B513 /* NXOAuth2Connection.m in Sources */,
+				CA1AA8771C46030000459544 /* TokenService.swift in Sources */,
 				CA44E8AF18CD1AA2007754C5 /* FSHAppDelegate.m in Sources */,
 				CAF1E1B81C34E01200EDFC6A /* MainWindowController.swift in Sources */,
 				CA44E8E818CD1CDB007754C5 /* SCAccount.m in Sources */,
 				CA22AF111C408F0800AF0DF6 /* NowPlayingViewController.swift in Sources */,
+				CA1AA8751C46030000459544 /* BrowserService.swift in Sources */,
 				CA13F4D818CD80F20027B513 /* NSURL+NXOAuth2.m in Sources */,
 				CA0423481B745CC2004513C6 /* MainWindowPresenter.swift in Sources */,
 				CA13F4DA18CD80F20027B513 /* NXOAuth2Account.m in Sources */,
 				CA44E8E718CD1CDB007754C5 /* SCAccount+Private.m in Sources */,
 				CA44E8EC18CD1CDB007754C5 /* SCSoundCloud.m in Sources */,
-				CA0423451B745CC2004513C6 /* FSHLoginViewController.swift in Sources */,
+				CA0423451B745CC2004513C6 /* LoginViewController.swift in Sources */,
 				CA4E257F1C339D6000CB63FB /* SoundCloudService.swift in Sources */,
 				CA13F4DF18CD80F20027B513 /* NXOAuth2FileStreamWrapper.m in Sources */,
 				CA444E3F1C33AF7D00E0EA45 /* Observable.swift in Sources */,
@@ -740,6 +769,7 @@
 				CA22AF1D1C430ACE00AF0DF6 /* Sound.swift in Sources */,
 				CA13F4D918CD80F20027B513 /* NXOAuth2AccessToken.m in Sources */,
 				CA22AF1F1C431F0500AF0DF6 /* JSON.swift in Sources */,
+				CA1AA8761C46030000459544 /* NetworkService.swift in Sources */,
 				CA44E8A818CD1AA2007754C5 /* main.m in Sources */,
 				CA13F4E218CD80F20027B513 /* NXOAuth2Request.m in Sources */,
 				CA22AF191C40C84500AF0DF6 /* SoundListCellView.swift in Sources */,
@@ -750,6 +780,7 @@
 				CAA5F5261C436FF900599EC4 /* WaveformSliderView.swift in Sources */,
 				CA22AF1B1C40DCF700AF0DF6 /* ArrayExtensions.swift in Sources */,
 				CA444E411C33B8DF00E0EA45 /* SoundListRowModel.swift in Sources */,
+				CA1AA87D1C46123800459544 /* SoundService.swift in Sources */,
 				CA0423431B745CC2004513C6 /* FSHNoHitTextField.m in Sources */,
 				CA13F4DC18CD80F20027B513 /* NXOAuth2Client.m in Sources */,
 				CA4E257D1C33985500CB63FB /* MainWireframe.swift in Sources */,
@@ -759,6 +790,7 @@
 				CA13F4D718CD80F20027B513 /* NSString+NXOAuth2.m in Sources */,
 				CA13F4DB18CD80F20027B513 /* NXOAuth2AccountStore.m in Sources */,
 				CA13F4DE18CD80F20027B513 /* NXOAuth2Constants.m in Sources */,
+				CA1AA87B1C46045E00459544 /* LoginPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

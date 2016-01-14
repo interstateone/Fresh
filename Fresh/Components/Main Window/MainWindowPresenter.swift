@@ -13,10 +13,6 @@ class MainWindowPresenter: Presenter {
     let wireframe: MainWireframe
     let service: SoundCloudService
 
-    func accountChanged(account: Account?) {
-        account != nil ? wireframe.presentSoundList() : wireframe.presentLogin()
-    }
-    
     func selectedSoundChanged(sound: Sound?) {
         if sound != nil {
             wireframe.showNowPlaying()
@@ -35,6 +31,6 @@ class MainWindowPresenter: Presenter {
     // MARK: Presenter
 
     func initializeView() {
-        service.loggedIn ? wireframe.presentSoundList() : wireframe.presentLogin()
+        wireframe.transitionToState(.Unauthenticated)
     }
 }

@@ -11,12 +11,11 @@ import ReactiveCocoa
 
 class SoundListPresenter: Presenter {
     var view: SoundListView
-    let service: SoundCloudService
+    var service: SoundService? = nil
     let audioPlayerService: AudioPlayerService
 
-    init (view: SoundListView, service: SoundCloudService, audioPlayerService: AudioPlayerService) {
+    init (view: SoundListView, audioPlayerService: AudioPlayerService) {
         self.view = view
-        self.service = service
         self.audioPlayerService = audioPlayerService
         
         audioPlayerService.state.addObserver { [weak self] state in
@@ -41,6 +40,9 @@ class SoundListPresenter: Presenter {
     let selectedSound = Observable<Sound?>(nil)
 
     func updateSounds() -> SignalProducer<[Sound], NSError> {
+        guard let service = service else {
+            return SignalProducer.empty
+        }
         let signal = service.updateSounds().on(next: { [weak self] sounds in
             self?.sounds = sounds
         })
@@ -48,6 +50,9 @@ class SoundListPresenter: Presenter {
     }
 
     func fetchNextSounds() -> SignalProducer<[Sound], NSError> {
+        guard let service = service else {
+            return SignalProducer.empty
+        }
         return service.fetchNextSounds()
     }
 
@@ -57,6 +62,13 @@ class SoundListPresenter: Presenter {
 
     var indexOfSelectedSound: Int? {
         return sounds.indexOf { $0 == self.selectedSound.get }
+    }
+
+    func authenticationStateChanged(authenticationState: AuthenticationState) {
+        switch authenticationState {
+        case .Unauthenticated: service = nil
+        case .Authenticated(let service): self.service = SoundService(service: service)
+        }
     }
 
     // MARK: Presenter

@@ -8,9 +8,9 @@
 
 import Foundation
 
-class NowPlayingPresenter: Presenter {
+class NowPlayingPresenter: NSObject, Presenter {
     var view: NowPlayingView
-    let service: SoundCloudService
+    var service: SoundService? = nil
     let audioPlayerService: AudioPlayerService
 
     var sound: Sound? {
@@ -35,19 +35,20 @@ class NowPlayingPresenter: Presenter {
 
             view.state.hidden = false
 
-            service.fetchPlayURL(sound).startWithNext { [weak self] playURL in
+            service?.fetchPlayURL(sound).startWithNext { [weak self] playURL in
                 self?.audioPlayerService.play(playURL)
             }
-            service.fetchWaveform(sound).startWithNext { [weak self] waveform in
+            service?.fetchWaveform(sound).startWithNext { [weak self] waveform in
                 self?.view.state.waveform = waveform
             }
         }
     }
 
-    init(view: NowPlayingView, service: SoundCloudService, audioPlayerService: AudioPlayerService) {
+    init(view: NowPlayingView, audioPlayerService: AudioPlayerService) {
         self.view = view
-        self.service = service
         self.audioPlayerService = audioPlayerService
+
+        super.init()
 
         audioPlayerService.state.addObserver { [weak self] state in
             self?.view.state.playing = state == .Playing
@@ -71,12 +72,15 @@ class NowPlayingPresenter: Presenter {
     }
     
     func toggleFavorite() {
+        guard let service = service else { return }
         if let sound = sound {
-            service.toggleFavorite(sound) { [weak self] in
+            sound.favorite = !sound.favorite
+            view.state.favorite = sound.favorite
+            service.toggleFavorite(sound).startWithCompleted { [weak self] in
                 // In case the change failed, set the view state on completion too
+                sound.favorite = !sound.favorite
                 self?.view.state.favorite = sound.favorite
             }
-            view.state.favorite = sound.favorite
         }
     }
 
@@ -92,6 +96,13 @@ class NowPlayingPresenter: Presenter {
 
     func selectedSoundChanged(sound: Sound?) {
         self.sound = sound
+    }
+
+    func authenticationStateChanged(authenticationState: AuthenticationState) {
+        switch authenticationState {
+        case .Unauthenticated: service = nil
+        case .Authenticated(let service): self.service = SoundService(service: service)
+        }
     }
 
     // MARK: Presenter

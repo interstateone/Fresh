@@ -11,7 +11,7 @@ import Cocoa
 class MainWindowController: NSWindowController {
     var presenter: MainWindowPresenter?
 
-    var loginViewController: FSHLoginViewController?
+    var loginViewController: LoginViewController?
     var listViewController: SoundListViewController?
     var nowPlayingViewController: NowPlayingViewController?
 
